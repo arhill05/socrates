@@ -2,7 +2,9 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="../bower_components/toastr/toastr.css" />
 </head>
 
 <body ng-app="app">
@@ -13,8 +15,8 @@
                 <button ng-click="$ctrl.showSidebar = !$ctrl.showSidebar">test</button>
             </div>
         </div>
-        <div ng-if="$ctrl.showSidebar" id="sidebar"></div>
-        <div id="content" ng-class="{collapsed : !$ctrl.showSidebar}"> 
+        <div class="animate" ng-class="{collapsed : !$ctrl.showSidebar}" id="sidebar"></div>
+        <div id="content" class="animate" ng-class="{collapsed : !$ctrl.showSidebar}"> 
             <a ui-sref="hello">Hello</a>
             <a ui-sref="about">About</a>
             <ui-view></ui-view>
@@ -22,16 +24,18 @@
 
     </div>
 
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/angularfire/dist/angularfire.js"></script>
     <script src="../bower_components/firebase/firebase.js"></script>
     <script src="../bower_components/firebase/firebase-app.js"></script>
     <script src="../bower_components/firebase/firebase-auth.js"></script>
-    <script src="../bower_components/firebase/firebase-database.js">
+    <script src="../bower_components/firebase/firebase-database.js"></script>
+    <script src="../bower_components/toastr/toastr.js"></script>
 
-    </script>
-    <script src="../bower_components/angular/angular.js"></script>
-    <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="./js/app.js"></script>
+    <script src="./js/services/auth.service.js"></script>
     <script src="./js/services/sidebar.service.js"></script>
     <script src="./js/controllers/shell.controller.js"></script>
     <script src="./js/controllers/entry.controller.js"></script>

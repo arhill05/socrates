@@ -13,7 +13,21 @@
 body {
     margin: 0;
     background-color: @light-gray;
+    font-size: 16px;
+    line-height: 1.2;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    p, div, span, a, button {
+        font-size: 100%;
+    }
+
+    h1 {
+        font-size: 200%;
+    }
+
+    .animate {
+        transition: left 0.25s ease;
+    }
     
     #header{
         background-color: @white;
@@ -36,6 +50,11 @@ body {
         left: 0;
         bottom: 0;
         box-shadow: 2px 2px 0px 0px @darker-gray;
+
+        &.collapsed
+        {
+            left: -@single-space * 19;
+        }
     }
 
     #content {
@@ -55,15 +74,22 @@ body {
         #entry {
             text-align: center;
             padding: @quad-space;
+            height: 100%;
 
             .start-button {
-                background-color: @darker-gray;
-                width: @single-space * 16;
-                height: @single-space * 8;
+                background-color: @gray;
+                width: @single-space * 32;
+                height: @single-space * 12;
                 font-weight: 700;
                 color: @white;
                 border: none;
                 border-radius: 4px;
+                border-right: 3px solid @darker-gray;
+                border-bottom: 3px solid @darker-gray;
+
+                &:active {
+                    background-color: @darker-gray;
+                }
             }
         }
     }

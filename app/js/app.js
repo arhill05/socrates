@@ -1,6 +1,6 @@
 (function () {
 
-    var app = angular.module('app', ['ui.router']);
+    var app = angular.module('app', ['ui.router', 'firebase']);
 
     app.config(function ($stateProvider, $urlRouterProvider) {
         var entryState = {

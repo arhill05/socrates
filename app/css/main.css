@@ -1,7 +1,22 @@
 body {
   margin: 0;
   background-color: #e6e6e6;
+  font-size: 16px;
+  line-height: 1.2;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body p,
+body div,
+body span,
+body a,
+body button {
+  font-size: 100%;
+}
+body h1 {
+  font-size: 200%;
+}
+body .animate {
+  transition: left 0.25s ease;
 }
 body #header {
   background-color: #fff;
@@ -23,6 +38,9 @@ body #sidebar {
   bottom: 0;
   box-shadow: 2px 2px 0px 0px #b3b3b3;
 }
+body #sidebar.collapsed {
+  left: -152px;
+}
 body #content {
   background-color: #fff;
   position: fixed;
@@ -38,13 +56,19 @@ body #content.collapsed {
 body #content #entry {
   text-align: center;
   padding: 32px;
+  height: 100%;
 }
 body #content #entry .start-button {
-  background-color: #b3b3b3;
-  width: 128px;
-  height: 64px;
+  background-color: #cfcfcf;
+  width: 256px;
+  height: 96px;
   font-weight: 700;
   color: #fff;
   border: none;
   border-radius: 4px;
+  border-right: 3px solid #b3b3b3;
+  border-bottom: 3px solid #b3b3b3;
+}
+body #content #entry .start-button:active {
+  background-color: #b3b3b3;
 }

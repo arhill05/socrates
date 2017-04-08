@@ -17,5 +17,5 @@ var app = angular.module('app')
         })
 
         // todo : animate sidebar collapse
-        self.showSidebar = true;
+        self.showSidebar = false;
     });
