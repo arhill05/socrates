@@ -1,6 +1,7 @@
 body {
   margin: 0;
   background-color: #e6e6e6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 body #header {
   background-color: #fff;
@@ -33,4 +34,17 @@ body #content {
 }
 body #content.collapsed {
   left: 16px;
+}
+body #content #entry {
+  text-align: center;
+  padding: 32px;
+}
+body #content #entry .start-button {
+  background-color: #b3b3b3;
+  width: 128px;
+  height: 64px;
+  font-weight: 700;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
 }

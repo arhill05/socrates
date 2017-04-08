@@ -2,7 +2,13 @@
 
     var app = angular.module('app', ['ui.router']);
 
-    app.config(function ($stateProvider) {
+    app.config(function ($stateProvider, $urlRouterProvider) {
+        var entryState = {
+            name: 'entry',
+            url: '/',
+            templateUrl: './views/entry.html'
+        }
+
         var helloState = {
             name: 'hello',
             url: '/hello',
@@ -15,8 +21,11 @@
             template: '<h2>about</h2>'
         };
 
+        $stateProvider.state(entryState);
         $stateProvider.state(helloState);
         $stateProvider.state(aboutState);
+
+        $urlRouterProvider.otherwise('/');
     })
 
     app.config(function () {

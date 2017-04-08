@@ -14,10 +14,12 @@
             </div>
         </div>
         <div ng-if="$ctrl.showSidebar" id="sidebar"></div>
-        <div id="content" ng-class="{collapsed : !$ctrl.showSidebar}"></div>
-        <a ui-sref="hello">Hello</a>
-        <a ui-sref="about">About</a>
-        <ui-view></ui-view>
+        <div id="content" ng-class="{collapsed : !$ctrl.showSidebar}"> 
+            <a ui-sref="hello">Hello</a>
+            <a ui-sref="about">About</a>
+            <ui-view></ui-view>
+        </div>
+
     </div>
 
     <script src="../bower_components/jquery/dist/jquery.js"></script>
@@ -30,7 +32,9 @@
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="./js/app.js"></script>
+    <script src="./js/services/sidebar.service.js"></script>
     <script src="./js/controllers/shell.controller.js"></script>
+    <script src="./js/controllers/entry.controller.js"></script>
 </body>
 
 </html>
