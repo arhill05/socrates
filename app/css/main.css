@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  background-color: #e6e6e6;
+}
+body #header {
+  background-color: #fff;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  height: 64px;
+  box-shadow: 0 2px 2px 0 #b3b3b3;
+}
+body #header .branding {
+  padding: 16px;
+}
+body #sidebar {
+  background-color: #fff;
+  position: fixed;
+  width: 152px;
+  top: 64px;
+  left: 0;
+  bottom: 0;
+  box-shadow: 2px 2px 0px 0px #b3b3b3;
+}
+body #content {
+  background-color: #fff;
+  position: fixed;
+  top: 80px;
+  left: 168px;
+  bottom: 16px;
+  right: 16px;
+  box-shadow: 0 2px 2px 0 #b3b3b3;
+}
+body #content.collapsed {
+  left: 16px;
+}

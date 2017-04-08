@@ -1,0 +1,55 @@
+@white: #fff;
+@light-gray: #e6e6e6;
+@gray: #cfcfcf;
+@darker-gray: #b3b3b3;
+
+@single-space: 8px;
+@double-space: 16px;
+@triple-space: 24px;
+@quad-space: 32px;
+
+@float-box-shadow: 0 2px 2px 0 @darker-gray;
+
+body {
+    margin: 0;
+    background-color: @light-gray;
+    
+    #header{
+        background-color: @white;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        height: @single-space * 8;
+        box-shadow: @float-box-shadow;
+
+        .branding {
+            padding: @double-space;
+        }
+    }
+
+    #sidebar {
+        background-color: @white;
+        position: fixed;
+        width: @single-space * 19;
+        top: @single-space * 8;
+        left: 0;
+        bottom: 0;
+        box-shadow: 2px 2px 0px 0px @darker-gray;
+    }
+
+    #content {
+        background-color: @white;
+        position: fixed;
+        top: @single-space * 10;
+        left: @single-space * 21;
+        bottom: @double-space;
+        right: @double-space;
+        box-shadow: @float-box-shadow;
+
+        &.collapsed
+        {
+            left: @single-space * 2;
+        }
+    }
+
+}
