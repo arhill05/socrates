@@ -53,12 +53,12 @@ body #content {
 body #content.collapsed {
   left: 16px;
 }
-body #content #entry {
+body #content #start {
   text-align: center;
   padding: 32px;
   height: 100%;
 }
-body #content #entry .start-button {
+body #content #start .start-button {
   background-color: #cfcfcf;
   width: 256px;
   height: 96px;
@@ -69,6 +69,6 @@ body #content #entry .start-button {
   border-right: 3px solid #b3b3b3;
   border-bottom: 3px solid #b3b3b3;
 }
-body #content #entry .start-button:active {
+body #content #start .start-button:active {
   background-color: #b3b3b3;
 }

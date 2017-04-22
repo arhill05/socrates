@@ -4,15 +4,15 @@
 
     app.config(function ($stateProvider, $urlRouterProvider) {
         var entryState = {
-            name: 'entry',
+            name: 'start',
             url: '/',
-            templateUrl: './views/entry.html'
+            templateUrl: './views/start.html'
         }
 
-        var helloState = {
-            name: 'hello',
-            url: '/hello',
-            template: '<h2>hello world</h2>'
+        var pinEntryState = {
+            name: 'pinEntry',
+            url: '/sessions',
+            templateUrl: './views/pinEntry.html'
         };
 
         var aboutState = {
@@ -22,7 +22,7 @@
         };
 
         $stateProvider.state(entryState);
-        $stateProvider.state(helloState);
+        $stateProvider.state(pinEntryState);
         $stateProvider.state(aboutState);
 
         $urlRouterProvider.otherwise('/');

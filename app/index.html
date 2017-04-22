@@ -12,7 +12,8 @@
         <div id="header">
             <div class="branding">
                 SocratesApp
-                <button ng-click="$ctrl.showSidebar = !$ctrl.showSidebar">test</button>
+                <button ng-click="$ctrl.showSidebar = !$ctrl.showSidebar">toggle sidebar</button>
+                <button ng-click="$ctrl.signOut()">Sign Out</button>
             </div>
         </div>
         <div class="animate" ng-class="{collapsed : !$ctrl.showSidebar}" id="sidebar"></div>
@@ -37,8 +38,9 @@
     <script src="./js/app.js"></script>
     <script src="./js/services/auth.service.js"></script>
     <script src="./js/services/sidebar.service.js"></script>
+    <script src="./js/controllers/pinEntry.controller.js"></script>
     <script src="./js/controllers/shell.controller.js"></script>
-    <script src="./js/controllers/entry.controller.js"></script>
+    <script src="./js/controllers/start.controller.js"></script>
 </body>
 
 </html>
