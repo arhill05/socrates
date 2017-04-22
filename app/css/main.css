@@ -72,3 +72,32 @@ body #content #start .start-button {
 body #content #start .start-button:active {
   background-color: #b3b3b3;
 }
+body #content #questions {
+  height: 100%;
+}
+body #content #questions .questions-container {
+  display: inline-block;
+  width: 66%;
+}
+body #content #questions .question {
+  border: 1px solid #b3b3b3;
+  box-shadow: 0 2px 2px 0 #b3b3b3;
+  padding: 16px;
+  margin: 8px;
+  text-align: center;
+}
+body #content #questions .question .question-content {
+  display: inline-block;
+}
+body #content #questions .question .voting-options {
+  float: right;
+}
+body #content #questions .session-info {
+  position: fixed;
+  height: 80%;
+  background-color: blue;
+  width: 28%;
+  display: inline-block;
+  padding: 16px;
+  margin: 8px;
+}

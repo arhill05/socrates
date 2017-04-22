@@ -11,17 +11,14 @@
 
         var pinEntryState = {
             name: 'pinEntry',
-            url: '/sessions',
+            url: '/join',
             templateUrl: './views/pinEntry.html'
         };
 
         var sessionState = {
             name: 'session',
-            url: '/sessions',
+            url: '/questions/{sessionPin}',
             templateUrl: './views/session.html',
-            params: {
-                sessionPin: null
-            }
         }
 
         var aboutState = {

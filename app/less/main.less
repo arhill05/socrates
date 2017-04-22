@@ -92,6 +92,39 @@ body {
                 }
             }
         }
+
+        #questions {
+            height: 100%;
+            .questions-container {
+                display: inline-block;
+                width: 66%;
+            }
+
+            .question {
+                    border: 1px solid @darker-gray;
+                    box-shadow: @float-box-shadow;
+                    padding: @double-space;
+                    margin: @single-space;
+                    
+                    text-align: center;
+                    .question-content {
+                        display: inline-block;
+                    }
+                    .voting-options {
+                        float: right;
+                    }
+                }
+
+            .session-info {
+                position: fixed;
+                height: 80%;
+                background-color: blue;
+                width: 28%;
+                display: inline-block;
+                padding: @double-space;
+                margin: @single-space;
+            }
+        }
     }
 
 }
