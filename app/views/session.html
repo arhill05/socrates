@@ -1,0 +1,7 @@
+<div ng-controller="sessionCtrl as $ctrl" id="session-entry">
+    {{$ctrl.sessionPin}}
+    <div ng-repeat="question in $ctrl.session.questions">
+        <span>{{question.questionText}}</span>
+        <span>{{question.upvotes}}</span>
+    </div>
+</div>

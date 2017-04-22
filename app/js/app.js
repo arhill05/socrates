@@ -15,6 +15,15 @@
             templateUrl: './views/pinEntry.html'
         };
 
+        var sessionState = {
+            name: 'session',
+            url: '/sessions',
+            templateUrl: './views/session.html',
+            params: {
+                sessionPin: null
+            }
+        }
+
         var aboutState = {
             name: 'about',
             url: '/about',
@@ -24,6 +33,7 @@
         $stateProvider.state(entryState);
         $stateProvider.state(pinEntryState);
         $stateProvider.state(aboutState);
+        $stateProvider.state(sessionState);
 
         $urlRouterProvider.otherwise('/');
     })
