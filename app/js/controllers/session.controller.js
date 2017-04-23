@@ -5,24 +5,20 @@ app.controller('sessionCtrl', function ($scope, $stateParams, $firebaseObject, $
     self.sessionPin = $stateParams.sessionPin;
     $scope.session = null;
     $scope.questions = [];
+    $scope.showLoading = true;
 
     self.onInit = function () {
-        self.sessionRef = firebase.database().ref().child("sessions/").orderByChild('pin').equalTo(parseInt(self.sessionPin));
-        self.sessionObj = $firebaseObject(self.sessionRef);
-        self.sessionObj.$loaded().then(function () {
-            self.sessionObj.forEach(function (session, key) {
+        let sessionRef = firebase.database().ref().child("sessions/").orderByChild('pin').equalTo(parseInt(self.sessionPin));
+        let sessionObj = $firebaseObject(sessionRef);
+        sessionObj.$loaded().then(function () {
+            sessionObj.forEach(function (session, key) {
                 $scope.session = session;
-                self.questionsRef = firebase.database().ref().child('sessions_questions').child(key);
-                $scope.questions = $firebaseArray(self.questionsRef);
-                $scope.questions.$loaded().then(console.log('questions loaded'))
+                let questionsRef = firebase.database().ref().child('sessions_questions').child(key);
+                $scope.questions = $firebaseArray(questionsRef);
+                $scope.questions.$loaded().then($scope.showLoading = false)
             }, this);
         })
-
-
     }
 
     self.onInit();
-
-
-
 })

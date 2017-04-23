@@ -1,5 +1,6 @@
 <div ng-controller="sessionCtrl as $ctrl" id="questions">
-    <div class="questions-container">
+    <div class="loading" ng-if="showLoading">LOADING . . . </div>
+    <div class="questions-container" ng-if="!showLoading">
         <div class="question" ng-repeat="question in questions">
             <div class="question-content">
                 <span>{{question.questionText}}</span>
