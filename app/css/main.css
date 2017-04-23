@@ -74,10 +74,11 @@ body #content #start .start-button:active {
 }
 body #content #questions {
   height: 100%;
+  display: flex;
 }
 body #content #questions .questions-container {
   display: inline-block;
-  width: 66%;
+  flex-grow: 3;
 }
 body #content #questions .question {
   border: 1px solid #b3b3b3;
@@ -93,11 +94,18 @@ body #content #questions .question .voting-options {
   float: right;
 }
 body #content #questions .session-info {
-  position: fixed;
-  height: 80%;
-  background-color: blue;
-  width: 28%;
+  flex-grow: 1;
   display: inline-block;
   padding: 16px;
   margin: 8px;
+  text-align: right;
+}
+body #content #questions .session-info .session-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 240%;
+  font-weight: 700;
+}
+body #content #questions .session-info .session-pin {
+  font-weight: 700;
+  margin-bottom: 16px;
 }

@@ -95,9 +95,10 @@ body {
 
         #questions {
             height: 100%;
+            display: flex;
             .questions-container {
                 display: inline-block;
-                width: 66%;
+                flex-grow: 3;
             }
 
             .question {
@@ -116,13 +117,26 @@ body {
                 }
 
             .session-info {
-                position: fixed;
-                height: 80%;
-                background-color: blue;
-                width: 28%;
+                flex-grow: 1;
                 display: inline-block;
                 padding: @double-space;
                 margin: @single-space;
+                text-align: right;
+
+                .session-title {
+                    font-family: 'Oswald', sans-serif;
+                    font-size: 240%;
+                    font-weight: 700;
+                }
+
+                .session-pin {
+                    font-weight: 700;
+                    margin-bottom: @double-space;
+                }
+
+                .session-description {
+
+                }
             }
         }
     }
