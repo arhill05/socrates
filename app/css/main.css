@@ -24,7 +24,7 @@ body #header {
   position: fixed;
   top: 0;
   height: 64px;
-  box-shadow: 0 2px 2px 0 #b3b3b3;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
 }
 body #header .branding {
   padding: 16px;
@@ -48,7 +48,7 @@ body #content {
   left: 168px;
   bottom: 16px;
   right: 16px;
-  box-shadow: 0 2px 2px 0 #b3b3b3;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
 }
 body #content.collapsed {
   left: 16px;
@@ -76,13 +76,39 @@ body #content #questions {
   height: 100%;
   display: flex;
 }
+body #content #questions .input-container {
+  position: fixed;
+  margin: 8px;
+  margin-bottom: 0;
+  width: 54%;
+}
+body #content #questions .input-container .question-input-group {
+  display: flex;
+  height: 48px;
+  margin: 16px 8px 32px 8px;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+}
+body #content #questions .input-container .question-input-group input {
+  line-height: 40px;
+  font-size: 16px;
+  padding-left: 8px;
+  flex-grow: 2;
+}
+body #content #questions .input-container .question-input-group button {
+  height: 100%;
+  flex-grow: .25;
+  display: inline-block;
+}
 body #content #questions .questions-container {
   display: inline-block;
   flex-grow: 3;
+  margin: 8px;
+  margin-top: 96px;
+  overflow-y: scroll;
 }
 body #content #questions .question {
   border: 1px solid #b3b3b3;
-  box-shadow: 0 2px 2px 0 #b3b3b3;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
   padding: 16px;
   margin: 8px;
   text-align: center;
@@ -90,8 +116,11 @@ body #content #questions .question {
 body #content #questions .question .question-content {
   display: inline-block;
 }
-body #content #questions .question .voting-options {
+body #content #questions .question .upvotes {
   float: right;
+}
+body #content #questions .question .upvotes .upvote-button {
+  margin-left: 8px;
 }
 body #content #questions .session-info {
   flex-grow: 1;

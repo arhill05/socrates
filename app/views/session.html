@@ -1,19 +1,24 @@
 <div ng-controller="sessionCtrl as $ctrl" id="questions">
     <div class="loading" ng-if="showLoading">LOADING . . . </div>
-    <div class="questions-container" ng-if="!showLoading">
-        <div class="question" ng-repeat="question in questions">
+    <div class="input-container">
+            <div class="question-input-group">
+                <input class="question-text-input" ng-model="newQuestion.questionText" /><button class="question-text-button"
+                    ng-click="$ctrl.addQuestion()">ADD QUESTION</button>
+            </div>
+        </div>
+    <div class="questions-container" ng-if="!showLoading">    
+        <div class="question" ng-repeat="question in questions | orderBy:'-upvotes'">
             <div class="question-content">
                 <span>{{question.questionText}}</span>
-                <span>{{question.upvotes}}</span>
             </div>
-            <div class="voting-options">^</div>
+            <div ng-click="$ctrl.upvoteQuestion($index)" class="upvotes">{{question.upvotes}}<span class="upvote-button" ng-click="$ctrl.upvoteQuestion($index)">^</span></div>
         </div>
     </div>
     <div class="session-info">
         <div class="info-content">
-        <div class="session-title">{{session.title}}</div>
-        <div class="session-pin">Pin #: {{session.pin}}</div>
-        <div class="session-description">{{session.description}}</div>
+            <div class="session-title">{{session.title}}</div>
+            <div class="session-pin">Pin #: {{session.pin}}</div>
+            <div class="session-description">{{session.description}}</div>
         </div>
     </div>
 </div>

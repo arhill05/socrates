@@ -2,13 +2,11 @@
 @light-gray: #e6e6e6;
 @gray: #cfcfcf;
 @darker-gray: #b3b3b3;
-
 @single-space: 8px;
 @double-space: 16px;
 @triple-space: 24px;
 @quad-space: 32px;
-
-@float-box-shadow: 0 2px 2px 0 @darker-gray;
+@float-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2);
 
 body {
     margin: 0;
@@ -16,32 +14,30 @@ body {
     font-size: 16px;
     line-height: 1.2;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-    p, div, span, a, button {
+    p,
+    div,
+    span,
+    a,
+    button {
         font-size: 100%;
     }
-
     h1 {
         font-size: 200%;
     }
-
     .animate {
         transition: left 0.25s ease;
     }
-    
-    #header{
+    #header {
         background-color: @white;
         width: 100%;
         position: fixed;
         top: 0;
         height: @single-space * 8;
         box-shadow: @float-box-shadow;
-
         .branding {
             padding: @double-space;
         }
     }
-
     #sidebar {
         background-color: @white;
         position: fixed;
@@ -50,13 +46,10 @@ body {
         left: 0;
         bottom: 0;
         box-shadow: 2px 2px 0px 0px @darker-gray;
-
-        &.collapsed
-        {
+        &.collapsed {
             left: -@single-space * 19;
         }
     }
-
     #content {
         background-color: @white;
         position: fixed;
@@ -65,17 +58,13 @@ body {
         bottom: @double-space;
         right: @double-space;
         box-shadow: @float-box-shadow;
-
-        &.collapsed
-        {
+        &.collapsed {
             left: @single-space * 2;
         }
-
         #start {
             text-align: center;
             padding: @quad-space;
             height: 100%;
-
             .start-button {
                 background-color: @gray;
                 width: @single-space * 32;
@@ -86,59 +75,77 @@ body {
                 border-radius: 4px;
                 border-right: 3px solid @darker-gray;
                 border-bottom: 3px solid @darker-gray;
-
                 &:active {
                     background-color: @darker-gray;
                 }
             }
         }
-
         #questions {
             height: 100%;
             display: flex;
+            .input-container {
+                position: fixed;
+                margin: @single-space;
+                margin-bottom: 0;
+                width: 54%;
+                .question-input-group {
+                    display: flex;
+                    height: @single-space * 6;
+                    margin: @double-space @single-space @single-space * 4 @single-space;
+                    box-shadow: @float-box-shadow;
+                    & input {
+                        line-height: @single-space * 5;
+                        font-size: @double-space;
+                        padding-left: @single-space;
+                        flex-grow: 2;
+                    }
+                    & button {
+                        height: 100%;
+                        flex-grow: .25;
+                        display: inline-block;
+                    }
+                }
+            }
             .questions-container {
                 display: inline-block;
                 flex-grow: 3;
+                margin: @single-space;
+                margin-top: @single-space * 12;
+                overflow-y: scroll;
             }
-
             .question {
-                    border: 1px solid @darker-gray;
-                    box-shadow: @float-box-shadow;
-                    padding: @double-space;
-                    margin: @single-space;
-                    
-                    text-align: center;
-                    .question-content {
-                        display: inline-block;
-                    }
-                    .voting-options {
-                        float: right;
+                border: 1px solid @darker-gray;
+                box-shadow: @float-box-shadow;
+                padding: @double-space;
+                margin: @single-space;
+                text-align: center;
+                .question-content {
+                    display: inline-block;
+                }
+                .upvotes {
+                    float: right;
+                    & .upvote-button {
+                        margin-left: @single-space;
                     }
                 }
-
+            }
             .session-info {
                 flex-grow: 1;
                 display: inline-block;
                 padding: @double-space;
                 margin: @single-space;
                 text-align: right;
-
                 .session-title {
                     font-family: 'Oswald', sans-serif;
                     font-size: 240%;
                     font-weight: 700;
                 }
-
                 .session-pin {
                     font-weight: 700;
                     margin-bottom: @double-space;
                 }
-
-                .session-description {
-
-                }
+                .session-description {}
             }
         }
     }
-
 }

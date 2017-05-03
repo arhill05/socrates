@@ -6,6 +6,10 @@ app.controller('sessionCtrl', function ($scope, $stateParams, $firebaseObject, $
     $scope.session = null;
     $scope.questions = [];
     $scope.showLoading = true;
+    $scope.newQuestion = {
+        questionText: null,
+        upvotes: 0
+    }
 
     self.onInit = function () {
         let sessionRef = firebase.database().ref().child("sessions/").orderByChild('pin').equalTo(parseInt(self.sessionPin));
@@ -18,6 +22,20 @@ app.controller('sessionCtrl', function ($scope, $stateParams, $firebaseObject, $
                 $scope.questions.$loaded().then($scope.showLoading = false)
             }, this);
         })
+    }
+
+    self.upvoteQuestion = function (index) {
+        $scope.questions[index].upvotes += 1;
+        $scope.questions.$save(index);
+    }
+
+    self.addQuestion = function () {
+        if ($scope.newQuestion.questionText != null) {
+            $scope.questions.$add($scope.newQuestion);
+            $scope.newQuestion.questionText = null;
+        } else {
+            toastr.error('Please enter a question!');
+        }
     }
 
     self.onInit();
