@@ -1,6 +1,10 @@
 var gulp = require('gulp');
 var less = require('gulp-less');
 var path = require('path');
+var jshint = require('gulp-jshint');
+var uglify = require('gulp-uglify/minifier');
+var concat = require('gulp-concat');
+var uglifyJsHarmony = require('uglify-js-harmony');
 var browserSync = require('browser-sync').create();
 
 gulp.task('hello', function () {
@@ -35,5 +39,15 @@ gulp.task('less', function () {
 gulp.task('watch', ['browserSync', 'less'], function () {
     gulp.watch('./app/less/**/*.less', ['less']);
     gulp.watch('./app/*.html', browserSync.reload);
-    gulp.watch('./js/**/*.js', browserSync.reload);
+    gulp.watch('./app/js/**/*.js', browserSync.reload);
+})
+
+gulp.task('build', function(){
+    gulp.src('app/js/**/*.js')
+      .pipe(jshint())
+      .pipe(jshint.reporter('default'))
+      .pipe(uglify(null, uglifyJsHarmony))
+      .on('error', function(err){console.log(err)})
+      .pipe(concat('main.js'))
+      .pipe(gulp.dest('dist'));
 })

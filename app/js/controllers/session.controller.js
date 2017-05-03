@@ -12,7 +12,7 @@ app.controller('sessionCtrl', ['Auth', '$scope', '$state', '$firebaseObject', '$
         $scope.newQuestion = {
             questionText: null,
             upvotes: 0
-        }
+        };
 
         self.onInit = function () {
             let sessionRef = firebase.database().ref().child("sessions/" + self.sessionPin);
