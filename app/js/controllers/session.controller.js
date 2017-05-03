@@ -27,32 +27,23 @@ app.controller('sessionCtrl', ['Auth', '$scope', '$state', '$firebaseObject', '$
             Auth.$onAuthStateChanged(function (firebaseUser) {
                 $scope.auth = firebaseUser;
                 let usersRef = firebase.database().ref().child("users/" + $scope.auth.uid);
-                $scope.userObj = $firebaseObject(usersRef);
-                $scope.userObj.$bindTo($scope, "user").then(function(){
+                let userObj = $firebaseObject(usersRef);
+                userObj.$bindTo($scope, "user").then(function(){
                     console.log($scope.user);
                 })
-                // userObj.$loaded().then(function () {
-                //     userObj.$bindTo($scope, "user").then(console.log($scope.user))
-                //     // userObj.forEach(function (user, key) {
-                //     //     $scope.user = user;
-                //     //     console.log($scope.user);
-                //     // })
-                // }, this)
             })
         }
 
         self.upvoteQuestion = function (question) {
-            let questionIndex = $scope.userObj.upvotedQuestionIds.indexOf(question.$id)
+            let questionIndex = $scope.user.upvotedQuestionIds.indexOf(question.$id)
             if(questionIndex == -1){
                 question.upvotes += 1;
                 $scope.questions.$save(question);
-                $scope.userObj.upvotedQuestionIds.push(question.$id);
-                $scope.userObj.$save();
+                $scope.user.upvotedQuestionIds.push(question.$id);
             } else {
                 question.upvotes -= 1;
                 $scope.questions.$save(question);
-                $scope.userObj.upvotedQuestionIds.splice(questionIndex, 1);
-                $scope.userObj.$save()
+                $scope.user.upvotedQuestionIds.splice(questionIndex, 1);
             }
         }
 
