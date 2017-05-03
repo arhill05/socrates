@@ -1,17 +1,17 @@
 <div ng-controller="sessionCtrl as $ctrl" id="questions">
     <div class="loading" ng-if="showLoading">LOADING . . . </div>
     <div class="input-container">
-            <div class="question-input-group">
-                <input class="question-text-input" ng-model="newQuestion.questionText" /><button class="question-text-button"
-                    ng-click="$ctrl.addQuestion()">ADD QUESTION</button>
-            </div>
+        <div class="question-input-group">
+            <input class="question-text-input" ng-model="newQuestion.questionText" /><button class="question-text-button"
+                ng-click="$ctrl.addQuestion()">ADD QUESTION</button>
         </div>
-    <div class="questions-container" ng-if="!showLoading">    
+    </div>
+    <div class="questions-container" ng-if="!showLoading">
         <div class="question" ng-repeat="question in questions | orderBy:'-upvotes'">
             <div class="question-content">
                 <span>{{question.questionText}}</span>
             </div>
-            <div ng-click="$ctrl.upvoteQuestion($index)" class="upvotes">{{question.upvotes}}<span class="upvote-button" ng-click="$ctrl.upvoteQuestion($index)">^</span></div>
+            <div class="upvotes">{{question.upvotes}}<span class="upvote-button" ng-click="$ctrl.upvoteQuestion($index)">^</span></div>
         </div>
     </div>
     <div class="session-info">

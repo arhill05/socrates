@@ -13,11 +13,6 @@ var app = angular.module('app')
         }
         vm.error = null;
 
-        Auth.$onAuthStateChanged(function (firebaseUser) {
-            vm.firebaseUser = firebaseUser;
-            if(vm.firebaseUser) $state.go('pinEntry');
-        });
-
         vm.onInit = function () {
             vm.firebaseUser = null;
         }
@@ -27,8 +22,7 @@ var app = angular.module('app')
                 .then(function (firebaseUser) {
                     vm.firebaseUser = firebaseUser;
                     $state.go('pinEntry');
-                    vm.usersRef.push({
-                        uid: firebaseUser.uid,
+                    vm.usersRef.child(firebaseUser.uid).set({
                         anonymous: true,
                         email: "",
                         upvotedQuestionIds: [1, 2, 3]
