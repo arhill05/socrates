@@ -41,17 +41,16 @@ app.controller('sessionCtrl', ['Auth', '$scope', '$state', '$firebaseObject', '$
             })
         }
 
-        self.upvoteQuestion = function (index) {
-            let question = $scope.questions[index];
+        self.upvoteQuestion = function (question) {
             let questionIndex = $scope.userObj.upvotedQuestionIds.indexOf(question.$id)
             if(questionIndex == -1){
-                $scope.questions[index].upvotes += 1;
-                $scope.questions.$save(index);
+                question.upvotes += 1;
+                $scope.questions.$save(question);
                 $scope.userObj.upvotedQuestionIds.push(question.$id);
                 $scope.userObj.$save();
             } else {
-                $scope.questions[index].upvotes -= 1;
-                $scope.questions.$save(index);
+                question.upvotes -= 1;
+                $scope.questions.$save(question);
                 $scope.userObj.upvotedQuestionIds.splice(questionIndex, 1);
                 $scope.userObj.$save()
             }
