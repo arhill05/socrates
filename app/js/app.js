@@ -7,7 +7,7 @@
             name: 'start',
             url: '/',
             templateUrl: './views/start.html'
-        }
+        };
 
         var pinEntryState = {
             name: 'pinEntry',
@@ -19,7 +19,7 @@
             name: 'session',
             url: '/questions/{sessionPin}',
             templateUrl: './views/session.html',
-        }
+        };
 
         var aboutState = {
             name: 'about',
@@ -33,7 +33,7 @@
         $stateProvider.state(sessionState);
 
         $urlRouterProvider.otherwise('/');
-    })
+    });
 
     app.config(function () {
         var config = {
@@ -46,5 +46,5 @@
         };
         firebase.initializeApp(config);
         console.log('firebase initialized');
-    })
-})()
+    });
+})();

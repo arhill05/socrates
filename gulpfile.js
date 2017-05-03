@@ -5,6 +5,7 @@ var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglify/minifier');
 var concat = require('gulp-concat');
 var uglifyJsHarmony = require('uglify-js-harmony');
+var htmlReplace = require('gulp-html-replace');
 var browserSync = require('browser-sync').create();
 
 gulp.task('hello', function () {
@@ -43,11 +44,27 @@ gulp.task('watch', ['browserSync', 'less'], function () {
 })
 
 gulp.task('build', function(){
+    console.log('=== main.js ===');
     gulp.src('app/js/**/*.js')
       .pipe(jshint())
       .pipe(jshint.reporter('default'))
       .pipe(uglify(null, uglifyJsHarmony))
-      .on('error', function(err){console.log(err)})
       .pipe(concat('main.js'))
-      .pipe(gulp.dest('dist'));
+      .pipe(gulp.dest('dist/js'));
+
+    console.log('=== lib.js ===');
+    gulp.src('bower_components/**/*.min.js')
+      .pipe(uglify(null, uglifyJsHarmony))
+      .pipe(concat('lib.js'))
+      .pipe(gulp.dest('dist/js'));
+
+    gulp.src('app/index.html')
+        .pipe(htmlReplace({
+            'js': 'js/main.js',
+            'lib': 'js/lib.js'
+        }))
+        .pipe(gulp.dest('dist'))
+
+    gulp.src('app/views/*.html')
+        .pipe(gulp.dest('dist/views'));
 })

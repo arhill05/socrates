@@ -1,4 +1,4 @@
-var app = angular.module('app')
+var app = angular.module('app');
 
 app.controller('sessionCtrl', ['Auth', '$scope', '$state', '$firebaseObject', '$firebaseArray',
     function (Auth, $scope, $state, $firebaseObject, $firebaseArray) {
@@ -22,7 +22,7 @@ app.controller('sessionCtrl', ['Auth', '$scope', '$state', '$firebaseObject', '$
                     let questionsRef = firebase.database().ref().child('sessions_questions').child(sessionObj.$id);
                     $scope.questions = $firebaseArray(questionsRef);
                     $scope.questions.$loaded().then($scope.showLoading = false);
-            })
+            });
 
             Auth.$onAuthStateChanged(function (firebaseUser) {
                 $scope.auth = firebaseUser;
@@ -30,13 +30,13 @@ app.controller('sessionCtrl', ['Auth', '$scope', '$state', '$firebaseObject', '$
                 let userObj = $firebaseObject(usersRef);
                 userObj.$bindTo($scope, "user").then(function(){
                     console.log($scope.user);
-                })
-            })
-        }
+                });
+            });
+        };
 
         self.upvoteQuestion = function (question) {
-            let questionIndex = $scope.user.upvotedQuestionIds.indexOf(question.$id)
-            if(questionIndex == -1){
+            let questionIndex = $scope.user.upvotedQuestionIds.indexOf(question.$id);
+            if (questionIndex == -1) {
                 question.upvotes += 1;
                 $scope.questions.$save(question);
                 $scope.user.upvotedQuestionIds.push(question.$id);
@@ -45,16 +45,16 @@ app.controller('sessionCtrl', ['Auth', '$scope', '$state', '$firebaseObject', '$
                 $scope.questions.$save(question);
                 $scope.user.upvotedQuestionIds.splice(questionIndex, 1);
             }
-        }
+        };
 
         self.addQuestion = function () {
-            if ($scope.newQuestion.questionText != null) {
+            if ($scope.newQuestion.questionText !== null) {
                 $scope.questions.$add($scope.newQuestion);
                 $scope.newQuestion.questionText = null;
             } else {
                 toastr.error('Please enter a question!');
             }
-        }
+        };
 
         self.onInit();
-    }])
+    }]);

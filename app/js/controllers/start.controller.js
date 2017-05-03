@@ -15,7 +15,7 @@ var app = angular.module('app')
 
         vm.onInit = function () {
             vm.firebaseUser = null;
-        }
+        };
 
         vm.onStartClick = function () {
             Auth.$signInAnonymously()
@@ -28,15 +28,15 @@ var app = angular.module('app')
                         upvotedQuestionIds: [1, 2, 3]
                     });
                     SidebarService.openSidebar();
-                    toastr.info('Signed into firebase with uid: ' + firebaseUser.uid)
+                    toastr.info('Signed into firebase with uid: ' + firebaseUser.uid);
                 })
                 .catch(function (error) {
                     toastr.error('ERROR! : ' + error);
-                })
-        }
+                });
+        };
 
         vm.signOut = function () {
             Auth.$signOut();
             console.log('logged out');
-        }
-    }])
+        };
+    }]);

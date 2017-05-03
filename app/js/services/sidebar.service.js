@@ -11,5 +11,5 @@ app.factory('SidebarService', function ($rootScope) {
         openSidebar: function() {
             $rootScope.$broadcast('openSidebar');
         }
-    }
-})
+    };
+});

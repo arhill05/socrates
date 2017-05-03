@@ -3,4 +3,4 @@ angular.module('app')
         var auth = $firebaseAuth();
 
         return auth;
-    }])
+    }]);
