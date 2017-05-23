@@ -121,6 +121,14 @@ body #content #questions .question .upvotes {
 }
 body #content #questions .question .upvotes .upvote-button {
   margin-left: 8px;
+  cursor: pointer;
+}
+body #content #questions .question.ng-move {
+  transition: all 0.5s linear;
+  animation: shake 0.38s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 body #content #questions .session-info {
   flex-grow: 1;
@@ -137,4 +145,16 @@ body #content #questions .session-info .session-title {
 body #content #questions .session-info .session-pin {
   font-weight: 700;
   margin-bottom: 16px;
+}
+@keyframes shake {
+  10%,
+  50%,
+  90% {
+    transform: translate3d(-2px, 0, 0);
+  }
+  20%,
+  60%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
 }

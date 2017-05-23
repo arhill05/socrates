@@ -126,7 +126,20 @@ body {
                     float: right;
                     & .upvote-button {
                         margin-left: @single-space;
+                        cursor: pointer;
                     }
+                }
+
+                &.ng-move {
+                    transition: all 0.5s linear;
+                     animation: shake 0.38s cubic-bezier(.36,.07,.19,.97) both;
+                     transform: translate3d(0, 0, 0);
+                    backface-visibility: hidden;
+                     perspective: 1000px;
+                }
+
+                &.ng-move.ng-move-active {
+
                 }
             }
             .session-info {
@@ -144,8 +157,27 @@ body {
                     font-weight: 700;
                     margin-bottom: @double-space;
                 }
-                .session-description {}
+                .session-description {
+                }
             }
         }
     }
+}
+
+@keyframes shake {
+  10%,  50%,  90% {
+    transform: translate3d(-2px, 0, 0);
+  }
+  
+  20%, 60%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+//   30%, 50%, 70% {
+//     transform: translate3d(-4px, 0, 0);
+//   }
+
+//   40%, 60% {
+//     transform: translate3d(4px, 0, 0);
+//   }
 }

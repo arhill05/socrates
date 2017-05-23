@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="questions-container" ng-if="!showLoading">
-        <div class="question" ng-repeat="question in questions | orderBy:'-upvotes'">
+        <div class="question" ng-repeat="question in questions | orderBy:'-upvotes' track by question.$id">
             <div class="question-content">
                 <span>{{question.questionText}}</span>
             </div>
@@ -17,7 +17,7 @@
     <div class="session-info">
         <div class="info-content">
             <div class="session-title">{{session.title}}</div>
-            <div class="session-pin">Pin #: {{session.pin}}</div>
+            <div class="session-pin">Pin #: {{session.$id}}</div>
             <div class="session-description">{{session.description}}</div>
         </div>
     </div>
