@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var ftp = require('vinyl-ftp');
+var ftpConfig = require('./ftpconfig.json');
 var less = require('gulp-less');
 var path = require('path');
 var jshint = require('gulp-jshint');
@@ -84,7 +85,7 @@ gulp.task('build', function () {
 })
 
 gulp.task('deploy', function () {
-    var conn = ftp.create({host: 'xxx', user: 'yyy', password: 'zzz', log: gutil.log})
+    var conn = ftp.create({host: ftpConfig.host, user: ftpConfig.user, password: ftpConfig.password, log: gutil.log})
 
     var globs = ['dist/css/**', 'dist/js/**', 'dist/views/**', 'dist/index.html'];
 
