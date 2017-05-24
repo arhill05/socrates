@@ -1,4 +1,6 @@
 var gulp = require('gulp');
+var gutil = require('gulp-util');
+var ftp = require('vinyl-ftp');
 var less = require('gulp-less');
 var path = require('path');
 var jshint = require('gulp-jshint');
@@ -12,12 +14,11 @@ gulp.task('hello', function () {
     console.log('hello');
 })
 
-gulp.task('browserSync', function(){
+gulp.task('browserSync', function () {
     browserSync.init({
         server: {
             baseDir: 'app',
-            routes:
-            {
+            routes: {
                 '/bower_components': 'bower_components'
             }
         },
@@ -27,44 +28,71 @@ gulp.task('browserSync', function(){
 })
 
 gulp.task('less', function () {
-    return gulp.src('./app/less/**/*.less')
+    return gulp
+        .src('./app/less/**/*.less')
         .pipe(less({
             paths: [path.join(__dirname, 'less', 'includes')]
         }))
         .pipe(gulp.dest('./app/css'))
-        .pipe(browserSync.reload({
-                stream: true
-        }));
+        .pipe(browserSync.reload({stream: true}));
 })
 
-gulp.task('watch', ['browserSync', 'less'], function () {
+gulp.task('watch', [
+    'browserSync', 'less'
+], function () {
     gulp.watch('./app/less/**/*.less', ['less']);
     gulp.watch('./app/*.html', browserSync.reload);
     gulp.watch('./app/js/**/*.js', browserSync.reload);
 })
 
-gulp.task('build', function(){
+gulp.task('build', function () {
     console.log('=== main.js ===');
-    gulp.src('app/js/**/*.js')
-      .pipe(jshint())
-      .pipe(jshint.reporter('default'))
-      .pipe(uglify(null, uglifyJsHarmony))
-      .pipe(concat('main.js'))
-      .pipe(gulp.dest('dist/js'));
+    gulp
+        .src(['app/js/app.js', 'app/js/services/*.js', 'app/js/controllers/*.js'])
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'))
+        .pipe(concat('main.js'))
+        .pipe(gulp.dest('dist/js'));
 
     console.log('=== lib.js ===');
-    gulp.src('bower_components/**/*.min.js')
-      .pipe(uglify(null, uglifyJsHarmony))
-      .pipe(concat('lib.js'))
-      .pipe(gulp.dest('dist/js'));
+    gulp
+        .src([
+        'bower_components/jquery/dist/jquery.js',
+        'bower_components/angular/angular.js',
+        'bower_components/angular-animate/angular-animate.js',
+        'bower_components/angular-ui-router/release/angular-ui-router.js',
+        'bower_components/angularfire/dist/angularfire.js',
+        'bower_components/firebase/firebase.js',
+        'bower_components/firebase/firebase-app.js',
+        'bower_components/firebase/firebase-auth.js',
+        'bower_components/firebase/firebase-database.js',
+        'bower_components/toastr/toastr.min.js'
+    ])
+        .pipe(concat('lib.js'))
+        .pipe(gulp.dest('dist/js'));
 
-    gulp.src('app/index.html')
-        .pipe(htmlReplace({
-            'js': 'js/main.js',
-            'lib': 'js/lib.js'
-        }))
+    gulp
+        .src('app/index.html')
+        .pipe(htmlReplace({'js': 'js/main.js', 'lib': 'js/lib.js'}))
         .pipe(gulp.dest('dist'))
 
-    gulp.src('app/views/*.html')
+    gulp
+        .src('app/views/*.html')
         .pipe(gulp.dest('dist/views'));
+
+        gulp.src('bower_components/toastr/toastr.css').pipe(gulp.dest('dist/css'));
+})
+
+gulp.task('deploy', function () {
+    var conn = ftp.create({host: 'xxx', user: 'yyy', password: 'zzz', log: gutil.log})
+
+    var globs = ['dist/css/**', 'dist/js/**', 'dist/views/**', 'dist/index.html'];
+
+    return gulp
+        .src(globs, {
+        base: './dist',
+        buffer: false
+    })
+        .pipe(conn.dest('dev/socrates'));
+
 })

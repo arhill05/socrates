@@ -16,7 +16,9 @@
     "gulp-jshint": "^2.0.4",
     "gulp-less": "^3.3.0",
     "gulp-uglify": "^2.1.2",
+    "gulp-util": "^3.0.8",
     "jshint": "^2.9.4",
-    "uglify-js-harmony": "^2.7.5"
+    "uglify-js-harmony": "^2.7.5",
+    "vinyl-ftp": "^0.6.0"
   }
 }
