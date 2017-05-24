@@ -7,6 +7,10 @@ app.controller('loginCtrl', [
     function (Auth, $state, $scope) {
         $scope.email = "";
         $scope.password = "";
+        const usersRef = firebase
+            .database()
+            .ref()
+            .child("users/");
 
         this.login = () => {
             let credentials = {
@@ -35,12 +39,17 @@ app.controller('loginCtrl', [
             Auth
                 .$createUserWithEmailAndPassword($scope.email, $scope.password)
                 .then(userdata => {
-                    $scope.email = "";
-                    $scope.password = "";
+                    usersRef
+                        .child(userdata.uid)
+                        .set({anonymous: false, email: $scope.email, upvotedQuestionIds: []})
+
                     Auth
-                        .$authWithPassword(credentials)
+                        .$signInWithEmailAndPassword($scope.email, $scope.password)
                         .then(authData => {
                             console.log('Logged in as:', authData.uid)
+
+                            $scope.email = "";
+                            $scope.password = "";
                             $state.go('account');
                         })
                 })
