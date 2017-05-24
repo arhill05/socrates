@@ -1,0 +1,25 @@
+<div ng-controller="loginCtrl as $ctrl" id="login">
+    <form ng-submit="$ctrl.login()" class="login-card">
+        <h2>Socrates</h2>
+        <div>
+            <label>Email: </label>
+            <input ng-model="email" />
+        </div>
+        <div>
+            <label>Password: </label>
+            <input type="password" ng-model="password" />
+        </div>
+        <div>
+            <button type="submit" ng-click="$ctrl.login()">Sign in</button>
+        </div>
+        Or . . .
+        <div>
+            <button ng-click="$ctrl.createAccount()">Create account</button>
+        </div>
+
+        <div class="create-account-information">
+            Creating an account allows you to create and manage your own sessions.
+            It's not required to use Socrates!
+        </div>
+    </form>
+</div>

@@ -15,10 +15,12 @@
                 SocratesApp
                 <button ng-click="$ctrl.showSidebar = !$ctrl.showSidebar">toggle sidebar</button>
                 <button ng-click="$ctrl.signOut()">Sign Out</button>
+                <button ng-click="$ctrl.goToLogin()">Account</button>
+                <button ng-click="$ctrl.goToHome()">Home</button>
             </div>
         </div>
         <div class="animate" ng-class="{collapsed : !$ctrl.showSidebar}" id="sidebar"></div>
-        <div id="content" class="animate" ng-class="{collapsed : !$ctrl.showSidebar}">
+        <div id="content" class="animate" ng-class="{collapsed : !$ctrl.showSidebar, 'remove-background': $ctrl.removeBackground()}">
             <ui-view></ui-view>
         </div>
 
@@ -45,6 +47,8 @@
     <script src="./js/controllers/shell.controller.js"></script>
     <script src="./js/controllers/start.controller.js"></script>
     <script src="./js/controllers/session.controller.js"></script>
+    <script src="./js/controllers/login.controller.js"></script>
+    <script src="./js/controllers/account.controller.js"></script>
     <!--endbuild-->
 </body>
 

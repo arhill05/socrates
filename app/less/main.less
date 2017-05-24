@@ -61,6 +61,10 @@ body {
         &.collapsed {
             left: @single-space * 2;
         }
+
+        &.remove-background {
+            background-color: transparent;
+        }
         #start {
             text-align: center;
             padding: @quad-space;
@@ -162,6 +166,20 @@ body {
             }
         }
     }
+    #login {
+        .login-card {
+            text-align: center;
+            background-color: @white;
+            width: 25%;
+            box-shadow: @float-box-shadow;
+            padding: @single-space * 4;
+            margin: 0 auto;
+
+            input, button {
+                margin: @double-space;
+            }
+        }
+    }
 }
 
 @keyframes shake {
@@ -172,12 +190,4 @@ body {
   20%, 60%, 80% {
     transform: translate3d(2px, 0, 0);
   }
-
-//   30%, 50%, 70% {
-//     transform: translate3d(-4px, 0, 0);
-//   }
-
-//   40%, 60% {
-//     transform: translate3d(4px, 0, 0);
-//   }
 }

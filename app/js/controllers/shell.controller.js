@@ -22,6 +22,18 @@ var app = angular.module('app')
             self.showSidebar = false;
         };
 
-        // todo : animate sidebar collapse
+        self.goToLogin = () => {
+            $state.go('login');
+        }
+
+        self.goToHome = () => {
+            $state.go('start');
+        }
+
+        self.removeBackground = () => {
+            if($state.includes('login')) return true;
+            else return false;
+        }
+
         self.showSidebar = false;
     });

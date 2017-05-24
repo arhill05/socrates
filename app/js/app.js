@@ -21,16 +21,23 @@
             templateUrl: './views/session.html',
         };
 
-        var aboutState = {
-            name: 'about',
-            url: '/about',
-            template: '<h2>about</h2>'
+        var loginState = {
+            name: 'login',
+            url: '/login',
+            templateUrl: './views/login.html'
         };
+
+        var accountState = {
+            name: 'account',
+            url: '/account',
+            templateUrl: './views/account.html'
+        }
 
         $stateProvider.state(entryState);
         $stateProvider.state(pinEntryState);
-        $stateProvider.state(aboutState);
+        $stateProvider.state(loginState);
         $stateProvider.state(sessionState);
+        $stateProvider.state(accountState);
 
         $urlRouterProvider.otherwise('/');
     });
