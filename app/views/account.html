@@ -1,4 +1,8 @@
 <div ng-controller="accountCtrl as $ctrl" id="account">
     <h1>Account</h1>
     <h2>Hello, {{user.email}}</h2>
+    <h3>Your sessions:</h3>
+    <ul>
+        <li ng-repeat="session in ownedSessions">{{session.$id}}</li>
+    </ul>
 </div>

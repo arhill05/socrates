@@ -5,7 +5,8 @@ app.controller('accountCtrl', [
     '$state',
     '$scope',
     '$firebaseObject',
-    function (Auth, $state, $scope, $firebaseObject) {
+    '$firebaseArray',
+    function (Auth, $state, $scope, $firebaseObject, $firebaseArray) {
         $scope.auth = null;
         $scope.user = null;
         Auth.$onAuthStateChanged(function (firebaseUser) {
@@ -20,6 +21,9 @@ app.controller('accountCtrl', [
                 .then(function () {
                     console.log($scope.user);
                 });
+
+            $scope.ownedSessions = $firebaseArray(usersRef.child('ownedSessions'))
+            $scope.ownedSessions.$loaded().then(res => {console.log(res)})
         });
     }
 ]);
