@@ -149,6 +149,11 @@ body #content #questions .question .upvotes .upvote-button {
   margin-left: 8px;
   cursor: pointer;
 }
+body #content #questions .question .upvotes .remove-button {
+  cursor: pointer;
+  font-weight: 700;
+  color: red;
+}
 body #content #questions .question.ng-move {
   transition: all 0.5s linear;
   animation: shake 0.38s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;

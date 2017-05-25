@@ -11,7 +11,8 @@
             <div class="question-content">
                 <span>{{question.questionText}}</span>
             </div>
-            <div class="upvotes">{{question.upvotes}}<span class="upvote-button" ng-click="$ctrl.upvoteQuestion(question)">^</span></div>
+            <div class="upvotes">{{question.upvotes}}<span class="upvote-button" ng-click="$ctrl.upvoteQuestion(question)">^</span>
+            <span class="remove-button" ng-if="$ctrl.userIsAdmin()" ng-click="$ctrl.removeQuestion(question)">X</span></div>
         </div>
     </div>
     <div class="session-info">
