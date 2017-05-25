@@ -22,8 +22,10 @@ var app = angular.module('app')
             self.showSidebar = false;
         };
 
-        self.goToLogin = () => {
-            $state.go('login');
+        self.onAccountClick = () => {
+            var authData = Auth.$getAuth();
+            if(authData) $state.go('account')
+            else $state.go('login');
         }
 
         self.goToHome = () => {

@@ -5,7 +5,6 @@ var app = angular.module('app')
 
         vm.usersRef = firebase.database().ref().child("users");
         vm.users = $firebaseArray(vm.usersRef);
-        console.log(vm.users);
         vm.auth = Auth.$getAuth();
         if (vm.auth) {
             vm.firebaseUser = vm.auth.currentUser;
@@ -37,6 +36,5 @@ var app = angular.module('app')
 
         vm.signOut = function () {
             Auth.$signOut();
-            console.log('logged out');
         };
     }]);

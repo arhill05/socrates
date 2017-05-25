@@ -1,4 +1,36 @@
 <div ng-controller="accountCtrl as $ctrl" id="account">
-    <h1>Account</h1>
     <h2>Hello, {{user.email}}</h2>
+    <div class="your-sessions"><span class="your-sessions-text">Your sessions: </span><button ng-click="$ctrl.startAdd()" class="primary-button">Add a session</button></div>
+    <form ng-if="addingSession" class="session-add-form">
+        <div class="form-group">
+            <label class="control-label">Session Title: </label>
+            <input ng-model="newSession.title" />
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Session Description: </label>
+            <textarea ng-model="newSession.description" cols="30" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Session Pin: </label>
+            <input ng-model="newSession.id" maxlength="6" />
+        </div>
+        <div class="form-actions">
+            <button ng-click="$ctrl.addSession()" class="primary-button">Add Session</button>
+            <button ng-click="$ctrl.cancelAdd()" class="secondary-button">Cancel</button>
+        </div>
+    </form>
+    <div class="sessions">
+        <div class="session" ng-repeat="session in ownedSessions">
+            <div class="session-title">{{session.title}}<span class="session-pin">ID: {{session.$id}}</span></div>
+            <div class="session-description">
+                {{session.description}}
+            </div>
+            <div class="session-actions">
+                <button class="primary-button" ng-click="$ctrl.goToSession(session.$id)">Go to session</button>
+                <button class="secondary-button" ng-click="$ctrl.removeSession(session)">Remove session</button>
+            </div>
+        </div>
+    </div>
 </div>
