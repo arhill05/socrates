@@ -21,7 +21,6 @@ app.controller('loginCtrl', [
             Auth
                 .$signInWithEmailAndPassword($scope.email, $scope.password)
                 .then(authData => {
-                    console.log('Logged in as:', authData.uid)
                     $scope.email = "";
                     $scope.password = "";
                     $state.go('account');
@@ -46,8 +45,6 @@ app.controller('loginCtrl', [
                     Auth
                         .$signInWithEmailAndPassword($scope.email, $scope.password)
                         .then(authData => {
-                            console.log('Logged in as:', authData.uid)
-
                             $scope.email = "";
                             $scope.password = "";
                             $state.go('account');

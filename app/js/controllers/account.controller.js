@@ -31,15 +31,17 @@ app.controller('accountCtrl', [
         $scope.addingSession = false;
         Auth.$onAuthStateChanged(function (firebaseUser) {
             $scope.auth = firebaseUser;
-            let usersRef = firebase
-                .database()
-                .ref()
-                .child("users/" + $scope.auth.uid);
-            let userObj = $firebaseObject(usersRef);
-            userObj.$bindTo($scope, "user");
+            if ($scope.auth) {
+                let usersRef = firebase
+                    .database()
+                    .ref()
+                    .child("users/" + $scope.auth.uid);
+                let userObj = $firebaseObject(usersRef);
+                userObj.$bindTo($scope, "user");
 
-            let currentUserSessionsRef = usersSessionsRef.child($scope.auth.uid);
-            $scope.ownedSessions = $firebaseArray(currentUserSessionsRef);
+                let currentUserSessionsRef = usersSessionsRef.child($scope.auth.uid);
+                $scope.ownedSessions = $firebaseArray(currentUserSessionsRef);
+            }
         });
 
         this.goToSession = (sessionId) => {
