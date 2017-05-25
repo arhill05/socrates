@@ -56,18 +56,26 @@ app.controller('accountCtrl', [
         }
 
         this.addSession = () => {
-            sessionsRef
-                .child($scope.newSession.id)
-                .set({title: $scope.newSession.title, description: $scope.newSession.description, sessionOwnerUID: $scope.auth.uid});
+            sessionsRef.once('value', (snapshot) => {
+                if (snapshot.hasChild($scope.newSession.id.toString())) {
+                    toastr.error('A session with this pin already exists. Please choose another pin.');
+                    return;
+                } else {
 
-            usersSessionsRef
-                .child($scope.auth.uid + '/' + $scope.newSession.id)
-                .set({description: $scope.newSession.description, title: $scope.newSession.title});
+                    sessionsRef
+                        .child($scope.newSession.id.toString())
+                        .set({title: $scope.newSession.title, description: $scope.newSession.description, sessionOwnerUID: $scope.auth.uid});
 
-            $scope.newSession.title = null;
-            $scope.newSession.description = null;
-            $scope.newSession.id = null;
-            $scope.addingSession = false;
+                    usersSessionsRef
+                        .child($scope.auth.uid + '/' + $scope.newSession.id.toString())
+                        .set({description: $scope.newSession.description, title: $scope.newSession.title});
+
+                    $scope.newSession.title = null;
+                    $scope.newSession.description = null;
+                    $scope.newSession.id = null;
+                    $scope.addingSession = false;
+                }
+            })
         }
 
         this.startAdd = () => {
