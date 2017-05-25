@@ -1,13 +1,19 @@
-@white: #fff;
-@light-gray: #e6e6e6;
-@gray: #cfcfcf;
-@darker-gray: #b3b3b3;
+@base-text-color: #1B1B1E;
+
+@white: #FBFFFE;
+@light-gray: #C1CAD6;
+@gray: darken(@light-gray, 15%);
+@darker-gray: darken(@light-gray, 30%);
 @single-space: 8px;
 @double-space: 16px;
 @triple-space: 24px;
 @quad-space: 32px;
 @float-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+@bleak-blue: #797BA8;
+@light-blue: #66C7F4;
+@red: #ff3e41;
 body {
+    color: @base-text-color;
     margin: 0;
     background-color: @light-gray;
     font-size: 16px;
@@ -31,14 +37,32 @@ body {
     .animate {
         transition: left 0.25s ease;
     }
+
     .primary-button {
-        background-color: @darker-gray;
+        color: white;
+        padding: @single-space;
+        background-color: @red;
+        font-weight: 600;
+        border-radius: 2px;
+        border: 2px solid darken(@red, 20%);
+
+        &:hover {
+            color: darken(@white, 5%);
+            cursor: pointer;
+        }
     }
+
+    input[type="text"] {
+        padding: @single-space / 2;
+        border: 2px solid @light-gray;
+    }
+
     .secondary-button {
         border: none;
         background-color: transparent;
+        color: @bleak-blue;
         &:hover {
-            color: @darker-gray;
+            color: darken(@bleak-blue, 15%);
             cursor: pointer;
         }
     }
@@ -78,10 +102,14 @@ body {
         top: @single-space * 8;
         left: 0;
         bottom: 0;
-        box-shadow: 2px 2px 0px 0px @darker-gray;
         &.collapsed {
             left: -@single-space * 19;
         }
+    }
+    #pin-entry {
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
     }
     #content {
         background-color: @white;
@@ -102,17 +130,17 @@ body {
             padding: @quad-space;
             height: 100%;
             .start-button {
-                background-color: @gray;
+                background-color: @red;
                 width: @single-space * 32;
                 height: @single-space * 12;
                 font-weight: 700;
                 color: @white;
                 border: none;
                 border-radius: 4px;
-                border-right: 3px solid @darker-gray;
-                border-bottom: 3px solid @darker-gray;
+                border-right: 3px solid darken(@red, 10%);
+                border-bottom: 3px solid darken(@red, 10%);
                 &:active {
-                    background-color: @darker-gray;
+                    background-color: darken(@red, 10%);
                 }
             }
         }
@@ -228,7 +256,7 @@ body {
 
         .session-add-form {
             padding: @double-space;
-            border: 2px solid @darker-gray;
+            border: 2px solid @bleak-blue;
             width: 30%;
             margin: @single-space 0;
         }
@@ -241,7 +269,7 @@ body {
             width: 30%;
             padding: @double-space;
             margin: @double-space @double-space @double-space 0;
-            border: 1px solid @darker-gray;
+            border: 1px solid @bleak-blue;
             box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
             & .session-title {
                 font-weight: 700;

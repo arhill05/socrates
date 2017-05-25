@@ -1,6 +1,7 @@
 body {
+  color: #1B1B1E;
   margin: 0;
-  background-color: #e6e6e6;
+  background-color: #C1CAD6;
   font-size: 16px;
   line-height: 1.2;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -20,14 +21,28 @@ body .animate {
   transition: left 0.25s ease;
 }
 body .primary-button {
-  background-color: #b3b3b3;
+  color: white;
+  padding: 8px;
+  background-color: #ff3e41;
+  font-weight: 600;
+  border-radius: 2px;
+  border: 2px solid #d70003;
+}
+body .primary-button:hover {
+  color: #e2fff8;
+  cursor: pointer;
+}
+body input[type="text"] {
+  padding: 4px;
+  border: 2px solid #C1CAD6;
 }
 body .secondary-button {
   border: none;
   background-color: transparent;
+  color: #797BA8;
 }
 body .secondary-button:hover {
-  color: #b3b3b3;
+  color: #545681;
   cursor: pointer;
 }
 body .form-group {
@@ -42,7 +57,7 @@ body .control-label {
   margin-bottom: 8px;
 }
 body #header {
-  background-color: #fff;
+  background-color: #FBFFFE;
   width: 100%;
   position: fixed;
   top: 0;
@@ -53,19 +68,23 @@ body #header .branding {
   padding: 16px;
 }
 body #sidebar {
-  background-color: #fff;
+  background-color: #FBFFFE;
   position: fixed;
   width: 152px;
   top: 64px;
   left: 0;
   bottom: 0;
-  box-shadow: 2px 2px 0px 0px #b3b3b3;
 }
 body #sidebar.collapsed {
   left: -152px;
 }
+body #pin-entry {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
 body #content {
-  background-color: #fff;
+  background-color: #FBFFFE;
   position: fixed;
   top: 80px;
   left: 168px;
@@ -85,18 +104,18 @@ body #content #start {
   height: 100%;
 }
 body #content #start .start-button {
-  background-color: #cfcfcf;
+  background-color: #ff3e41;
   width: 256px;
   height: 96px;
   font-weight: 700;
-  color: #fff;
+  color: #FBFFFE;
   border: none;
   border-radius: 4px;
-  border-right: 3px solid #b3b3b3;
-  border-bottom: 3px solid #b3b3b3;
+  border-right: 3px solid #ff0b0f;
+  border-bottom: 3px solid #ff0b0f;
 }
 body #content #start .start-button:active {
-  background-color: #b3b3b3;
+  background-color: #ff0b0f;
 }
 body #content #questions {
   height: 100%;
@@ -133,7 +152,7 @@ body #content #questions .questions-container {
   overflow-y: scroll;
 }
 body #content #questions .question {
-  border: 1px solid #b3b3b3;
+  border: 1px solid #657b99;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
   padding: 16px;
   margin: 8px;
@@ -179,7 +198,7 @@ body #content #questions .session-info .session-pin {
 }
 body #login .login-card {
   text-align: center;
-  background-color: #fff;
+  background-color: #FBFFFE;
   width: 25%;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
   padding: 32px;
@@ -202,7 +221,7 @@ body #account .your-sessions .primary-button {
 }
 body #account .session-add-form {
   padding: 16px;
-  border: 2px solid #b3b3b3;
+  border: 2px solid #797BA8;
   width: 30%;
   margin: 8px 0;
 }
@@ -215,7 +234,7 @@ body #account .sessions .session {
   width: 30%;
   padding: 16px;
   margin: 16px 16px 16px 0;
-  border: 1px solid #b3b3b3;
+  border: 1px solid #797BA8;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
 }
 body #account .sessions .session .session-title {
@@ -225,7 +244,7 @@ body #account .sessions .session .session-title {
 body #account .sessions .session .session-pin {
   margin-left: 24px;
   font-size: 75%;
-  color: #b3b3b3;
+  color: #657b99;
 }
 body #account .sessions .session .session-description {
   margin: 16px 0;
