@@ -4,6 +4,7 @@ body {
   font-size: 16px;
   line-height: 1.2;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* common */
 }
 body p,
 body div,
@@ -17,6 +18,28 @@ body h1 {
 }
 body .animate {
   transition: left 0.25s ease;
+}
+body .primary-button {
+  background-color: #b3b3b3;
+}
+body .secondary-button {
+  border: none;
+  background-color: transparent;
+}
+body .secondary-button:hover {
+  color: #b3b3b3;
+  cursor: pointer;
+}
+body .form-group {
+  margin: 16px 0;
+}
+body .form-actions {
+  margin-top: 32px;
+}
+body .control-label {
+  font-weight: 700;
+  display: block;
+  margin-bottom: 8px;
 }
 body #header {
   background-color: #fff;
@@ -160,6 +183,62 @@ body #login .login-card {
 body #login .login-card input,
 body #login .login-card button {
   margin: 16px;
+}
+body #account {
+  padding: 32px;
+}
+body #account .your-sessions .your-sessions-text {
+  display: block;
+  font-size: 150%;
+  font-weight: 700;
+}
+body #account .your-sessions .primary-button {
+  margin-top: 16px;
+}
+body #account .session-add-form {
+  padding: 16px;
+  border: 2px solid #b3b3b3;
+  width: 30%;
+  margin: 8px 0;
+}
+body #account .sessions {
+  overflow-y: scroll;
+}
+body #account .sessions .session {
+  line-height: 16px;
+  display: inline-block;
+  width: 30%;
+  padding: 16px;
+  margin: 16px 16px 16px 0;
+  border: 1px solid #b3b3b3;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+body #account .sessions .session .session-title {
+  font-weight: 700;
+  font-size: 125%;
+}
+body #account .sessions .session .session-pin {
+  margin-left: 24px;
+  font-size: 75%;
+  color: #b3b3b3;
+}
+body #account .sessions .session .session-description {
+  margin: 16px 0;
+  padding: 8px 0;
+}
+body #account .sessions .session.ng-enter {
+  opacity: 0;
+  transition: .25s linear;
+}
+body #account .sessions .session.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+body #account .sessions .session.ng-leave {
+  opacity: 1;
+  transition: .25s linear;
+}
+body #account .sessions .session.ng-leave.ng-leave-active {
+  opacity: 0;
 }
 @keyframes shake {
   10%,
