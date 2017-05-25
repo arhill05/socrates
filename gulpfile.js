@@ -6,14 +6,12 @@ var less = require('gulp-less');
 var path = require('path');
 var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglify/minifier');
+var concatCSS = require('gulp-concat-css');
+var cleanCSS = require('gulp-clean-css');
 var concat = require('gulp-concat');
 var uglifyJsHarmony = require('uglify-js-harmony');
 var htmlReplace = require('gulp-html-replace');
 var browserSync = require('browser-sync').create();
-
-gulp.task('hello', function () {
-    console.log('hello');
-})
 
 gulp.task('browserSync', function () {
     browserSync.init({
@@ -72,16 +70,26 @@ gulp.task('build', function () {
         .pipe(concat('lib.js'))
         .pipe(gulp.dest('dist/js'));
 
+    console.log('=== css ===');
+    gulp
+        .src('app/css/main.css')
+        .pipe(cleanCSS())
+        .pipe(gulp.dest('dist/css'));
+    gulp
+        .src(['bower_components/toastr/toastr.min.css'])
+        .pipe(concatCSS('vendor.css'))
+        .pipe(cleanCSS())
+        .pipe(gulp.dest('dist/css'));
+
+
     gulp
         .src('app/index.html')
-        .pipe(htmlReplace({'js': 'js/main.js', 'lib': 'js/lib.js'}))
+        .pipe(htmlReplace({'js': 'js/main.js', 'lib': 'js/lib.js', 'vendor-css': 'css/vendor.css'}))
         .pipe(gulp.dest('dist'))
 
     gulp
         .src('app/views/*.html')
         .pipe(gulp.dest('dist/views'));
-
-        gulp.src('bower_components/toastr/toastr.css').pipe(gulp.dest('dist/css'));
 })
 
 gulp.task('deploy', function () {
