@@ -9,58 +9,56 @@ var app = angular
         '$location',
         function (SidebarService, Auth, $rootScope, $state, $firebaseArray, $location) {
 
-            var vm = this;
+            var self = this;
+            self.currentUser = Auth;
+            self.sessionID = "";
+            self.currentUser = null;
+            self.error = null;
 
-            vm.sessionID = "";
-            vm.usersRef = firebase
-                .database()
-                .ref()
-                .child("users");
-            vm.users = $firebaseArray(vm.usersRef);
-            vm.auth = Auth.$getAuth();
-            if (vm.auth) {
-                vm.firebaseUser = vm.auth.currentUser;
-            }
-            vm.error = null;
-
-            vm.onInit = function () {
-                vm.firebaseUser = null;
+            self.onInit = function () {
+                self.getUsers();
+                self.getAuth();
                 $("#id-input").focus();
             };
 
-            vm.onStartClick = function () {
-                if (!vm.firebaseUser) {
+            self.onStartClick = function () {
+                if (!self.currentUser) {
                     Auth
                         .$signInAnonymously()
-                        .then(function (firebaseUser) {
-                            vm.firebaseUser = firebaseUser;
-                            vm
+                        .then(function (currentUser) {
+                            self.currentUser = currentUser;
+                            self
                                 .usersRef
-                                .child(firebaseUser.uid)
+                                .child(currentUser.uid)
                                 .set({anonymous: true, email: "", upvotedQuestionIds: []});
-                            vm.goToSession();
-                            alertify.message('Signed into firebase with uid: ' + firebaseUser.uid);
+                            self.goToSession();
+                            alertify.message('Signed into firebase with uid: ' + currentUser.uid);
                         })
                         .catch(function (error) {
                             alertify.error('ERROR! : ' + error);
                         });
                 } else {
-                    vm.goToSession();
+                    self.goToSession();
                 }
             };
 
-            vm.goToSession = function () {
-                if (vm.sessionID && vm.sessionID !== null && vm.sessionID !== "") {
-                    vm
-                        .usersRef
-                        .child(vm.sessionID)
+            self.goToSession = function () {
+                if (self.sessionID && self.sessionID !== null && self.sessionID !== "") {
+                    let sessionsRef = firebase
+                        .database()
+                        .ref()
+                        .child("sessions")
+
+                    sessionsRef
+                        .child(parseInt(self.sessionID))
                         .once('value', (snapshot) => {
+                            let snapshotVal = snapshot.val();
                             let exists = (snapshot.val() !== null);
                             if (exists) {
                                 console.log('going to session id ' + self.sessionID);
-                                $location.path('questions/' + self.sessionID);
+                                $state.go('session', {sessionPin: self.sessionID})
                             } else {
-                                alertify.error(`A session with id ${vm.sessionID} does not exist!`);
+                                alertify.error(`A session with id ${self.sessionID} does not exist!`);
                             }
                         })
                 } else {
@@ -68,19 +66,34 @@ var app = angular
                 }
             }
 
-            vm.signOut = function () {
+            self.signOut = function () {
                 Auth.$signOut();
             };
 
-            vm.onLoginClick = function () {
-                if(vm.firebaseUser) Auth.$signOut();
+            self.onLoginClick = function () {
+                if (self.currentUser) 
+                    Auth.$signOut();
                 $state.go('login');
             }
 
-            vm.onAccountClick = function () {
+            self.onAccountClick = function () {
                 $state.go('account');
             }
 
-            vm.onInit();
+            self.getUsers = function () {
+                self.usersRef = firebase
+                    .database()
+                    .ref()
+                    .child("users");
+                self.users = $firebaseArray(self.usersRef);
+            }
+
+            self.getAuth = function () {
+                let auth = Auth.$getAuth();
+                if (auth) 
+                    self.currentUser = auth;
+                }
+            
+            self.onInit();
         }
     ]);

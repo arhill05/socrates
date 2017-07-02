@@ -18,7 +18,7 @@
         var sessionState = {
             name: 'session',
             url: '/questions/{sessionPin}',
-            templateUrl: './views/session.html',
+            templateUrl: './views/session.html'
         };
 
         var loginState = {
