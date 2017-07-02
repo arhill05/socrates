@@ -1,5 +1,5 @@
 <div ng-controller="startCtrl as $ctrl" id="start">
-    <div class="action-buttons">
+    <div id="action-buttons" class="action-buttons">
         <button ng-if="!$ctrl.firebaseUser || $ctrl.firebaseUser.isAnonymous" ng-click="$ctrl.onLoginClick()" class="login-button">Login</button>
         <button ng-if="$ctrl.firebaseUser && !$ctrl.firebaseUser.isAnonymous" ng-click="$ctrl.onAccountClick()" class="login-button">Account</button>
     </div>
@@ -13,4 +13,5 @@
         <input id="id-input" class="id-input-input" maxlength="6" ng-model="$ctrl.sessionID" />
     </div>
     <button ng-click="$ctrl.onStartClick()" class="start-button">START</button>
+    <button id="mobile-account-button" class="mobile-account-button" ng-click="$ctrl.onMobileAccountClick()"><i class="fa fa-user" aria-hidden="true"></i></button>
 </div>

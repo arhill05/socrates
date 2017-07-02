@@ -27,6 +27,64 @@ body button {
 body h1 {
   font-size: 200%;
 }
+body .primary-button {
+  margin: 0 8px;
+  cursor: pointer;
+  background-color: #ff8c00;
+  color: #FBFFFE;
+  border: none;
+  padding: 8px;
+  border-radius: 2px;
+  border-right: 3px solid #cc7000;
+  border-bottom: 3px solid #cc7000;
+}
+body .primary-button:active {
+  background-color: #cc7000;
+}
+body .secondary-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #ff8c00;
+  font-weight: bold;
+}
+body .single-line-input {
+  background-color: #0079B2;
+  color: #FBFFFE;
+  font-weight: bold;
+  border: none;
+  border-radius: 2px;
+  border-bottom: 2px solid black;
+  margin: 16px;
+  font-size: 16px;
+  padding: 8px;
+  text-align: center;
+  transition: 0.15s all linear;
+}
+body .single-line-input:focus {
+  outline: none !important;
+  border-bottom: 2px solid #FBFFFE;
+  transition: 0.15s all linear;
+}
+body .action-buttons {
+  position: fixed;
+  top: 32px;
+  right: 32px;
+}
+body .action-buttons button {
+  margin: 0 8px;
+  cursor: pointer;
+  background-color: #ff8c00;
+  color: #FBFFFE;
+  border: none;
+  padding: 8px;
+  border-radius: 2px;
+  border-right: 3px solid #cc7000;
+  border-bottom: 3px solid #cc7000;
+}
+body .action-buttons button:active {
+  background-color: #cc7000;
+}
 body .loader {
   position: fixed;
   top: 40%;
@@ -51,31 +109,6 @@ body .loader {
 body .animate {
   transition: left 0.25s ease;
 }
-body .primary-button {
-  color: #FBFFFE;
-  padding: 8px;
-  background-color: #ff3e41;
-  font-weight: 600;
-  border-radius: 2px;
-  border: 2px solid #d70003;
-}
-body .primary-button:hover {
-  color: #e2fff8;
-  cursor: pointer;
-}
-body input[type="text"] {
-  padding: 4px;
-  border: 2px solid #C1CAD6;
-}
-body .secondary-button {
-  border: none;
-  background-color: transparent;
-  color: #797BA8;
-}
-body .secondary-button:hover {
-  color: #545681;
-  cursor: pointer;
-}
 body .form-group {
   margin: 16px 0;
 }
@@ -87,279 +120,558 @@ body .control-label {
   display: block;
   margin-bottom: 8px;
 }
-body #pin-entry {
-  text-align: center;
-  width: 100%;
-  margin: 0 auto;
+body .hidden {
+  display: none !important;
 }
-body #content .action-buttons {
-  position: fixed;
-  top: 32px;
-  right: 32px;
+@media only screen and (max-width: 1223px) and (min-width: 320px) {
+  body .loader {
+    left: 40%;
+    width: 60px;
+    height: 60px;
+  }
+  body #mobile-nav {
+    position: fixed;
+    top: 0;
+    display: flex;
+    width: 100%;
+    height: 48px;
+    text-align: center;
+    border-bottom: 2px solid #C1CAD6;
+  }
+  body #mobile-nav i {
+    margin: 8px auto;
+    color: #ff8c00;
+    font-size: 200%;
+    flex-grow: 1;
+    color: #ffd199;
+  }
+  body #mobile-nav i.active-nav {
+    color: #ff8c00;
+    opacity: 1;
+  }
+  body #action-buttons {
+    display: none;
+  }
+  body #content {
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+    overflow-y: scroll;
+    width: 100%;
+    text-align: center;
+    color: white;
+  }
+  body #content #start .mobile-account-button {
+    border: none;
+    background: none;
+    position: fixed;
+    top: 8px;
+    right: 8px;
+    font-size: 32px;
+    color: #ff8c00;
+  }
+  body #content #start h1 {
+    font-size: 4em;
+    margin: 0 auto;
+  }
+  body #content #start h3 {
+    margin-top: 8px;
+  }
+  body #content #start img {
+    height: 40vh;
+  }
+  body #content #start .id-input {
+    font-weight: bold;
+    font-size: 16px;
+  }
+  body #content #start .id-input input {
+    background-color: #0079B2;
+    color: #FBFFFE;
+    font-weight: bold;
+    border: none;
+    border-radius: 2px;
+    border-bottom: 2px solid black;
+    margin: 16px;
+    font-size: 16px;
+    padding: 8px;
+    text-align: center;
+    transition: 0.15s all linear;
+  }
+  body #content #start .id-input input:focus {
+    outline: none !important;
+    border-bottom: 2px solid #FBFFFE;
+    transition: 0.15s all linear;
+  }
+  body #content #start .start-button {
+    margin: 16px;
+    cursor: pointer;
+    background-color: #ff8c00;
+    width: 256px;
+    height: 96px;
+    font-weight: 700;
+    color: #FBFFFE;
+    border: none;
+    border-radius: 4px;
+    border-right: 3px solid #cc7000;
+    border-bottom: 3px solid #cc7000;
+  }
+  body #content #start .start-button:active {
+    background-color: #cc7000;
+  }
+  body #questions #session-info {
+    display: none;
+  }
+  body #questions hr {
+    display: none;
+  }
+  body #questions .question-input-group {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    height: 6vh;
+  }
+  body #questions .question-input-group input {
+    border: none;
+    flex: 1 75%;
+    border-top: 2px solid #C1CAD6;
+    font-size: 24px;
+    padding: 8px;
+  }
+  body #questions .question-input-group button {
+    border: none;
+    background-color: #ff8c00;
+    color: #FBFFFE;
+    font-weight: bold;
+    border-top: 2px solid #cc7000;
+    flex: 1 25%;
+  }
+  body #questions .questions {
+    position: fixed;
+    top: 50px;
+    bottom: 6vh;
+    right: 0;
+    left: 0;
+    overflow-y: scroll;
+  }
+  body #questions .question {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: white;
+    border-top: 2px solid black;
+    color: black;
+  }
+  body #questions .question .question-content {
+    padding: 4px;
+    flex-wrap: wrap;
+    text-align: left;
+    flex: 3 70%;
+    height: fit-content;
+    min-height: 6vh;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  body #questions .question .upvotes {
+    flex: 1 10%;
+    font-weight: bold;
+  }
+  body #questions .question .upvotes .upvote-button {
+    color: #ff8c00;
+    font-size: 24px;
+  }
+  body #questions .question .orange {
+    color: orange;
+    font-weight: bold;
+  }
+  body #questions .question:first-child {
+    border-top: none;
+  }
+  body #info {
+    background-color: #FBFFFE;
+    color: #1B1B1E;
+    padding: 16px;
+    text-align: left;
+  }
+  body #info h1 {
+    margin: 0;
+  }
+  body #info h3 {
+    color: #C1CAD6;
+    margin: 8px 0;
+  }
+  body #login {
+    padding: 16px;
+  }
+  body #login label {
+    margin-bottom: -8px;
+    display: block;
+  }
+  body #login button {
+    margin: 0 8px;
+    cursor: pointer;
+    background-color: #ff8c00;
+    color: #FBFFFE;
+    border: none;
+    padding: 8px;
+    border-radius: 2px;
+    border-right: 3px solid #cc7000;
+    border-bottom: 3px solid #cc7000;
+    margin: 32px;
+  }
+  body #login button:active {
+    background-color: #cc7000;
+  }
+  body #login input {
+    background-color: #0079B2;
+    color: #FBFFFE;
+    font-weight: bold;
+    border: none;
+    border-radius: 2px;
+    border-bottom: 2px solid black;
+    margin: 16px;
+    font-size: 16px;
+    padding: 8px;
+    text-align: center;
+    transition: 0.15s all linear;
+  }
+  body #login input:focus {
+    outline: none !important;
+    border-bottom: 2px solid #FBFFFE;
+    transition: 0.15s all linear;
+  }
+  body #account .session-add-form {
+    background-color: #66C7F4;
+    color: #FBFFFE;
+    padding: 16px;
+    margin: 16px;
+    border: 2px solid #C1CAD6;
+  }
+  body #account .session-add-form input {
+    background-color: #0079B2;
+    color: #FBFFFE;
+    font-weight: bold;
+    border: none;
+    border-radius: 2px;
+    border-bottom: 2px solid black;
+    margin: 16px;
+    font-size: 16px;
+    padding: 8px;
+    text-align: center;
+    transition: 0.15s all linear;
+    text-align: left;
+    background-color: #66C7F4;
+  }
+  body #account .session-add-form input:focus {
+    outline: none !important;
+    border-bottom: 2px solid #FBFFFE;
+    transition: 0.15s all linear;
+  }
+  body #account .session-add-form textarea {
+    background-color: #0079B2;
+    color: #FBFFFE;
+    font-weight: bold;
+    border: none;
+    border-radius: 2px;
+    border-bottom: 2px solid black;
+    margin: 16px;
+    font-size: 16px;
+    padding: 8px;
+    text-align: center;
+    transition: 0.15s all linear;
+    border: 2px solid black;
+    text-align: left;
+    background-color: #66C7F4;
+  }
+  body #account .session-add-form textarea:focus {
+    outline: none !important;
+    border-bottom: 2px solid #FBFFFE;
+    transition: 0.15s all linear;
+  }
+  body #account .session-add-form textarea:focus {
+    border: 2px solid #FBFFFE;
+    outline: none !important;
+  }
+  body #account .sessions {
+    margin-top: 32px;
+  }
+  body #account .session {
+    padding: 16px;
+    background-color: white;
+    color: black;
+    border: 1px solid #C1CAD6;
+  }
+  body #account .session .session-title {
+    float: left;
+  }
+  body #account .session .session-pin {
+    float: right;
+  }
+  body #account .session .session-description {
+    margin-top: 32px;
+    text-align: left;
+  }
+  body #account .session .session-actions {
+    margin-top: 32px;
+  }
 }
-body #content .action-buttons button {
-  margin: 0 8px;
-  cursor: pointer;
-  background-color: #ff8c00;
-  color: #FBFFFE;
-  border: none;
-  padding: 8px;
-  border-radius: 2px;
-  border-right: 3px solid #cc7000;
-  border-bottom: 3px solid #cc7000;
-}
-body #content .action-buttons button:active {
-  background-color: #cc7000;
-}
-body #content #start {
-  text-align: center;
-  height: 100%;
-}
-body #content #start h1 {
-  color: #FBFFFE;
-  font-size: 72px;
-  font-weight: bold;
-  margin-bottom: 0;
-}
-body #content #start h3 {
-  margin-top: 8px;
-  color: #FBFFFE;
-}
-body #content #start img {
-  height: 40vh;
-  margin: 0 auto;
-  display: block;
-}
-body #content #start .id-input {
-  color: #FBFFFE;
-  font-weight: bold;
-  font-size: 32px;
-}
-body #content #start .id-input input {
-  background-color: #0079B2;
-  color: #FBFFFE;
-  font-weight: bold;
-  border: none;
-  border-radius: 2px;
-  border-bottom: 2px solid black;
-  margin: 16px;
-  font-size: 16px;
-  padding: 8px;
-  text-align: center;
-  transition: 0.15s all linear;
-}
-body #content #start .id-input input:focus {
-  outline: none !important;
-  border-bottom: 2px solid #FBFFFE;
-  transition: 0.15s all linear;
-}
-body #content #start .start-button {
-  margin: 16px;
-  cursor: pointer;
-  background-color: #ff8c00;
-  width: 256px;
-  height: 96px;
-  font-weight: 700;
-  color: #FBFFFE;
-  border: none;
-  border-radius: 4px;
-  border-right: 3px solid #cc7000;
-  border-bottom: 3px solid #cc7000;
-}
-body #content #start .start-button:active {
-  background-color: #cc7000;
-}
-body #content #questions {
-  width: 100%;
-}
-body #content #questions .input-container {
-  display: flex;
-  margin: 8px;
-  width: 100%;
-}
-body #content #questions .input-container .action-buttons {
-  flex: 1 25%;
-}
-body #content #questions .questions-content {
-  display: flex;
-  position: fixed;
-  top: 16px;
-  bottom: 16px;
-}
-body #content #questions .questions-content hr {
-  width: 75%;
-  border-color: black;
-}
-body #content #questions .questions-content .question-input-group {
-  display: flex;
-  flex: 1 25%;
-  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
-  height: 48px;
-  margin: 16px 8px 32px 8px;
-}
-body #content #questions .questions-content .question-input-group input {
-  flex: 3 75%;
-  line-height: 40px;
-  font-size: 16px;
-  padding-left: 8px;
-  border: none;
-  border-right: 1px solid #cc7000;
-  border-bottom: 3px solid #C1CAD6;
-}
-body #content #questions .questions-content .question-input-group button {
-  border-left: 10px solid #000000;
-  flex: 1 20%;
-  height: 100%;
-  display: inline-block;
-  border: none;
-  background-color: #ff8c00;
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 2px;
-  border-right: 3px solid #cc7000;
-  border-bottom: 3px solid #cc7000;
-}
-body #content #questions .questions-content .question-input-group button:active {
-  background-color: #cc7000;
-}
-body #content #questions .questions-content .questions-container {
-  display: inline-block;
-  flex: 3 75%;
-  margin: 8px;
-}
-body #content #questions .questions-content .questions {
-  overflow-y: scroll;
-  height: 92%;
-}
-body #content #questions .questions-content .question {
-  background-color: #FBFFFE;
-  border: 1px solid #657b99;
-  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
-  padding: 24px;
-  margin: 8px;
-  text-align: center;
-}
-body #content #questions .questions-content .question .question-content {
-  display: inline-block;
-}
-body #content #questions .questions-content .question .upvotes {
-  text-align: center;
-  float: right;
-}
-body #content #questions .questions-content .question .upvotes .upvote-button {
-  font-size: 32px;
-  color: #ff8c00;
-  margin: -24px 8px 0 8px;
-  cursor: pointer;
-}
-body #content #questions .questions-content .question .upvotes .upvote-count.orange {
-  color: orange;
-  font-weight: bold;
-}
-body #content #questions .questions-content .question .upvotes .remove-button {
-  cursor: pointer;
-  font-weight: 700;
-  color: red;
-}
-body #content #questions .questions-content .question.ng-move {
-  transition: all 0.5s linear;
-  animation: shake 0.38s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  perspective: 1000px;
-}
-body #content #questions .questions-content .session-info {
-  height: fit-content;
-  flex: 1 25%;
-  display: inline-block;
-  position: relative;
-  top: 96px;
-  background-color: #FBFFFE;
-  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
-  padding: 16px;
-  margin: 8px;
-}
-body #content #questions .questions-content .session-info .session-title {
-  font-size: 240%;
-  font-weight: 700;
-  margin: 0;
-}
-body #content #questions .questions-content .session-info .session-id {
-  margin: 8px 8px 16px 4px;
-  color: #C1CAD6;
-  font-weight: 700;
-}
-body #content #questions .questions-content .session-info .session-description {
-  margin-left: 4px;
-}
-body #login .login-card {
-  text-align: center;
-  background-color: #FBFFFE;
-  width: 25%;
-  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
-  padding: 32px;
-  margin: 0 auto;
-}
-body #login .login-card input,
-body #login .login-card button {
-  margin: 16px;
-}
-body #account {
-  padding: 32px;
-}
-body #account .your-sessions .your-sessions-text {
-  display: block;
-  font-size: 150%;
-  font-weight: 700;
-}
-body #account .your-sessions .primary-button {
-  margin-top: 16px;
-}
-body #account .session-add-form {
-  padding: 16px;
-  border: 2px solid #797BA8;
-  width: 30%;
-  margin: 8px 0;
-}
-body #account .sessions {
-  overflow-y: scroll;
-}
-body #account .sessions .session {
-  line-height: 16px;
-  display: inline-block;
-  width: 30%;
-  padding: 16px;
-  margin: 16px 16px 16px 0;
-  border: 1px solid #797BA8;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
-}
-body #account .sessions .session .session-title {
-  font-weight: 700;
-  font-size: 125%;
-}
-body #account .sessions .session .session-pin {
-  margin-left: 24px;
-  font-size: 75%;
-  color: #657b99;
-}
-body #account .sessions .session .session-description {
-  margin: 16px 0;
-  padding: 8px 0;
-}
-body #account .sessions .session.ng-enter {
-  opacity: 0;
-  transition: .25s linear;
-}
-body #account .sessions .session.ng-enter.ng-enter-active {
-  opacity: 1;
-}
-body #account .sessions .session.ng-leave {
-  opacity: 1;
-  transition: .25s linear;
-}
-body #account .sessions .session.ng-leave.ng-leave-active {
-  opacity: 0;
+@media only screen and (min-width: 1224px) {
+  body #mobile-nav {
+    display: none;
+  }
+  body #mobile-account-button {
+    display: none;
+  }
+  body #content #start {
+    text-align: center;
+    height: 100%;
+  }
+  body #content #start h1 {
+    color: #FBFFFE;
+    font-size: 72px;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+  body #content #start h3 {
+    margin-top: 8px;
+    color: #FBFFFE;
+  }
+  body #content #start img {
+    height: 40vh;
+    margin: 0 auto;
+    display: block;
+  }
+  body #content #start .id-input {
+    color: #FBFFFE;
+    font-weight: bold;
+    font-size: 32px;
+  }
+  body #content #start .id-input input {
+    background-color: #0079B2;
+    color: #FBFFFE;
+    font-weight: bold;
+    border: none;
+    border-radius: 2px;
+    border-bottom: 2px solid black;
+    margin: 16px;
+    font-size: 16px;
+    padding: 8px;
+    text-align: center;
+    transition: 0.15s all linear;
+  }
+  body #content #start .id-input input:focus {
+    outline: none !important;
+    border-bottom: 2px solid #FBFFFE;
+    transition: 0.15s all linear;
+  }
+  body #content #start .start-button {
+    margin: 16px;
+    cursor: pointer;
+    background-color: #ff8c00;
+    width: 256px;
+    height: 96px;
+    font-weight: 700;
+    color: #FBFFFE;
+    border: none;
+    border-radius: 4px;
+    border-right: 3px solid #cc7000;
+    border-bottom: 3px solid #cc7000;
+  }
+  body #content #start .start-button:active {
+    background-color: #cc7000;
+  }
+  body #content #questions {
+    width: 100%;
+  }
+  body #content #questions .input-container {
+    display: flex;
+    margin: 8px;
+    width: 100%;
+  }
+  body #content #questions .input-container .action-buttons {
+    flex: 1 25%;
+  }
+  body #content #questions .questions-content {
+    display: flex;
+    position: fixed;
+    top: 16px;
+    bottom: 16px;
+  }
+  body #content #questions .questions-content hr {
+    width: 75%;
+    border-color: black;
+  }
+  body #content #questions .questions-content .question-input-group {
+    display: flex;
+    flex: 1 25%;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
+    height: 48px;
+    margin: 16px 8px 32px 8px;
+  }
+  body #content #questions .questions-content .question-input-group input {
+    flex: 3 75%;
+    line-height: 40px;
+    font-size: 16px;
+    padding-left: 8px;
+    border: none;
+    border-right: 1px solid #cc7000;
+    border-bottom: 3px solid #C1CAD6;
+  }
+  body #content #questions .questions-content .question-input-group button {
+    border-left: 10px solid #000000;
+    flex: 1 20%;
+    height: 100%;
+    display: inline-block;
+    border: none;
+    background-color: #ff8c00;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 2px;
+    border-right: 3px solid #cc7000;
+    border-bottom: 3px solid #cc7000;
+  }
+  body #content #questions .questions-content .question-input-group button:active {
+    background-color: #cc7000;
+  }
+  body #content #questions .questions-content .questions-container {
+    display: inline-block;
+    flex: 3 75%;
+    margin: 8px;
+  }
+  body #content #questions .questions-content .questions {
+    overflow-y: scroll;
+    height: 92%;
+  }
+  body #content #questions .questions-content .question {
+    background-color: #FBFFFE;
+    border: 1px solid #657b99;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
+    padding: 24px;
+    margin: 8px;
+    text-align: center;
+  }
+  body #content #questions .questions-content .question .question-content {
+    display: inline-block;
+  }
+  body #content #questions .questions-content .question .upvotes {
+    text-align: center;
+    float: right;
+  }
+  body #content #questions .questions-content .question .upvotes .upvote-button {
+    font-size: 32px;
+    color: #ff8c00;
+    margin: -24px 8px 0 8px;
+    cursor: pointer;
+  }
+  body #content #questions .questions-content .question .upvotes .upvote-count.orange {
+    color: orange;
+    font-weight: bold;
+  }
+  body #content #questions .questions-content .question .upvotes .remove-button {
+    cursor: pointer;
+    font-weight: 700;
+    color: red;
+  }
+  body #content #questions .questions-content .question.ng-move {
+    transition: all 0.5s linear;
+    animation: shake 0.38s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  body #content #questions .questions-content .session-info {
+    height: fit-content;
+    flex: 1 25%;
+    display: inline-block;
+    position: relative;
+    top: 96px;
+    background-color: #FBFFFE;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    margin: 8px;
+  }
+  body #content #questions .questions-content .session-info .session-title {
+    font-size: 240%;
+    font-weight: 700;
+    margin: 0;
+  }
+  body #content #questions .questions-content .session-info .session-id {
+    margin: 8px 8px 16px 4px;
+    color: #C1CAD6;
+    font-weight: 700;
+  }
+  body #content #questions .questions-content .session-info .session-description {
+    margin-left: 4px;
+  }
+  body #login .login-card {
+    text-align: center;
+    background-color: #FBFFFE;
+    width: 25%;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
+    padding: 32px;
+    margin: 0 auto;
+  }
+  body #login .login-card input,
+  body #login .login-card button {
+    margin: 16px;
+  }
+  body #account {
+    padding: 32px;
+  }
+  body #account .your-sessions .your-sessions-text {
+    display: block;
+    font-size: 150%;
+    font-weight: 700;
+  }
+  body #account .your-sessions .primary-button {
+    margin-top: 16px;
+  }
+  body #account .session-add-form {
+    padding: 16px;
+    border: 2px solid #797BA8;
+    width: 30%;
+    margin: 8px 0;
+  }
+  body #account .sessions {
+    overflow-y: scroll;
+  }
+  body #account .sessions .session {
+    line-height: 16px;
+    display: inline-block;
+    width: 30%;
+    padding: 16px;
+    margin: 16px 16px 16px 0;
+    border: 1px solid #797BA8;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+  }
+  body #account .sessions .session .session-title {
+    font-weight: 700;
+    font-size: 125%;
+  }
+  body #account .sessions .session .session-pin {
+    margin-left: 24px;
+    font-size: 75%;
+    color: #657b99;
+  }
+  body #account .sessions .session .session-description {
+    margin: 16px 0;
+    padding: 8px 0;
+  }
+  body #account .sessions .session.ng-enter {
+    opacity: 0;
+    transition: .25s linear;
+  }
+  body #account .sessions .session.ng-enter.ng-enter-active {
+    opacity: 1;
+  }
+  body #account .sessions .session.ng-leave {
+    opacity: 1;
+    transition: .25s linear;
+  }
+  body #account .sessions .session.ng-leave.ng-leave-active {
+    opacity: 0;
+  }
 }
 @keyframes shake {
   10%,

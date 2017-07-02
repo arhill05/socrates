@@ -32,7 +32,6 @@ var app = angular
                                 .child(currentUser.uid)
                                 .set({anonymous: true, email: "", upvotedQuestionIds: []});
                             self.goToSession();
-                            alertify.message('Signed into firebase with uid: ' + currentUser.uid);
                         })
                         .catch(function (error) {
                             alertify.error('ERROR! : ' + error);
@@ -56,7 +55,9 @@ var app = angular
                             let exists = (snapshot.val() !== null);
                             if (exists) {
                                 console.log('going to session id ' + self.sessionID);
-                                $state.go('session', {sessionPin: self.sessionID})
+                                $rootScope.currentSessionID = self.sessionID;
+                                $rootScope.$broadcast('enteringSession', {sessionID: self.sessionID});
+                                $state.go('session', {sessionID: self.sessionID})
                             } else {
                                 alertify.error(`A session with id ${self.sessionID} does not exist!`);
                             }
@@ -93,7 +94,12 @@ var app = angular
                 if (auth) 
                     self.currentUser = auth;
                 }
-            
+
+            self.onMobileAccountClick = function () {
+                let auth = Auth.$getAuth();
+                if(auth && !auth.isAnonymous) $state.go('account');
+                else $state.go('login');
+            }
             self.onInit();
         }
     ]);

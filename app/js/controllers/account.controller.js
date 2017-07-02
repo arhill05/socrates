@@ -60,7 +60,7 @@ app.controller('accountCtrl', [
         this.addSession = () => {
             sessionsRef.once('value', (snapshot) => {
                 if (snapshot.hasChild($scope.newSession.id.toString())) {
-                    toastr.error('A session with this pin already exists. Please choose another pin.');
+                    alertify.error('A session with this pin already exists. Please choose another pin.');
                     return;
                 } else {
 

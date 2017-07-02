@@ -26,7 +26,7 @@ app.controller('loginCtrl', [
                     $state.go('account');
                 })
                 .catch(error => {
-                    toastr.error(error.message);
+                    alertify.error(error.message);
                 })
         }
 
@@ -51,7 +51,7 @@ app.controller('loginCtrl', [
                         })
                 })
                 .catch(error => {
-                    toastr.error(error.message);
+                    aleritfy.error(error.message);
                 })
         }
     }

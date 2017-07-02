@@ -14,12 +14,19 @@
 </head>
 
 <div id="loader" class="loader"></div>
+
 <body ng-app="app">
     <div id="main" ng-controller="shellCtrl as $ctrl">
+        <div id="mobile-nav" ng-class="{hidden: $state.includes('start')}">
+            <i ng-class="{'active-nav': $ctrl.activeNavItem == home}" ng-click="$ctrl.onHomeClick()" class="fa fa-home" aria-hidden="true"></i>
+            <i ng-class="{'active-nav': $ctrl.activeNavItem == 'session'}" ng-click="$ctrl.onSessionClick()" class="fa fa-question" aria-hidden="true"></i>
+            <i ng-class="{'active-nav': $ctrl.activeNavItem == 'info'}" ng-click="$ctrl.onInfoClick()" class="fa fa-info" aria-hidden="true"></i>
+            <i ng-class="{'active-nav': $ctrl.activeNavItem == 'user'}" ng-click="$ctrl.onUserClick()" class="fa fa-user" aria-hidden="true"></i>
+        </div>
         <div id="content" class="animate" ng-class="{collapsed : !$ctrl.showSidebar, 'remove-background': $ctrl.removeBackground()}">
-            <button ng-click="$ctrl.signOut()">Sign Out</button>
+            <!--<button ng-click="$ctrl.signOut()">Sign Out</button>
             <button ng-click="$ctrl.onAccountClick()">Account</button>
-            <button ng-click="$ctrl.goToHome()">Home</button>
+            <button ng-click="$ctrl.goToHome()">Home</button>-->
             <ui-view></ui-view>
         </div>
 
@@ -45,6 +52,7 @@
     <script src="./js/services/sidebar.service.js"></script>
     <script src="./js/controllers/pinEntry.controller.js"></script>
     <script src="./js/controllers/shell.controller.js"></script>
+    <script src="./js/controllers/info.controller.js"></script>
     <script src="./js/controllers/start.controller.js"></script>
     <script src="./js/controllers/session.controller.js"></script>
     <script src="./js/controllers/login.controller.js"></script>

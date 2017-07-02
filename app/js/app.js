@@ -17,7 +17,7 @@
 
         var sessionState = {
             name: 'session',
-            url: '/questions/{sessionPin}',
+            url: '/questions/{sessionID}',
             templateUrl: './views/session.html'
         };
 
@@ -33,11 +33,18 @@
             templateUrl: './views/account.html'
         }
 
+        var infoState = {
+            name: 'info',
+            url: '/info/{sessionID}',
+            templateUrl: '/views/info.html'
+        }
+
         $stateProvider.state(entryState);
         $stateProvider.state(pinEntryState);
         $stateProvider.state(loginState);
         $stateProvider.state(sessionState);
         $stateProvider.state(accountState);
+        $stateProvider.state(infoState);
 
         $urlRouterProvider.otherwise('/');
     });

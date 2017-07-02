@@ -3,12 +3,14 @@ var app = angular.module('app');
 app.controller('sessionCtrl', [
     'Auth',
     '$scope',
+    '$rootScope',
     '$state',
     '$firebaseObject',
     '$firebaseArray',
-    function (Auth, $scope, $state, $firebaseObject, $firebaseArray) {
+    function (Auth, $scope, $rootScope, $state, $firebaseObject, $firebaseArray) {
         var self = this;
-        self.sessionPin = $state.params.sessionPin;
+        self.sessionID = $state.params.sessionID;
+        $rootScope.currentSessionID = self.sessionID;
         $scope.session = null;
         $scope.questions = [];
         $scope.auth = null;
@@ -24,7 +26,7 @@ app.controller('sessionCtrl', [
             let sessionRef = firebase
                 .database()
                 .ref()
-                .child("sessions/" + self.sessionPin);
+                .child("sessions/" + self.sessionID);
             let sessionObj = $firebaseObject(sessionRef);
             sessionObj
                 .$loaded()
@@ -98,7 +100,7 @@ app.controller('sessionCtrl', [
                     .$add($scope.newQuestion);
                 $scope.newQuestion.questionText = null;
             } else {
-                toastr.error('Please enter a question!');
+                alertify.error('Please enter a question!');
             }
         };
 
@@ -128,7 +130,7 @@ app.controller('sessionCtrl', [
         }
 
         self.userHasUpvoted = (question) => {
-            return ($scope.user.upvotedQuestionIds && $scope.user.upvotedQuestionIds.indexOf(question.$id) > -1)
+            return ($scope.user && $scope.user.upvotedQuestionIds && $scope.user.upvotedQuestionIds.indexOf(question.$id) > -1)
         }
 
         self.onInit();

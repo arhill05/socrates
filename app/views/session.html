@@ -1,15 +1,15 @@
 <div ng-controller="sessionCtrl as $ctrl" id="questions">
     <div class="loading" ng-if="showLoading">LOADING . . . </div>
     <div class="questions-content">
-            <div class="action-buttons">
-        <button ng-click="$ctrl.onHomeClick()">Home</button>
-        <button ng-if="!$ctrl.firebaseUser || $ctrl.firebaseUser.isAnonymous" ng-click="$ctrl.onLoginClick()" class="login-button">Login</button>
-        <button ng-if="$ctrl.firebaseUser && !$ctrl.firebaseUser.isAnonymous" ng-click="$ctrl.onAccountClick()" class="login-button">Account</button>
-    </div>
+        <div id="action-buttons" class="action-buttons">
+            <button ng-click="$ctrl.onHomeClick()">Home</button>
+            <button ng-if="!$ctrl.firebaseUser || $ctrl.firebaseUser.isAnonymous" ng-click="$ctrl.onLoginClick()" class="login-button">Login</button>
+            <button ng-if="$ctrl.firebaseUser && !$ctrl.firebaseUser.isAnonymous" ng-click="$ctrl.onAccountClick()" class="login-button">Account</button>
+        </div>
         <div class="questions-container" ng-if="!showLoading">
             <div class="question-input-group">
                 <input class="question-text-input" ng-model="newQuestion.questionText" /><button class="question-text-button"
-                    ng-click="$ctrl.addQuestion()">ADD QUESTION</button>
+                    ng-click="$ctrl.addQuestion()">ASK</button>
             </div>
             <hr />
             <div class="questions">
@@ -25,7 +25,7 @@
                 </div>
             </div>
         </div>
-        <div class="session-info">
+        <div id="session-info" class="session-info">
             <div class="info-content">
                 <div class="session-title">{{session.title}}</div>
                 <div class="session-id">Session ID: {{session.$id}}</div>
