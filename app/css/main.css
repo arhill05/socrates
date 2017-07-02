@@ -547,7 +547,7 @@ body .hidden {
   }
   body #content #questions .questions-content .questions {
     overflow-y: scroll;
-    height: 92%;
+    height: 90%;
   }
   body #content #questions .questions-content .question {
     background-color: #FBFFFE;
@@ -559,6 +559,8 @@ body .hidden {
   }
   body #content #questions .questions-content .question .question-content {
     display: inline-block;
+    text-align: left;
+    width: 80%;
   }
   body #content #questions .questions-content .question .upvotes {
     text-align: center;
