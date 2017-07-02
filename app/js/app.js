@@ -53,5 +53,6 @@
         };
         firebase.initializeApp(config);
         console.log('firebase initialized');
+        $("#loader").hide();
     });
 })();

@@ -54,16 +54,16 @@ gulp.task('build', function () {
     gulp
         .src([
         'bower_components/jquery/dist/jquery.js',
-        'bower_components/angular/angular.js',
-        'bower_components/angular-animate/angular-animate.js',
-        'bower_components/angular-ui-router/release/angular-ui-router.js',
-        'bower_components/angularfire/dist/angularfire.js',
+        'bower_components/angular/angular.min.js',
+        'bower_components/angular-animate/angular-animate.min.js',
+        'bower_components/angular-ui-router/release/angular-ui-router.min.js',
+        'bower_components/angularfire/dist/angularfire.min.js',
         'bower_components/firebase/firebase.js',
         'bower_components/firebase/firebase-app.js',
         'bower_components/firebase/firebase-auth.js',
         'bower_components/firebase/firebase-database.js',
-        'bower_components/toastr/toastr.min.js',
-        'node_modules/alertifyjs/build/alertify.min.js'
+        'bower_components/toastr/toastr.js',
+        'node_modules/alertifyjs/build/alertify.js'
     ])
         .pipe(concat('lib.js'))
         .pipe(gulp.dest('dist/js'));
@@ -98,7 +98,7 @@ gulp.task('build', function () {
 gulp.task('deploy', function () {
     var conn = ftp.create({host: ftpConfig.host, user: ftpConfig.user, password: ftpConfig.password, log: gutil.log})
 
-    var globs = ['dist/css/**', 'dist/js/**', 'dist/views/**', 'dist/index.html'];
+    var globs = ['dist/img/**', 'dist/css/**', 'dist/js/**', 'dist/views/**', 'dist/index.html'];
 
     return gulp
         .src(globs, {

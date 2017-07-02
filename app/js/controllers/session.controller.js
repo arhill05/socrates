@@ -119,6 +119,14 @@ app.controller('sessionCtrl', [
             $state.go('start');
         }
 
+        self.onLoginClick = () => {
+            $state.go('login');
+        }
+
+        self.onAccountClick = () => {
+            $state.go('account');
+        }
+
         self.userHasUpvoted = (question) => {
             return ($scope.user.upvotedQuestionIds && $scope.user.upvotedQuestionIds.indexOf(question.$id) > -1)
         }
