@@ -1,10 +1,17 @@
+.alertify-notifier .ajs-message.ajs-error {
+  color: #FBFFFE;
+}
+.alertify-notifier .ajs-message {
+  color: #0079B2;
+  background-color: #FBFFFE;
+}
 body {
   color: #1B1B1E;
   margin: 0;
-  background-color: #C1CAD6;
+  background-color: #0079B2;
   font-size: 16px;
   line-height: 1.2;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   /* common */
 }
 body p,
@@ -21,7 +28,7 @@ body .animate {
   transition: left 0.25s ease;
 }
 body .primary-button {
-  color: white;
+  color: #FBFFFE;
   padding: 8px;
   background-color: #ff3e41;
   font-weight: 600;
@@ -56,66 +63,86 @@ body .control-label {
   display: block;
   margin-bottom: 8px;
 }
-body #header {
-  background-color: #FBFFFE;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  height: 64px;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
-}
-body #header .branding {
-  padding: 16px;
-}
-body #sidebar {
-  background-color: #FBFFFE;
-  position: fixed;
-  width: 152px;
-  top: 64px;
-  left: 0;
-  bottom: 0;
-}
-body #sidebar.collapsed {
-  left: -152px;
-}
 body #pin-entry {
   text-align: center;
   width: 100%;
   margin: 0 auto;
 }
-body #content {
-  background-color: #FBFFFE;
+body #content .action-buttons {
   position: fixed;
-  top: 80px;
-  left: 168px;
-  bottom: 16px;
-  right: 16px;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+  top: 32px;
+  right: 32px;
 }
-body #content.collapsed {
-  left: 16px;
+body #content .action-buttons button {
+  cursor: pointer;
+  background-color: #ff8c00;
+  color: #FBFFFE;
+  border: none;
+  padding: 8px;
+  border-radius: 2px;
+  border-right: 3px solid #cc7000;
+  border-bottom: 3px solid #cc7000;
 }
-body #content.remove-background {
-  background-color: transparent;
+body #content .action-buttons button:active {
+  background-color: #cc7000;
 }
 body #content #start {
   text-align: center;
-  padding: 32px;
   height: 100%;
 }
+body #content #start h1 {
+  color: #FBFFFE;
+  font-size: 72px;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+body #content #start h3 {
+  margin-top: 8px;
+  color: #FBFFFE;
+}
+body #content #start img {
+  height: 40vh;
+  margin: 0 auto;
+  display: block;
+}
+body #content #start .id-input {
+  color: #FBFFFE;
+  font-weight: bold;
+  font-size: 32px;
+}
+body #content #start .id-input input {
+  background-color: #0079B2;
+  color: #FBFFFE;
+  font-weight: bold;
+  border: none;
+  border-radius: 2px;
+  border-bottom: 2px solid black;
+  margin: 16px;
+  font-size: 16px;
+  padding: 8px;
+  text-align: center;
+  transition: 0.15s all linear;
+}
+body #content #start .id-input input:focus {
+  outline: none !important;
+  border-bottom: 2px solid #FBFFFE;
+  transition: 0.15s all linear;
+}
 body #content #start .start-button {
-  background-color: #ff3e41;
+  margin: 16px;
+  cursor: pointer;
+  background-color: #ff8c00;
   width: 256px;
   height: 96px;
   font-weight: 700;
   color: #FBFFFE;
   border: none;
   border-radius: 4px;
-  border-right: 3px solid #ff0b0f;
-  border-bottom: 3px solid #ff0b0f;
+  border-right: 3px solid #cc7000;
+  border-bottom: 3px solid #cc7000;
 }
 body #content #start .start-button:active {
-  background-color: #ff0b0f;
+  background-color: #cc7000;
 }
 body #content #questions {
   height: 100%;

@@ -5,20 +5,19 @@ var ftpConfig = require('./ftpconfig.json');
 var less = require('gulp-less');
 var path = require('path');
 var jshint = require('gulp-jshint');
-var uglify = require('gulp-uglify/minifier');
+var minify = require('gulp-minify');
+var concat = require('gulp-concat');
 var concatCSS = require('gulp-concat-css');
 var cleanCSS = require('gulp-clean-css');
-var concat = require('gulp-concat');
-var uglifyJsHarmony = require('uglify-js-harmony');
 var htmlReplace = require('gulp-html-replace');
 var browserSync = require('browser-sync').create();
-
 gulp.task('browserSync', function () {
     browserSync.init({
         server: {
             baseDir: 'app',
             routes: {
-                '/bower_components': 'bower_components'
+                '/bower_components': 'bower_components',
+                '/node_modules': 'node_modules'
             }
         },
         browser: 'google chrome'
@@ -65,7 +64,8 @@ gulp.task('build', function () {
         'bower_components/firebase/firebase-app.js',
         'bower_components/firebase/firebase-auth.js',
         'bower_components/firebase/firebase-database.js',
-        'bower_components/toastr/toastr.min.js'
+        'bower_components/toastr/toastr.min.js',
+        'node_modules/alertifyjs/build/alertify.min.js'
     ])
         .pipe(concat('lib.js'))
         .pipe(gulp.dest('dist/js'));
@@ -75,12 +75,17 @@ gulp.task('build', function () {
         .src('app/css/main.css')
         .pipe(cleanCSS())
         .pipe(gulp.dest('dist/css'));
+
     gulp
-        .src(['bower_components/toastr/toastr.min.css'])
+        .src('app/img/*')
+        .pipe(gulp.dest('dist/img'));
+
+    gulp
+        .src(['bower_components/toastr/toastr.min.css',
+            'node_modules/alertifyjs/build/css/alertify.min.css'])
         .pipe(concatCSS('vendor.css'))
         .pipe(cleanCSS())
         .pipe(gulp.dest('dist/css'));
-
 
     gulp
         .src('app/index.html')

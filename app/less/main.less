@@ -1,8 +1,12 @@
 @base-text-color: #1B1B1E;
 
+@orange: #ff8c00;
+@dark-blue: #0079B2;
+@light-blue: #00ACFF;
+
 @white: #FBFFFE;
 @light-gray: #C1CAD6;
-@gray: darken(@light-gray, 15%);
+// @gray: darken(@light-gray, 15%);
 @darker-gray: darken(@light-gray, 30%);
 @single-space: 8px;
 @double-space: 16px;
@@ -12,13 +16,23 @@
 @bleak-blue: #797BA8;
 @light-blue: #66C7F4;
 @red: #ff3e41;
+
+.alertify-notifier .ajs-message.ajs-error{
+    color: @white;
+}
+
+.alertify-notifier .ajs-message {
+    color: @dark-blue;
+    background-color: @white;
+}
+
 body {
     color: @base-text-color;
     margin: 0;
-    background-color: @light-gray;
+    background-color: @dark-blue;
     font-size: 16px;
     line-height: 1.2;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     p,
     div,
     span,
@@ -39,7 +53,7 @@ body {
     }
 
     .primary-button {
-        color: white;
+        color: @white;
         padding: @single-space;
         background-color: @red;
         font-weight: 600;
@@ -81,66 +95,92 @@ body {
         margin-bottom: @single-space;
     }
 
-
-
-
-    #header {
-        background-color: @white;
-        width: 100%;
-        position: fixed;
-        top: 0;
-        height: @single-space * 8;
-        box-shadow: @float-box-shadow;
-        .branding {
-            padding: @double-space;
-        }
-    }
-    #sidebar {
-        background-color: @white;
-        position: fixed;
-        width: @single-space * 19;
-        top: @single-space * 8;
-        left: 0;
-        bottom: 0;
-        &.collapsed {
-            left: -@single-space * 19;
-        }
-    }
     #pin-entry {
         text-align: center;
         width: 100%;
         margin: 0 auto;
     }
     #content {
-        background-color: @white;
-        position: fixed;
-        top: @single-space * 10;
-        left: @single-space * 21;
-        bottom: @double-space;
-        right: @double-space;
-        box-shadow: @float-box-shadow;
-        &.collapsed {
-            left: @single-space * 2;
+        .action-buttons {
+            position: fixed;
+            top: @quad-space;
+            right: @quad-space;
+            button {
+                cursor: pointer;
+                background-color: @orange;
+                color: @white;
+                border: none;
+                padding: @single-space;
+                border-radius: 2px;
+                border-right: 3px solid darken(@orange, 10%);
+                border-bottom: 3px solid darken(@orange, 10%);
+                &:active {
+                    background-color: darken(@orange, 10%);
+                }
+            }
         }
-        &.remove-background {
-            background-color: transparent;
-        }
+
         #start {
+            h1 {
+                color: @white;
+                font-size: @single-space * 9;
+                font-weight: bold;
+                margin-bottom: 0;
+            }
+
+            h3 {
+                margin-top: @single-space;
+                color: @white;
+            }
+
+            img {
+                height: 40vh;
+                margin: 0 auto;
+                display: block;
+            }
+
+            .id-input {
+                color: @white;
+                font-weight: bold;
+                font-size: @quad-space;
+
+                input {
+                    background-color: @dark-blue;
+                    color: @white;
+                    font-weight: bold;
+                    border: none;
+                    border-radius: 2px;
+                    border-bottom: 2px solid black;
+                    margin: @double-space;
+                    font-size: @double-space;
+                    padding: @single-space;
+                    text-align: center;
+                    transition: 0.15s all linear;
+
+                    &:focus {
+                        outline: none !important;
+                        border-bottom: 2px solid @white;
+                        transition: 0.15s all linear;
+                    }
+                }
+            }
+
             text-align: center;
-            padding: @quad-space;
             height: 100%;
             .start-button {
-                background-color: @red;
+                margin: @double-space;
+                cursor: pointer;
+                background-color: @orange;
                 width: @single-space * 32;
                 height: @single-space * 12;
                 font-weight: 700;
                 color: @white;
                 border: none;
                 border-radius: 4px;
-                border-right: 3px solid darken(@red, 10%);
-                border-bottom: 3px solid darken(@red, 10%);
+                border-right: 3px solid darken(@orange, 10%);
+                border-bottom: 3px solid darken(@orange, 10%);
                 &:active {
-                    background-color: darken(@red, 10%);
+                    background-color: darken(@orange, 10%);
                 }
             }
         }

@@ -22,5 +22,8 @@
     "jshint": "^2.9.4",
     "uglify-js-harmony": "^2.7.5",
     "vinyl-ftp": "^0.6.0"
+  },
+  "dependencies": {
+    "alertifyjs": "^1.10.0"
   }
 }

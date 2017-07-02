@@ -4,26 +4,20 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Socrates</title>
-    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
     <link rel="stylesheet" href="css/main.css" />
     <!--build:vendor-css-->
     <link rel="stylesheet" href="../bower_components/toastr/toastr.css" />
+    <link rel="stylesheet" href="./node_modules/alertifyjs/build/css/alertify.min.css" />
     <!--endbuild-->
 </head>
 
 <body ng-app="app">
     <div id="main" ng-controller="shellCtrl as $ctrl">
-        <div id="header">
-            <div class="branding">
-                SocratesApp
-                <button ng-click="$ctrl.showSidebar = !$ctrl.showSidebar">toggle sidebar</button>
-                <button ng-click="$ctrl.signOut()">Sign Out</button>
-                <button ng-click="$ctrl.onAccountClick()">Account</button>
-                <button ng-click="$ctrl.goToHome()">Home</button>
-            </div>
-        </div>
-        <div class="animate" ng-class="{collapsed : !$ctrl.showSidebar}" id="sidebar"></div>
         <div id="content" class="animate" ng-class="{collapsed : !$ctrl.showSidebar, 'remove-background': $ctrl.removeBackground()}">
+            <button ng-click="$ctrl.signOut()">Sign Out</button>
+            <button ng-click="$ctrl.onAccountClick()">Account</button>
+            <button ng-click="$ctrl.goToHome()">Home</button>
             <ui-view></ui-view>
         </div>
 
@@ -39,6 +33,7 @@
     <script src="./bower_components/firebase/firebase-app.js"></script>
     <script src="./bower_components/firebase/firebase-auth.js"></script>
     <script src="./bower_components/firebase/firebase-database.js"></script>
+    <script src="./node_modules\alertifyjs\build\alertify.min.js"></script>
     <script src="./bower_components/toastr/toastr.js"></script>
     <!--endbuild-->
 
