@@ -14,6 +14,9 @@ body {
   font-family: 'Open Sans', sans-serif;
   /* common */
 }
+body .red {
+  color: red;
+}
 body p,
 body div,
 body span,
@@ -74,6 +77,7 @@ body #content .action-buttons {
   right: 32px;
 }
 body #content .action-buttons button {
+  margin: 0 8px;
   cursor: pointer;
   background-color: #ff8c00;
   color: #FBFFFE;
@@ -145,89 +149,133 @@ body #content #start .start-button:active {
   background-color: #cc7000;
 }
 body #content #questions {
-  height: 100%;
-  display: flex;
+  width: 100%;
 }
 body #content #questions .input-container {
-  position: fixed;
-  margin: 8px;
-  margin-bottom: 0;
-  width: 54%;
-}
-body #content #questions .input-container .question-input-group {
   display: flex;
+  margin: 8px;
+  width: 100%;
+}
+body #content #questions .input-container .action-buttons {
+  flex: 1 25%;
+}
+body #content #questions .questions-content {
+  display: flex;
+  position: fixed;
+  top: 16px;
+  bottom: 16px;
+}
+body #content #questions .questions-content hr {
+  width: 75%;
+  border-color: black;
+}
+body #content #questions .questions-content .question-input-group {
+  display: flex;
+  flex: 1 25%;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
   height: 48px;
   margin: 16px 8px 32px 8px;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
 }
-body #content #questions .input-container .question-input-group input {
+body #content #questions .questions-content .question-input-group input {
+  flex: 3 75%;
   line-height: 40px;
   font-size: 16px;
   padding-left: 8px;
-  flex-grow: 2;
+  border: none;
+  border-right: 1px solid #cc7000;
+  border-bottom: 3px solid #C1CAD6;
 }
-body #content #questions .input-container .question-input-group button {
+body #content #questions .questions-content .question-input-group button {
+  border-left: 10px solid #000000;
+  flex: 1 20%;
   height: 100%;
-  flex-grow: .25;
   display: inline-block;
+  border: none;
+  background-color: #ff8c00;
+  color: white;
+  font-weight: bold;
+  border-radius: 2px;
+  border-right: 3px solid #cc7000;
+  border-bottom: 3px solid #cc7000;
 }
-body #content #questions .questions-container {
+body #content #questions .questions-content .question-input-group button:active {
+  background-color: #cc7000;
+}
+body #content #questions .questions-content .questions-container {
   display: inline-block;
-  flex-grow: 3;
+  flex: 3 75%;
   margin: 8px;
-  margin-top: 96px;
-  overflow-y: scroll;
 }
-body #content #questions .question {
+body #content #questions .questions-content .questions {
+  overflow-y: scroll;
+  height: 92%;
+}
+body #content #questions .questions-content .question {
+  background-color: #FBFFFE;
   border: 1px solid #657b99;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
-  padding: 16px;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
+  padding: 24px;
   margin: 8px;
   text-align: center;
 }
-body #content #questions .question .question-content {
+body #content #questions .questions-content .question .question-content {
   display: inline-block;
 }
-body #content #questions .question .upvotes {
+body #content #questions .questions-content .question .upvotes {
+  text-align: center;
   float: right;
 }
-body #content #questions .question .upvotes .upvote-button {
-  margin-left: 8px;
+body #content #questions .questions-content .question .upvotes .upvote-button {
+  font-size: 32px;
+  color: #ff8c00;
+  margin: -24px 8px 0 8px;
   cursor: pointer;
 }
-body #content #questions .question .upvotes .remove-button {
+body #content #questions .questions-content .question .upvotes .upvote-count.orange {
+  color: orange;
+  font-weight: bold;
+}
+body #content #questions .questions-content .question .upvotes .remove-button {
   cursor: pointer;
   font-weight: 700;
   color: red;
 }
-body #content #questions .question.ng-move {
+body #content #questions .questions-content .question.ng-move {
   transition: all 0.5s linear;
   animation: shake 0.38s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   perspective: 1000px;
 }
-body #content #questions .session-info {
-  flex-grow: 1;
+body #content #questions .questions-content .session-info {
+  height: fit-content;
+  flex: 1 25%;
   display: inline-block;
+  position: relative;
+  top: 96px;
+  background-color: #FBFFFE;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
   padding: 16px;
   margin: 8px;
-  text-align: right;
 }
-body #content #questions .session-info .session-title {
-  font-family: 'Oswald', sans-serif;
+body #content #questions .questions-content .session-info .session-title {
   font-size: 240%;
   font-weight: 700;
+  margin: 0;
 }
-body #content #questions .session-info .session-pin {
+body #content #questions .questions-content .session-info .session-id {
+  margin: 8px 8px 16px 4px;
+  color: #C1CAD6;
   font-weight: 700;
-  margin-bottom: 16px;
+}
+body #content #questions .questions-content .session-info .session-description {
+  margin-left: 4px;
 }
 body #login .login-card {
   text-align: center;
   background-color: #FBFFFE;
   width: 25%;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
   padding: 32px;
   margin: 0 auto;
 }

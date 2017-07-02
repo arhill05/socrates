@@ -55,31 +55,39 @@ app.controller('sessionCtrl', [
                         console.log($scope.user);
                     });
             });
-        };
+        }
 
         self.upvoteQuestion = function (question) {
-            let questionIndex = $scope
-                .user
-                .upvotedQuestionIds
-                .indexOf(question.$id);
-            if (questionIndex == -1) {
+            if (!$scope.user.upvotedQuestionIds) {
                 question.upvotes += 1;
                 $scope
                     .questions
                     .$save(question);
-                $scope
-                    .user
-                    .upvotedQuestionIds
-                    .push(question.$id);
+                $scope.user.upvotedQuestionIds = [question.$id];
             } else {
-                question.upvotes -= 1;
-                $scope
-                    .questions
-                    .$save(question);
-                $scope
+                let questionIndex = $scope
                     .user
                     .upvotedQuestionIds
-                    .splice(questionIndex, 1);
+                    .indexOf(question.$id);
+                if (questionIndex == -1) {
+                    question.upvotes += 1;
+                    $scope
+                        .questions
+                        .$save(question);
+                    $scope
+                        .user
+                        .upvotedQuestionIds
+                        .push(question.$id);
+                } else {
+                    question.upvotes -= 1;
+                    $scope
+                        .questions
+                        .$save(question);
+                    $scope
+                        .user
+                        .upvotedQuestionIds
+                        .splice(questionIndex, 1);
+                }
             }
         };
 
@@ -103,9 +111,16 @@ app.controller('sessionCtrl', [
         self.userIsAdmin = () => {
             if ($scope.session && $scope.user && $scope.user.$id == $scope.session.sessionOwnerUID) {
                 return true;
+            } else 
+                return false;
             }
+        
+        self.onHomeClick = () => {
+            $state.go('start');
+        }
 
-            else return false;
+        self.userHasUpvoted = (question) => {
+            return ($scope.user.upvotedQuestionIds && $scope.user.upvotedQuestionIds.indexOf(question.$id) > -1)
         }
 
         self.onInit();

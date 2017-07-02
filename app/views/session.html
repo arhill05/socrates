@@ -1,25 +1,36 @@
 <div ng-controller="sessionCtrl as $ctrl" id="questions">
     <div class="loading" ng-if="showLoading">LOADING . . . </div>
-    <div class="input-container">
-        <div class="question-input-group">
-            <input class="question-text-input" ng-model="newQuestion.questionText" /><button class="question-text-button"
-                ng-click="$ctrl.addQuestion()">ADD QUESTION</button>
-        </div>
+    <div class="action-buttons">
+        <button ng-click="$ctrl.onHomeClick">Home</button>
+        <button ng-if="!$ctrl.firebaseUser || $ctrl.firebaseUser.isAnonymous" ng-click="$ctrl.onLoginClick()" class="login-button">Login</button>
+        <button ng-if="$ctrl.firebaseUser && !$ctrl.firebaseUser.isAnonymous" ng-click="$ctrl.onAccountClick()" class="login-button">Account</button>
     </div>
-    <div class="questions-container" ng-if="!showLoading">
-        <div class="question" ng-repeat="question in questions | orderBy:'-upvotes' track by question.$id">
-            <div class="question-content">
-                <span>{{question.questionText}}</span>
+    <div class="questions-content">
+        <div class="questions-container" ng-if="!showLoading">
+            <div class="question-input-group">
+                <input class="question-text-input" ng-model="newQuestion.questionText" /><button class="question-text-button"
+                    ng-click="$ctrl.addQuestion()">ADD QUESTION</button>
             </div>
-            <div class="upvotes">{{question.upvotes}}<span class="upvote-button" ng-click="$ctrl.upvoteQuestion(question)">^</span>
-            <span class="remove-button" ng-if="$ctrl.userIsAdmin()" ng-click="$ctrl.removeQuestion(question)">X</span></div>
+            <hr />
+            <div class="questions">
+                <div class="question" ng-repeat="question in questions | orderBy:'-upvotes' track by question.$id">
+                    <div class="question-content">
+                        <span>{{question.questionText}}</span>
+                    </div>
+                    <div class="upvotes">
+                        <div ng-if="!$ctrl.userHasUpvoted(question)" class="upvote-button" ng-click="$ctrl.upvoteQuestion(question)"><i class="fa fa-angle-up" aria-hidden="true"></i></div>
+                        <div ng-if="$ctrl.userHasUpvoted(question)" class="upvote-button" ng-click="$ctrl.upvoteQuestion(question)"><i class="fa fa-angle-double-up" aria-hidden="true"></i></div>
+                        <div class="upvote-count" ng-class="{orange: $ctrl.userHasUpvoted(question)}">{{question.upvotes}}</div>
+                        <span class="remove-button" ng-if="$ctrl.userIsAdmin()" ng-click="$ctrl.removeQuestion(question)">X</span></div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="session-info">
-        <div class="info-content">
-            <div class="session-title">{{session.title}}</div>
-            <div class="session-pin">Pin #: {{session.$id}}</div>
-            <div class="session-description">{{session.description}}</div>
+        <div class="session-info">
+            <div class="info-content">
+                <div class="session-title">{{session.title}}</div>
+                <div class="session-id">Session ID: {{session.$id}}</div>
+                <div class="session-description">{{session.description}}</div>
+            </div>
         </div>
     </div>
 </div>
