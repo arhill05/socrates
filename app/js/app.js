@@ -36,7 +36,7 @@
         var infoState = {
             name: 'info',
             url: '/info/{sessionID}',
-            templateUrl: '/views/info.html'
+            templateUrl: './views/info.html'
         }
 
         $stateProvider.state(entryState);
