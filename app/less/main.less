@@ -131,6 +131,9 @@ body {
         display: none !important;
     }
     @media only screen and (max-width: 1223px) and (min-width: 320px) {
+        html {
+            margin: none;
+        }
         .loader {
             left: 40%;
             width: 60px;
@@ -180,12 +183,15 @@ body {
                 h1 {
                     font-size: 4em;
                     margin: 0 auto;
+                    margin-top: -@single-space;
                 }
                 h3 {
                     margin-top: @single-space;
+                    margin-bottom: none;
                 }
                 img {
-                    height: 40vh;
+                    margin-top: -@double-space;
+                    height: 35vh;
                 }
                 .id-input {
                     font-weight: bold;

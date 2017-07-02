@@ -124,6 +124,9 @@ body .hidden {
   display: none !important;
 }
 @media only screen and (max-width: 1223px) and (min-width: 320px) {
+  body html {
+    margin: none;
+  }
   body .loader {
     left: 40%;
     width: 60px;
@@ -173,12 +176,15 @@ body .hidden {
   body #content #start h1 {
     font-size: 4em;
     margin: 0 auto;
+    margin-top: -8px;
   }
   body #content #start h3 {
     margin-top: 8px;
+    margin-bottom: none;
   }
   body #content #start img {
-    height: 40vh;
+    margin-top: -16px;
+    height: 35vh;
   }
   body #content #start .id-input {
     font-weight: bold;

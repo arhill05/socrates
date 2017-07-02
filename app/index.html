@@ -17,7 +17,7 @@
 
 <body ng-app="app">
     <div id="main" ng-controller="shellCtrl as $ctrl">
-        <div id="mobile-nav" ng-class="{hidden: $state.includes('start')}">
+        <div id="mobile-nav" ng-if="!$state.includes('start')">
             <i ng-class="{'active-nav': $ctrl.activeNavItem == home}" ng-click="$ctrl.onHomeClick()" class="fa fa-home" aria-hidden="true"></i>
             <i ng-class="{'active-nav': $ctrl.activeNavItem == 'session'}" ng-click="$ctrl.onSessionClick()" class="fa fa-question" aria-hidden="true"></i>
             <i ng-class="{'active-nav': $ctrl.activeNavItem == 'info'}" ng-click="$ctrl.onInfoClick()" class="fa fa-info" aria-hidden="true"></i>
