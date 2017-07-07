@@ -3,8 +3,8 @@
     <div class="questions-content">
         <div id="action-buttons" class="action-buttons">
             <button ng-click="$ctrl.onHomeClick()">Home</button>
-            <button ng-if="!$ctrl.firebaseUser || $ctrl.firebaseUser.isAnonymous" ng-click="$ctrl.onLoginClick()" class="login-button">Login</button>
-            <button ng-if="$ctrl.firebaseUser && !$ctrl.firebaseUser.isAnonymous" ng-click="$ctrl.onAccountClick()" class="login-button">Account</button>
+            <button ng-if="!user || user.anonymous" ng-click="$ctrl.onLoginClick()" class="login-button">Login</button>
+            <button ng-if="user && !user.anonymous" ng-click="$ctrl.onAccountClick()" class="login-button">Account</button>
         </div>
         <div class="questions-container" ng-if="!showLoading">
             <div class="question-input-group">
@@ -18,10 +18,25 @@
                         <span>{{question.questionText}}</span>
                     </div>
                     <div class="upvotes">
-                        <div ng-if="!$ctrl.userHasUpvoted(question)" class="upvote-button" ng-click="$ctrl.upvoteQuestion(question)"><i class="fa fa-angle-up" aria-hidden="true"></i></div>
-                        <div ng-if="$ctrl.userHasUpvoted(question)" class="upvote-button" ng-click="$ctrl.upvoteQuestion(question)"><i class="fa fa-angle-double-up" aria-hidden="true"></i></div>
-                        <div class="upvote-count" ng-class="{orange: $ctrl.userHasUpvoted(question)}">{{question.upvotes}}</div>
-                        <span class="remove-button" ng-if="$ctrl.userIsAdmin()" ng-click="$ctrl.removeQuestion(question)">X</span></div>
+                        <div class="upvote-button-container" ng-if="!question.isRemoving">
+                            <div ng-if="!$ctrl.userHasUpvoted(question)" class="upvote-button" ng-click="$ctrl.upvoteQuestion(question)"><i class="fa fa-angle-up" aria-hidden="true"></i></div>
+                            <div ng-if="$ctrl.userHasUpvoted(question)" class="upvote-button" ng-click="$ctrl.upvoteQuestion(question)"><i class="fa fa-angle-double-up" aria-hidden="true"></i></div>
+                            <div ng-if="!question.isEditing" class="upvote-count" ng-class="{orange: $ctrl.userHasUpvoted(question)}">{{question.upvotes}}</div>
+                            <input class="upvote-input" ng-if="$ctrl.userIsAdmin() && question.isEditing" ng-model="question.upvotes" />
+                        </div>
+                        <div ng-if="$ctrl.userIsAdmin() && !question.isRemoving && !question.isEditing" class="admin-actions">
+                            <i class="fa fa-trash" ng-click="question.isRemoving = true" aria-hidden="true"></i>
+                            <i class="fa fa-pencil" ng-click="question.isEditing = true" aria-hidden="true"></i>
+                        </div>
+                        <div ng-if="question.isRemoving" class="admin-actions remove">
+                            Confirm remove?
+                            <i class="fa fa-check" ng-click="$ctrl.remove(question)" aria-hidden="true"></i>
+                            <i class="fa fa-times" ng-click="question.isRemoving = false" aria-hidden="true"></i>
+                        </div>
+                        <div ng-if="question.isEditing" class="admin-actions edit">
+                            <i class="fa fa-check" ng-click="$ctrl.edit(question)" aria-hidden="true"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

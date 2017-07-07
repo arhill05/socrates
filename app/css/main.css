@@ -224,6 +224,9 @@ body .hidden {
   body #content #start .start-button:active {
     background-color: #cc7000;
   }
+  body #questions .admin-actions {
+    display: none;
+  }
   body #questions #session-info {
     display: none;
   }
@@ -235,7 +238,7 @@ body .hidden {
     bottom: 0;
     display: flex;
     width: 100%;
-    height: 6vh;
+    height: 8vh;
   }
   body #questions .question-input-group input {
     border: none;
@@ -255,7 +258,7 @@ body .hidden {
   body #questions .questions {
     position: fixed;
     top: 50px;
-    bottom: 6vh;
+    bottom: 8vh;
     right: 0;
     left: 0;
     overflow-y: scroll;
@@ -263,10 +266,11 @@ body .hidden {
   body #questions .question {
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
     background-color: white;
-    border-top: 2px solid black;
+    border-top: 1px solid black;
     color: black;
+    padding: 8px 4px;
+    vertical-align: middle;
   }
   body #questions .question .question-content {
     padding: 4px;
@@ -276,15 +280,17 @@ body .hidden {
     height: fit-content;
     min-height: 6vh;
     font-size: 16px;
-    font-weight: bold;
   }
   body #questions .question .upvotes {
+    text-align: right;
     flex: 1 10%;
-    font-weight: bold;
   }
   body #questions .question .upvotes .upvote-button {
     color: #ff8c00;
     font-size: 24px;
+  }
+  body #questions .question .upvote-button-container {
+    text-align: center;
   }
   body #questions .question .orange {
     color: orange;
@@ -422,6 +428,17 @@ body .hidden {
   }
 }
 @media only screen and (min-width: 1224px) {
+  body ::-webkit-scrollbar {
+    width: 12px;
+  }
+  body ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+  }
+  body ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8);
+  }
   body #mobile-nav {
     display: none;
   }
@@ -555,16 +572,20 @@ body .hidden {
     box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
     padding: 24px;
     margin: 8px;
-    text-align: center;
+    display: flex;
   }
   body #content #questions .questions-content .question .question-content {
     display: inline-block;
     text-align: left;
-    width: 80%;
+    flex: 1 80%;
   }
   body #content #questions .questions-content .question .upvotes {
+    text-align: right;
+    flex: 1 20%;
+  }
+  body #content #questions .questions-content .question .upvotes input {
+    width: 40px;
     text-align: center;
-    float: right;
   }
   body #content #questions .questions-content .question .upvotes .upvote-button {
     font-size: 32px;
@@ -587,6 +608,28 @@ body .hidden {
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
     perspective: 1000px;
+  }
+  body #content #questions .questions-content .upvote-button-container {
+    display: inline-block;
+    text-align: center;
+  }
+  body #content #questions .questions-content .admin-actions {
+    display: inline-block;
+    color: #ff8c00;
+    font-size: 24px;
+  }
+  body #content #questions .questions-content .admin-actions i {
+    margin: 0 4px;
+    cursor: pointer;
+  }
+  body #content #questions .questions-content .admin-actions.remove {
+    font-size: 1em;
+    color: #657b99;
+  }
+  body #content #questions .questions-content .admin-actions.remove i {
+    color: #ff8c00;
+    margin: 0 8px;
+    font-size: 24px;
   }
   body #content #questions .questions-content .session-info {
     height: fit-content;

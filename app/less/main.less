@@ -234,6 +234,9 @@ body {
             }
         }
         #questions {
+            .admin-actions {
+                display: none;
+            }
             #session-info {
                 display: none;
             }
@@ -245,7 +248,7 @@ body {
                 bottom: 0;
                 display: flex;
                 width: 100%;
-                height: 6vh;
+                height: 8vh;
                 input {
                     border: none;
                     flex: 1 75%;
@@ -265,7 +268,7 @@ body {
             .questions {
                 position: fixed;
                 top: @single-space * 6 + 2;
-                bottom: 6vh;
+                bottom: 8vh;
                 right: 0;
                 left: 0;
                 overflow-y: scroll;
@@ -273,10 +276,11 @@ body {
             .question {
                 display: flex;
                 flex-wrap: wrap;
-                width: 100%;
                 background-color: white;
-                border-top: 2px solid black;
+                border-top: 1px solid black;
                 color: black;
+                padding: @single-space @single-space / 2;
+                vertical-align: middle;
                 .question-content {
                     padding: @single-space / 2;
                     flex-wrap: wrap;
@@ -285,15 +289,18 @@ body {
                     height: fit-content;
                     min-height: 6vh;
                     font-size: @double-space;
-                    font-weight: bold;
                 }
                 .upvotes {
+                    text-align: right;
                     flex: 1 10%;
-                    font-weight: bold;
                     .upvote-button {
                         color: @orange;
                         font-size: @triple-space;
                     }
+                }
+
+                .upvote-button-container {
+                    text-align: center;
                 }
                 .orange {
                     color: orange;
@@ -366,16 +373,13 @@ body {
                 .session-title {
                     float: left;
                 }
-
                 .session-pin {
                     float: right;
                 }
-
                 .session-description {
                     margin-top: @quad-space;
                     text-align: left;
                 }
-
                 .session-actions {
                     margin-top: @quad-space;
                 }
@@ -383,6 +387,17 @@ body {
         }
     }
     @media only screen and (min-width: 1224px) {
+         ::-webkit-scrollbar {
+            width: 12px;
+        }
+         ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8);
+        }
         #mobile-nav {
             display: none;
         }
@@ -515,14 +530,19 @@ body {
                         box-shadow: @float-box-shadow;
                         padding: @triple-space;
                         margin: @single-space;
+                        display: flex;
                         .question-content {
                             display: inline-block;
                             text-align: left;
-                            width: 80%;
+                            flex: 1 80%;
                         }
                         .upvotes {
-                            text-align: center;
-                            float: right;
+                            text-align: right;
+                            flex: 1 20%;
+                            input {
+                                width: @single-space * 5;
+                                text-align: center;
+                            }
                             & .upvote-button {
                                 font-size: @quad-space;
                                 color: @orange;
@@ -549,6 +569,33 @@ body {
                             perspective: 1000px;
                         }
                         &.ng-move.ng-move-active {}
+                    }
+                    .upvote-button-container {
+                        display: inline-block;
+                        text-align: center;
+                    }
+                    .admin-actions {
+                        display: inline-block;
+                        color: @orange;
+                        font-size: @triple-space;
+                        i {
+                            margin: 0 @single-space / 2;
+                            cursor: pointer;
+                        }
+
+                        &.remove {
+                            font-size: 1em;
+                            color: @darker-gray;
+                            i {
+                                color: @orange;
+                                margin: 0 @single-space;
+                                font-size: @triple-space;
+                            }
+                        }
+
+                        &.edit {
+
+                        }
                     }
                     .session-info {
                         height: fit-content;

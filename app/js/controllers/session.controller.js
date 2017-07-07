@@ -104,10 +104,18 @@ app.controller('sessionCtrl', [
             }
         };
 
-        self.removeQuestion = (question) => {
+        self.remove = (question) => {
             $scope
                 .questions
                 .$remove(question);
+        }
+
+        self.edit = (question) => {
+            question.isEditing = false;
+            $scope
+                .questions
+                .$save(question);
+
         }
 
         self.userIsAdmin = () => {
