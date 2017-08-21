@@ -200,6 +200,15 @@ body .hidden {
   display: none !important;
 }
 @media only screen and (max-width: 1223px) and (min-width: 320px) {
+  body .modal {
+    top: 10% !important;
+    right: 4% !important;
+    bottom: 10% !important;
+    left: 4% !important;
+  }
+  body .mobile-hidden {
+    display: none !important;
+  }
   body html {
     margin: none;
   }

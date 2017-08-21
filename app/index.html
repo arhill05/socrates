@@ -22,7 +22,7 @@
             <div ng-if="$ctrl.showModal" class="modal ng-cloak">
                 <i ng-click="$ctrl.hideBetaModal()" class="fa fa-times"></i>
                 <h3>Thank you!</h3>
-                <div>Socrates is currently under development. Please bear with us while we work out all of the kinks. For now,
+                <div>Thank you for using Socrates. Socrates is currently under development. Please bear with us while we work out all of the kinks. For now,
                     please email any issues that you may run into to <a href="mailto:me@andrewhill.io">Andrew Hill</a>.
                 </div>
             </div>
@@ -36,7 +36,7 @@
         <div id="content" class="animate" ng-class="{collapsed : !$ctrl.showSidebar, 'remove-background': $ctrl.removeBackground()}">
             <ui-view></ui-view>
         </div>
-        <i ng-click="$ctrl.showBetaModal()" class="fa fa-smile-o modal-icon ng-cloak" aria-hidden="true"></i>
+        <i ng-click="$ctrl.showBetaModal()" ng-class="{'mobile-hidden': !$state.includes('start')}"class="fa fa-smile-o modal-icon ng-cloak" aria-hidden="true"></i>
     </div>
 
     <!--build:lib-->

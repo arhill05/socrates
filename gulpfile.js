@@ -96,7 +96,7 @@ gulp.task('build', function () {
         .pipe(gulp.dest('dist/views'));
 })
 
-gulp.task('deploy', function () {
+gulp.task('deployDev', function () {
     var conn = ftp.create({host: ftpConfig.host, user: ftpConfig.user, password: ftpConfig.password, log: gutil.log})
 
     var globs = ['dist/img/**', 'dist/css/**', 'dist/js/**', 'dist/views/**', 'dist/index.html'];
@@ -111,6 +111,25 @@ gulp.task('deploy', function () {
             user: ftpConfig.user,
             pass: ftpConfig.password,
             remotePath: '/srv/www/dev.andrewhill.io/socrates'
+        }));
+
+})
+
+gulp.task('deployProd', function () {
+    var conn = ftp.create({host: ftpConfig.host, user: ftpConfig.user, password: ftpConfig.password, log: gutil.log})
+
+    var globs = ['dist/img/**', 'dist/css/**', 'dist/js/**', 'dist/views/**', 'dist/index.html'];
+
+    return gulp
+        .src(globs, {
+        base: './dist',
+        buffer: false
+    })
+        .pipe(sftp({
+            host: ftpConfig.host,
+            user: ftpConfig.user,
+            pass: ftpConfig.password,
+            remotePath: '/srv/www/socratesapp.co'
         }));
 
 })

@@ -10,7 +10,7 @@
     <img src="./img/socratesOrange.png" />
     <div class="id-input">
         <div class="id-input-text">Enter your session's ID</div>
-        <input id="id-input" class="id-input-input" maxlength="6" ng-model="$ctrl.sessionID" />
+        <input type="text" id="id-input" class="id-input" maxlength="6" ng-model="$ctrl.sessionID" />
     </div>
     <button ng-click="$ctrl.onStartClick()" class="start-button">START</button>
     <button id="mobile-account-button" class="mobile-account-button" ng-click="$ctrl.onMobileAccountClick()"><i class="fa fa-user" aria-hidden="true"></i></button>
