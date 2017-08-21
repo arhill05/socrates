@@ -24,6 +24,14 @@
 }
 
 body {
+    [ng\:cloak],
+    [ng-cloak],
+    [data-ng-cloak],
+    [x-ng-cloak],
+    .ng-cloak,
+    .x-ng-cloak {
+        display: none !important;
+    }
     .red {
         color: red;
     }
@@ -124,7 +132,6 @@ body {
             transition: 0.15s all linear;
         }
     }
-
     .modal-icon {
         position: fixed;
         right: @double-space;
@@ -132,17 +139,15 @@ body {
         font-size: @single-space * 3;
         color: fade(@white, 35%);
     }
-
     .overlay {
         position: fixed;
         top: 0;
         bottom: 0;
-        left: 0; 
+        left: 0;
         right: 0;
         background-color: fade(@base-text-color, 92%);
         z-index: 10000;
         transition: all 5s ease-in;
-
         &.ng-enter {
             opacity: 0;
             transition: .25s linear;
@@ -166,9 +171,8 @@ body {
             left: 35%;
             right: 35%;
             bottom: 35%;
-            box-shadow: 0 4px 4px 4px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 4px 4px rgba(0, 0, 0, 0.3);
         }
-
         i.fa-times {
             position: absolute;
             top: @double-space;
@@ -176,8 +180,6 @@ body {
             cursor: pointer;
         }
     }
-
-
     @keyframes spin {
         0% {
             transform: rotate(0deg);

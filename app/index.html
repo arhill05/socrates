@@ -19,7 +19,7 @@
 <body ng-app="app">
     <div id="main" ng-controller="shellCtrl as $ctrl">
         <div ng-if="$ctrl.showModal" class="overlay ng-cloak">
-            <div ng-if="$ctrl.showModal" class="modal">
+            <div ng-if="$ctrl.showModal" class="modal ng-cloak">
                 <i ng-click="$ctrl.hideBetaModal()" class="fa fa-times"></i>
                 <h3>Thank you!</h3>
                 <div>Socrates is currently under development. Please bear with us while we work out all of the kinks. For now,
@@ -28,18 +28,15 @@
             </div>
         </div>
         <div id="mobile-nav ng-cloak" ng-if="!$state.includes('start')">
-            <i ng-class="{'active-nav': $ctrl.activeNavItem == home}" ng-click="$ctrl.onHomeClick()" class="fa fa-home" aria-hidden="true"></i>
-            <i ng-class="{'active-nav': $ctrl.activeNavItem == 'session'}" ng-click="$ctrl.onSessionClick()" class="fa fa-question" aria-hidden="true"></i>
-            <i ng-class="{'active-nav': $ctrl.activeNavItem == 'info'}" ng-click="$ctrl.onInfoClick()" class="fa fa-info" aria-hidden="true"></i>
-            <i ng-class="{'active-nav': $ctrl.activeNavItem == 'user'}" ng-click="$ctrl.onUserClick()" class="fa fa-user" aria-hidden="true"></i>
+            <i ng-class="{'active-nav': $ctrl.activeNavItem == home}" ng-click="$ctrl.onHomeClick()" class="fa fa-home ng-cloak" aria-hidden="true"></i>
+            <i ng-class="{'active-nav': $ctrl.activeNavItem == 'session'}" ng-click="$ctrl.onSessionClick()" class="fa fa-question ng-cloak" aria-hidden="true"></i>
+            <i ng-class="{'active-nav': $ctrl.activeNavItem == 'info'}" ng-click="$ctrl.onInfoClick()" class="fa fa-info ng-cloak" aria-hidden="true"></i>
+            <i ng-class="{'active-nav': $ctrl.activeNavItem == 'user'}" ng-click="$ctrl.onUserClick()" class="fa fa-user ng-cloak" aria-hidden="true"></i>
         </div>
         <div id="content" class="animate" ng-class="{collapsed : !$ctrl.showSidebar, 'remove-background': $ctrl.removeBackground()}">
-            <!--<button ng-click="$ctrl.signOut()">Sign Out</button>
-            <button ng-click="$ctrl.onAccountClick()">Account</button>
-            <button ng-click="$ctrl.goToHome()">Home</button>-->
             <ui-view></ui-view>
         </div>
-        <i ng-click="$ctrl.showBetaModal()" class="fa fa-smile-o modal-icon" aria-hidden="true"></i>
+        <i ng-click="$ctrl.showBetaModal()" class="fa fa-smile-o modal-icon ng-cloak" aria-hidden="true"></i>
     </div>
 
     <!--build:lib-->
