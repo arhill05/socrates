@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-        <div id="mobile-nav ng-cloak" ng-if="!$state.includes('start')">
+        <div id="mobile-nav" class="ng-cloak" ng-if="!$state.includes('start')">
             <i ng-class="{'active-nav': $ctrl.activeNavItem == home}" ng-click="$ctrl.onHomeClick()" class="fa fa-home ng-cloak" aria-hidden="true"></i>
             <i ng-class="{'active-nav': $ctrl.activeNavItem == 'session'}" ng-click="$ctrl.onSessionClick()" class="fa fa-question ng-cloak" aria-hidden="true"></i>
             <i ng-class="{'active-nav': $ctrl.activeNavItem == 'info'}" ng-click="$ctrl.onInfoClick()" class="fa fa-info ng-cloak" aria-hidden="true"></i>
