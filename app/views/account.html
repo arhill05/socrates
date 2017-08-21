@@ -1,4 +1,8 @@
 <div ng-controller="accountCtrl as $ctrl" id="account">
+    <div id="action-buttons" class="action-buttons">
+        <button ng-click="$ctrl.onHomeClick()">Home</button>
+        <button ng-if="user" ng-click="$ctrl.onLogoutClick()" class="login-button">Logout</button>
+    </div>
     <h2>Hello, {{user.email}}</h2>
     <div class="your-sessions"><span class="your-sessions-text">Your sessions: </span><button ng-click="$ctrl.startAdd()" class="primary-button">Add a session</button></div>
     <form ng-if="addingSession" class="session-add-form">
@@ -23,8 +27,8 @@
     </form>
     <div class="sessions">
         <div class="session" ng-repeat="session in ownedSessions">
-                <span class="session-title">{{session.title}}</span>
-                <span class="session-pin">ID: {{session.$id}}</span>
+            <span class="session-title">{{session.title}}</span>
+            <span class="session-pin">ID: {{session.$id}}</span>
             <div class="session-description">
                 {{session.description}}
             </div>

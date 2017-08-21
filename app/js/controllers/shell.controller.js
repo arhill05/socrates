@@ -6,6 +6,7 @@ var app = angular
         '$state',
         function (Auth, $rootScope, $state) {
             var self = this;
+            self.showModal = false;
             self.activeNavItem = 'session';
             $rootScope.$state = $state;
             $rootScope.currentSessionID = $state.params.sessionID;
@@ -69,6 +70,14 @@ var app = angular
                     $state.go('login');
                 
                 self.activeNavItem = 'user';
+            }
+
+            self.showBetaModal = () => {
+                self.showModal = true;
+            }
+
+            self.hideBetaModal = () => {
+                self.showModal = false;
             }
 
             $rootScope.$on('enteringSession', () => {

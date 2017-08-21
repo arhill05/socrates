@@ -54,5 +54,9 @@ app.controller('loginCtrl', [
                     aleritfy.error(error.message);
                 })
         }
+
+        this.onHomeClick = () => {
+            $state.go('start');
+        }
     }
 ]);

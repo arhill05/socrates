@@ -105,6 +105,79 @@ body {
         height: 120px;
         animation: spin 2s linear infinite;
     }
+    input[type="text"],
+    input[type="password"] {
+        background-color: @dark-blue;
+        color: @white;
+        font-weight: bold;
+        border: none;
+        border-radius: 2px;
+        border-bottom: 2px solid black;
+        margin: @double-space;
+        font-size: @double-space;
+        padding: @single-space;
+        text-align: center;
+        transition: 0.15s all linear;
+        &:focus {
+            outline: none !important;
+            border-bottom: 2px solid @white;
+            transition: 0.15s all linear;
+        }
+    }
+
+    .modal-icon {
+        position: fixed;
+        right: @double-space;
+        bottom: @double-space;
+        font-size: @single-space * 3;
+        color: fade(@white, 35%);
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0; 
+        right: 0;
+        background-color: fade(@base-text-color, 92%);
+        z-index: 10000;
+        transition: all 5s ease-in;
+
+        &.ng-enter {
+            opacity: 0;
+            transition: .25s linear;
+        }
+        &.ng-enter.ng-enter-active {
+            opacity: 1;
+        }
+        &.ng-leave {
+            opacity: 1;
+            transition: .25s linear;
+        }
+        &.ng-leave.ng-leave-active {
+            opacity: 0;
+        }
+        .modal {
+            padding: @triple-space;
+            z-index: 10001;
+            background-color: @white;
+            position: fixed;
+            top: 20%;
+            left: 35%;
+            right: 35%;
+            bottom: 35%;
+            box-shadow: 0 4px 4px 4px rgba(0,0,0,0.3);
+        }
+
+        i.fa-times {
+            position: absolute;
+            top: @double-space;
+            right: @double-space;
+            cursor: pointer;
+        }
+    }
+
+
     @keyframes spin {
         0% {
             transform: rotate(0deg);
@@ -196,24 +269,6 @@ body {
                 .id-input {
                     font-weight: bold;
                     font-size: @double-space;
-                    input {
-                        background-color: @dark-blue;
-                        color: @white;
-                        font-weight: bold;
-                        border: none;
-                        border-radius: 2px;
-                        border-bottom: 2px solid black;
-                        margin: @double-space;
-                        font-size: @double-space;
-                        padding: @single-space;
-                        text-align: center;
-                        transition: 0.15s all linear;
-                        &:focus {
-                            outline: none !important;
-                            border-bottom: 2px solid @white;
-                            transition: 0.15s all linear;
-                        }
-                    }
                 }
                 .start-button {
                     margin: @double-space;
@@ -298,7 +353,6 @@ body {
                         font-size: @triple-space;
                     }
                 }
-
                 .upvote-button-container {
                     text-align: center;
                 }
@@ -328,15 +382,11 @@ body {
             padding: @double-space;
             label {
                 margin-bottom: -@single-space;
-                ;
                 display: block;
             }
             button {
                 .primary-button;
                 margin: @quad-space;
-            }
-            input {
-                .single-line-input;
             }
         }
         #account {
@@ -394,7 +444,7 @@ body {
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
             border-radius: 10px;
         }
-        ::-webkit-scrollbar-thumb {
+         ::-webkit-scrollbar-thumb {
             border-radius: 10px;
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8);
         }
@@ -582,7 +632,6 @@ body {
                             margin: 0 @single-space / 2;
                             cursor: pointer;
                         }
-
                         &.remove {
                             font-size: 1em;
                             color: @darker-gray;
@@ -592,10 +641,7 @@ body {
                                 font-size: @triple-space;
                             }
                         }
-
-                        &.edit {
-
-                        }
+                        &.edit {}
                     }
                     .session-info {
                         height: fit-content;
@@ -625,20 +671,26 @@ body {
             }
         }
         #login {
-            .login-card {
+            form {
+                color: white;
+                margin: 4em auto;
+                width: 100%;
                 text-align: center;
-                background-color: @white;
-                width: 25%;
-                box-shadow: @float-box-shadow;
-                padding: @single-space * 4;
-                margin: 0 auto;
-                input,
+                .input-group {
+                    margin: @quad-space;
+                    label {
+                        display: block;
+                        margin-bottom: -@double-space;
+                    }
+                }
                 button {
-                    margin: @double-space;
+                    .primary-button;
+                    margin: @quad-space;
                 }
             }
         }
         #account {
+            color: white;
             padding: @single-space * 4;
             .your-sessions {
                 & .your-sessions-text {
@@ -651,6 +703,8 @@ body {
                 }
             }
             .session-add-form {
+                background-color: @white;
+                color: @base-text-color;
                 padding: @double-space;
                 border: 2px solid @bleak-blue;
                 width: 30%;
@@ -659,6 +713,8 @@ body {
             .sessions {
                 overflow-y: scroll;
                 .session {
+                    color: @base-text-color;
+                    background-color: @white;
                     line-height: @double-space;
                     display: inline-block;
                     width: 30%;

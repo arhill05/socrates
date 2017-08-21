@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var gutil = require('gulp-util');
 var ftp = require('vinyl-ftp');
 var ftpConfig = require('./ftpconfig.json');
+var sftp = require('gulp-sftp');
 var less = require('gulp-less');
 var path = require('path');
 var jshint = require('gulp-jshint');
@@ -105,6 +106,11 @@ gulp.task('deploy', function () {
         base: './dist',
         buffer: false
     })
-        .pipe(conn.dest('dev/socrates'));
+        .pipe(sftp({
+            host: ftpConfig.host,
+            user: ftpConfig.user,
+            pass: ftpConfig.password,
+            remotePath: '/srv/www/dev.andrewhill.io/socrates'
+        }));
 
 })

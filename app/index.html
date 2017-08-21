@@ -17,6 +17,15 @@
 
 <body ng-app="app">
     <div id="main" ng-controller="shellCtrl as $ctrl">
+        <div ng-if="$ctrl.showModal" class="overlay">
+            <div ng-if="$ctrl.showModal" class="modal">
+                <i ng-click="$ctrl.hideBetaModal()" class="fa fa-times"></i>
+                <h3>Thank you!</h3>
+                <div>Socrates is currently under development. Please bear with us while we work out all of the kinks.
+                    For now, please email any issues that you may run into to <a href="mailto:me@andrewhill.io">Andrew Hill</a>.
+                </div>
+            </div>
+        </div>
         <div id="mobile-nav" ng-if="!$state.includes('start')">
             <i ng-class="{'active-nav': $ctrl.activeNavItem == home}" ng-click="$ctrl.onHomeClick()" class="fa fa-home" aria-hidden="true"></i>
             <i ng-class="{'active-nav': $ctrl.activeNavItem == 'session'}" ng-click="$ctrl.onSessionClick()" class="fa fa-question" aria-hidden="true"></i>
@@ -29,7 +38,7 @@
             <button ng-click="$ctrl.goToHome()">Home</button>-->
             <ui-view></ui-view>
         </div>
-
+        <i ng-click="$ctrl.showBetaModal()" class="fa fa-smile-o modal-icon" aria-hidden="true"></i>
     </div>
 
     <!--build:lib-->

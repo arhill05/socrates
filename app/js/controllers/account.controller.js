@@ -87,5 +87,14 @@ app.controller('accountCtrl', [
         this.cancelAdd = () => {
             $scope.addingSession = false;
         }
+
+        this.onHomeClick = () => {
+            $state.go('start');
+        }
+
+        this.onLogoutClick = () => {
+            Auth.$signOut();
+            $state.go('start');
+        }
     }
 ]);
