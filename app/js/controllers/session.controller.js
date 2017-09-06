@@ -46,17 +46,20 @@ app.controller('sessionCtrl', [
 
             Auth.$onAuthStateChanged(function (firebaseUser) {
                 $scope.auth = firebaseUser;
-                let usersRef = firebase
-                    .database()
-                    .ref()
-                    .child("users/" + $scope.auth.uid);
-                let userObj = $firebaseObject(usersRef);
-                userObj
-                    .$bindTo($scope, "user")
-                    .then(function () {
-                        console.log($scope.user);
-                    });
+                if ($scope.auth) {
+                    let usersRef = firebase
+                        .database()
+                        .ref()
+                        .child("users/" + $scope.auth.uid);
+                    let userObj = $firebaseObject(usersRef);
+                    userObj
+                        .$bindTo($scope, "user")
+                        .then(function () {
+                            console.log($scope.user);
+                        });
+                }
             });
+
         }
 
         self.upvoteQuestion = function (question) {
@@ -121,10 +124,10 @@ app.controller('sessionCtrl', [
         self.userIsAdmin = () => {
             if ($scope.session && $scope.user && $scope.user.$id == $scope.session.sessionOwnerUID) {
                 return true;
-            } else 
+            } else
                 return false;
-            }
-        
+        }
+
         self.onHomeClick = () => {
             $state.go('start');
         }
@@ -139,6 +142,16 @@ app.controller('sessionCtrl', [
 
         self.userHasUpvoted = (question) => {
             return ($scope.user && $scope.user.upvotedQuestionIds && $scope.user.upvotedQuestionIds.indexOf(question.$id) > -1)
+        }
+
+        self.clearQuestions = () => {
+            let questionsRef = firebase
+                .database()
+                .ref()
+                .child('sessions_questions')
+                .child($scope.session.$id);
+
+            questionsRef.remove();
         }
 
         self.onInit();

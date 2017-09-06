@@ -2,6 +2,7 @@
     <div class="loading" ng-if="showLoading">LOADING . . . </div>
     <div class="questions-content">
         <div id="action-buttons" class="action-buttons">
+            <button ng-if="$ctrl.userIsAdmin()" ng-click="$ctrl.clearQuestions()">Clear Questions</button>
             <button ng-click="$ctrl.onHomeClick()">Home</button>
             <button ng-if="!user || user.anonymous" ng-click="$ctrl.onLoginClick()" class="login-button">Login</button>
             <button ng-if="user && !user.anonymous" ng-click="$ctrl.onAccountClick()" class="login-button">Account</button>

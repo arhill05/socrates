@@ -691,6 +691,21 @@ body .hidden {
     padding: 16px;
     margin: 8px;
   }
+  body #content #questions .questions-content .session-info .clear-questions-button {
+    margin: 0 8px;
+    cursor: pointer;
+    background-color: #ff8c00;
+    color: #FBFFFE;
+    border: none;
+    padding: 8px;
+    border-radius: 2px;
+    border-right: 3px solid #cc7000;
+    border-bottom: 3px solid #cc7000;
+    float: right;
+  }
+  body #content #questions .questions-content .session-info .clear-questions-button:active {
+    background-color: #cc7000;
+  }
   body #content #questions .questions-content .session-info .session-title {
     font-size: 240%;
     font-weight: 700;
