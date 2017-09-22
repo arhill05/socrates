@@ -1,0 +1,183 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #FBFFFE;
+  color: #1B1B1E;
+  font-family: 'Open Sans';
+  font-size: 18px;
+  line-height: 32px;
+}
+button.primary {
+  margin: 0 8px;
+  cursor: pointer;
+  background-color: #ff8c00;
+  color: #FBFFFE;
+  border: none;
+  padding: 8px;
+  border-radius: 2px;
+  border-right: 3px solid #cc7000;
+  border-bottom: 3px solid #cc7000;
+}
+button.primary:active {
+  background-color: #cc7000;
+}
+.container {
+  width: 90%;
+  margin: 32px auto;
+}
+.container img {
+  border-radius: 4px;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.5);
+}
+.container h1,
+.container h2,
+.container h3 {
+  text-align: center;
+  color: #ff8c00;
+}
+.landing {
+  background: linear-gradient(-45deg, #0079B2, #00a3ef);
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.5);
+  color: #FBFFFE;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 92vh;
+  margin-bottom: 8vh;
+  flex-direction: column;
+  justify-content: center;
+}
+.landing h1 {
+  font-size: 60px;
+  margin: 0;
+  letter-spacing: 3px;
+}
+.landing h3 {
+  letter-spacing: 1px;
+}
+.landing img {
+  height: 35vh;
+}
+.landing button {
+  display: inline-block;
+  font-size: 24px;
+  padding: 16px !important;
+  margin-top: 32px !important;
+}
+.about {
+  width: 50%;
+  margin: 128px auto;
+}
+.engagement {
+  margin: 128px 0;
+  display: grid;
+  grid-template-areas: "image content";
+  grid-column-gap: 128px;
+}
+.engagement h3 {
+  margin-top: 0;
+  text-align: left;
+}
+.engagement img {
+  grid-area: image;
+}
+.engagement .engagement-content {
+  grid-area: content;
+}
+.time {
+  text-align: right;
+  margin: 128px 0;
+  display: grid;
+  grid-template-areas: "content image";
+  grid-column-gap: 128px;
+}
+.time h3 {
+  margin-top: 0;
+  text-align: right;
+}
+.time img {
+  grid-area: image;
+}
+.time .time-content {
+  grid-area: content;
+}
+.anywhere {
+  margin: 128px 0;
+  display: grid;
+  grid-template-areas: "image content";
+  grid-column-gap: 128px;
+}
+.anywhere h3 {
+  margin-top: 0;
+  text-align: left;
+}
+.anywhere img {
+  margin: 0 auto;
+  box-shadow: none;
+  display: block;
+  max-width: 75%;
+  max-height: 50%;
+  width: auto;
+  height: auto;
+  grid-area: image;
+}
+.anywhere .anywhere-content {
+  grid-area: content;
+}
+.features {
+  display: grid;
+  height: 50vh;
+  grid-auto-columns: 1fr;
+  grid-template-rows: .5fr 1fr 1fr;
+  grid-template-areas: "header header header" "feature-1 feature-2 feature-3" "feature-4 feature-5 feature-6";
+  padding: 32px;
+}
+.features h2 {
+  padding: 0;
+  margin: 0;
+  grid-area: header;
+  font-size: 200%;
+}
+.features div {
+  text-align: center;
+}
+.features i {
+  font-size: 5em;
+}
+.features .feature-1 {
+  grid-area: feature-1;
+}
+.features .feature-2 {
+  grid-area: feature-2;
+}
+.features .feature-3 {
+  grid-area: feature-3;
+}
+.features .feature-4 {
+  grid-area: feature-4;
+}
+.features .feature-5 {
+  grid-area: feature-5;
+}
+.features .feature-6 {
+  grid-area: feature-6;
+}
+button.try-it {
+  position: fixed;
+  bottom: 64px;
+  right: 64px;
+  font-size: 24px;
+  padding: 16px;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.5);
+}
+.gradient {
+  width: 100%;
+  background: linear-gradient(-45deg, #0079B2, #00a3ef);
+  color: #FBFFFE;
+  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.4);
+}
+.gradient h1,
+.gradient h2,
+.gradient h3 {
+  color: #FBFFFE;
+}

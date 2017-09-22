@@ -18,7 +18,8 @@ gulp.task('browserSync', function () {
             baseDir: 'app',
             routes: {
                 '/bower_components': 'bower_components',
-                '/node_modules': 'node_modules'
+                '/node_modules': 'node_modules',
+                '/public': 'public'
             }
         }
     })
@@ -26,7 +27,7 @@ gulp.task('browserSync', function () {
 
 gulp.task('less', function () {
     return gulp
-        .src('./app/less/**/*.less')
+        .src(['./app/less/**/main.less'])
         .pipe(less({
             paths: [path.join(__dirname, 'less', 'includes')]
         }))
@@ -34,12 +35,24 @@ gulp.task('less', function () {
         .pipe(browserSync.reload({stream: true}));
 })
 
+gulp.task('lessPublic', function () {
+    return gulp
+        .src(['./public/less/**/styles.less'])
+        .pipe(less({
+            paths: [path.join(__dirname, 'less', 'includes')]
+        }))
+        .pipe(gulp.dest('./public/css'))
+        .pipe(browserSync.reload({stream: true}));
+})
+
 gulp.task('watch', [
-    'browserSync', 'less'
+    'browserSync', 'less', 'lessPublic'
 ], function () {
     gulp.watch('./app/less/**/*.less', ['less']);
+    gulp.watch('./public/less/**/*.less', ['lessPublic']);
     gulp.watch('./app/*.html', browserSync.reload);
     gulp.watch('./app/js/**/*.js', browserSync.reload);
+    gulp.watch('./public/**/**.*', browserSync.reload);
 })
 
 gulp.task('build', function () {
@@ -80,8 +93,7 @@ gulp.task('build', function () {
         .pipe(gulp.dest('dist/img'));
 
     gulp
-        .src(['bower_components/toastr/toastr.min.css',
-            'node_modules/alertifyjs/build/css/alertify.min.css'])
+        .src(['bower_components/toastr/toastr.min.css', 'node_modules/alertifyjs/build/css/alertify.min.css'])
         .pipe(concatCSS('vendor.css'))
         .pipe(cleanCSS())
         .pipe(gulp.dest('dist/css'));
@@ -106,12 +118,7 @@ gulp.task('deployDev', function () {
         base: './dist',
         buffer: false
     })
-        .pipe(sftp({
-            host: ftpConfig.host,
-            user: ftpConfig.user,
-            pass: ftpConfig.password,
-            remotePath: '/srv/www/dev.andrewhill.io/socrates'
-        }));
+        .pipe(sftp({host: ftpConfig.host, user: ftpConfig.user, pass: ftpConfig.password, remotePath: '/srv/www/dev.andrewhill.io/socrates'}));
 
 })
 
@@ -125,11 +132,6 @@ gulp.task('deployProd', function () {
         base: './dist',
         buffer: false
     })
-        .pipe(sftp({
-            host: ftpConfig.host,
-            user: ftpConfig.user,
-            pass: ftpConfig.password,
-            remotePath: '/srv/www/socratesapp.co'
-        }));
+        .pipe(sftp({host: ftpConfig.host, user: ftpConfig.user, pass: ftpConfig.password, remotePath: '/srv/www/socratesapp.co'}));
 
 })

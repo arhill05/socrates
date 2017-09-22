@@ -14,6 +14,7 @@
             </div>
             <hr />
             <div class="questions">
+                <div class="no-questions" ng-if="questions.length == 0">No questions have been added yet. Ask one!</div>
                 <div class="question" ng-repeat="question in questions | orderBy:'-upvotes' track by question.$id">
                     <div class="question-content">
                         <span>{{question.questionText}}</span>
