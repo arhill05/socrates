@@ -1,0 +1,203 @@
+@import "variables";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body {
+  [ng\:cloak],
+  [ng-cloak],
+  [data-ng-cloak],
+  [x-ng-cloak],
+  .ng-cloak,
+  .x-ng-cloak {
+    display: none !important;
+  }
+  .red {
+    color: red;
+  }
+  color: $base-text-color;
+  margin: 0;
+  background-color: $dark-blue;
+  font-size: 16px;
+  line-height: 1.2;
+  font-family: "Open Sans", sans-serif;
+  p,
+  div,
+  span,
+  a,
+  button {
+    font-size: 100%;
+  }
+  h1 {
+    font-size: 200%;
+  }
+  .primary-button {
+    margin: 0 $single-space;
+    cursor: pointer;
+    background-color: $orange;
+    color: $white;
+    border: none;
+    padding: $single-space;
+    border-radius: 2px;
+    border-right: 3px solid darken($orange, 10%);
+    border-bottom: 3px solid darken($orange, 10%);
+    &:active {
+      background-color: darken($orange, 10%);
+    }
+  }
+  .secondary-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: $orange;
+    font-weight: bold;
+  }
+  .single-line-input {
+    background-color: $dark-blue;
+    color: $white;
+    font-weight: bold;
+    border: none;
+    border-radius: 2px;
+    border-bottom: 2px solid black;
+    margin: $double-space;
+    font-size: $double-space;
+    padding: $single-space;
+    text-align: center;
+    transition: 0.15s all linear;
+    &:focus {
+      outline: none !important;
+      border-bottom: 2px solid $white;
+      transition: 0.15s all linear;
+    }
+  }
+  /* common */
+  .action-buttons {
+    position: fixed;
+    top: $quad-space;
+    right: $quad-space;
+    button {
+      // .primary-button;
+    }
+  }
+  .loader {
+    position: fixed;
+    top: 40%;
+    left: 45%;
+    border: 16px solid #f3f3f3;
+    /* Light grey */
+    border-top: 16px solid #3498db;
+    /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+  }
+  input[type="text"],
+  input[type="password"] {
+    background-color: $dark-blue;
+    color: $white;
+    font-weight: bold;
+    border: none;
+    border-radius: 2px;
+    border-bottom: 2px solid black;
+    margin: $double-space;
+    font-size: $double-space;
+    padding: $single-space;
+    text-align: center;
+    transition: 0.15s all linear;
+    &:focus {
+      outline: none !important;
+      border-bottom: 2px solid $white;
+      transition: 0.15s all linear;
+    }
+  }
+  .modal-icon {
+    position: fixed;
+    right: $double-space;
+    bottom: $double-space;
+    font-size: $single-space * 3;
+    color: fade($white, 35%);
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: fade($base-text-color, 92%);
+    z-index: 10000;
+    transition: all 5s ease-in;
+    &.ng-enter {
+      opacity: 0;
+      transition: 0.25s linear;
+    }
+    &.ng-enter.ng-enter-active {
+      opacity: 1;
+    }
+    &.ng-leave {
+      opacity: 1;
+      transition: 0.25s linear;
+    }
+    &.ng-leave.ng-leave-active {
+      opacity: 0;
+    }
+    .modal {
+      padding: $triple-space;
+      z-index: 10001;
+      background-color: $white;
+      position: fixed;
+      top: 20%;
+      left: 35%;
+      right: 35%;
+      bottom: 35%;
+      box-shadow: 0 4px 4px 4px rgba(0, 0, 0, 0.3);
+    }
+    i.fa-times {
+      position: absolute;
+      top: $double-space;
+      right: $double-space;
+      cursor: pointer;
+    }
+  }
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .animate {
+    transition: left 0.25s ease;
+  }
+  .form-group {
+    margin: $double-space 0;
+  }
+  .form-actions {
+    margin-top: $single-space * 4;
+  }
+  .control-label {
+    font-weight: 700;
+    display: block;
+    margin-bottom: $single-space;
+  }
+  .hidden {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 1223px) {
+    .mobile-account-button {
+        border: none;
+        background: none;
+        position: fixed;
+        top: $single-space;
+        right: $single-space;
+        font-size: $quad-space;
+        color: $orange;
+    }
+}
+
+@media screen and (min-width: 1224px) {
+    .mobile-account-button {
+        display: none;
+    }
+}
