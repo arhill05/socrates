@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import * as firebase from 'firebase';
 import { AngularFireModule } from 'angularfire2';
@@ -15,6 +17,7 @@ import { AccountComponent } from './account/account.component';
 import { InfoComponent } from './info/info.component';
 import { SessionComponent } from './session/session.component';
 import { LoginComponent } from './login/login.component';
+import { SessionHttpService } from './services/session-http.service';
 
 const appRoutes: Routes = [
   {
@@ -54,9 +57,13 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    HttpClient,
+    SessionHttpService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

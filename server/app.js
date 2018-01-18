@@ -55,7 +55,7 @@ app.use(cookieParser());
 
 // #endregion systemic middleware
 
-app.use('/', index);
+app.use('/api', index);
 socketEvents(io);
 
 // #region error handling
