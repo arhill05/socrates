@@ -16,7 +16,7 @@ module.exports = (io) => {
             const sortedQuestions = session.questions.sort((a, b) => {
                 return b.upvotes - a.upvotes
             })
-            client.emit('questionUpdated', sortedQuestions);
+            client.emit('questionsUpdated', sortedQuestions);
         });
 
         client.on('updateQuestion', async(req) => {
@@ -34,8 +34,27 @@ module.exports = (io) => {
                 return b.upvotes - a.upvotes
             })
 
-            io.sockets.in(req.sessionId).emit('questionUpdated', sortedQuestions);
+            io.sockets.in(req.sessionId).emit('questionsUpdated', sortedQuestions);
+        })
 
+        client.on('createQuestion', async(req) => {
+            console.log('createquestion');
+            await Session.findOneAndUpdate({
+                id: req.sessionId
+            }, {
+                $push: {
+                    'questions': req.question
+                }
+            });
+            const session = await Session.findOne({
+                id: req.sessionId
+            })
+
+            const sortedQuestions = session.questions.sort((a, b) => {
+                return b.upvotes - a.upvotes
+            })
+
+            io.sockets.in(req.sessionId).emit('questionsUpdated', sortedQuestions);
         })
     });
 }

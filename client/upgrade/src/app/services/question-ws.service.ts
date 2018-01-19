@@ -24,7 +24,7 @@ export class QuestionWsService {
     this.socket.on('connect', () => { this.socket.emit('join session', sessionId) })
 
 
-    this.socket.on('questionUpdated', res => {
+    this.socket.on('questionsUpdated', res => {
       this.observer.next(res);
     });
 
@@ -33,6 +33,10 @@ export class QuestionWsService {
 
   sendQuestion = (questionReq: any): void => {
     this.socket.emit('updateQuestion', questionReq);
+  }
+
+  createQuestion = (questionReq: any): void => {
+    this.socket.emit('createQuestion', questionReq);
   }
 
   createObservable(): Observable<string> {

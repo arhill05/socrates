@@ -9,7 +9,7 @@
     </div>
     <div class="questions-container" *ngIf="!showLoading">
       <div class="question-input-group">
-        <input class="question-text-input" ng-model="newQuestion.questionText" />
+        <input class="question-text-input" [(ngModel)]="newQuestion.questionText" />
         <button class="question-text-button" (click)="addQuestion()">ASK</button>
       </div>
       <hr />
@@ -48,9 +48,9 @@
     </div>
     <div id="session-info" class="session-info">
       <div class="info-content">
-        <div class="session-title">{{session.title}}</div>
+        <div class="session-title">{{session?.title}}</div>
         <div class="session-id">Session ID: {{sessionId}}</div>
-        <div class="session-description">{{session.description}}</div>
+        <div class="session-description">{{session?.description}}</div>
       </div>
     </div>
   </div>
