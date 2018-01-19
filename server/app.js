@@ -4,6 +4,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const server = require('http').createServer(app);
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 const io = require('socket.io')(server, {
   path: '/ws',
   serveClient: false
@@ -20,6 +22,7 @@ require('dotenv').config({
 });
 require('./models/Question');
 require('./models/Session');
+const User = require('./models/User');
 
 // #endregion imports
 
@@ -52,7 +55,17 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(cookieParser());
+app.use(require('express-session')({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 // #endregion systemic middleware
 
 app.use('/api', index);

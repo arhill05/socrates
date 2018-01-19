@@ -6,6 +6,7 @@ import * as firebase from 'firebase/app';
 import { SessionHttpService } from '../services/session-http.service';
 import { QuestionWsService } from '../services/question-ws.service';
 import { SessionMetadata, Question, QuestionRequest } from '../../shared/interfaces';
+import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
   selector: 'app-session',
@@ -32,7 +33,6 @@ export class SessionComponent implements OnInit {
   ngOnInit() {
     this.getSessionAndQuestions();
   }
-
   getSessionAndQuestions = async () => {
     this.sessionId = this.route.snapshot.params.sessionId;
     this.sessionHttpService.getSessionMetadataById(this.sessionId).subscribe(session => {
@@ -41,6 +41,8 @@ export class SessionComponent implements OnInit {
     this.questionsService.getQuestions(this.sessionId).subscribe(questions => {
       this.questions = questions;
     });
+
+    this.upvotedQuestions = JSON.parse(localStorage.getItem('upvotedQuestions')) || [];
 
     const user = await this.afAuth.authState.toPromise().then(currentUser => { return currentUser })
   }
@@ -66,6 +68,7 @@ export class SessionComponent implements OnInit {
       question
     };
     this.questionsService.sendQuestion(questionReq);
+    localStorage.setItem('upvotedQuestions', JSON.stringify(this.upvotedQuestions));
   }
 
   addQuestion = () => {
