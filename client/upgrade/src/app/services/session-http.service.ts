@@ -10,4 +10,12 @@ export class SessionHttpService {
   getSessionById = (id: string) => {
     return this.http.get(`/api/sessions/${id}`).map(res => res);
   }
+
+  getSessionMetadataById = (id: string) => {
+    return this.http.get(`/api/sessions/${id}/meta`).map(res => res);
+  }
+
+  createSession = (session: any) => {
+    return this.http.post('/api/sessions', session).map(res => res);
+  }
 }

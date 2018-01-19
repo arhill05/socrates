@@ -14,8 +14,8 @@
       </div>
       <hr />
       <div class="questions">
-        <div class="no-questions" *ngIf="(!questionsRef | async)">No questions have been added yet. Ask one!</div>
-        <div class="question" *ngFor="let question of questionsRef | async">
+        <div class="no-questions" *ngIf="(!questions)">No questions have been added yet. Ask one!</div>
+        <div class="question" *ngFor="let question of questions">
           <div class="question-content">
             <span>{{question.questionText}}</span>
           </div>
@@ -48,9 +48,9 @@
     </div>
     <div id="session-info" class="session-info">
       <div class="info-content">
-        <div class="session-title">{{(sessionRef | async)?.title}}</div>
+        <div class="session-title">{{session.title}}</div>
         <div class="session-id">Session ID: {{sessionId}}</div>
-        <div class="session-description">{{(sessionRef | async)?.description}}</div>
+        <div class="session-description">{{session.description}}</div>
       </div>
     </div>
   </div>

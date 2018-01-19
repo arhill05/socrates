@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
+import { SessionHttpService } from '../services/session-http.service';
+import { QuestionWsService } from '../services/question-ws.service';
 
 @Component({
   selector: 'app-session',
@@ -12,12 +14,14 @@ import * as firebase from 'firebase/app';
 export class SessionComponent implements OnInit {
   sessionId: any;
   sessionRef: any;
+  session: any;
   user: any;
-  questionsRef: any;
-  upvotedQuestionsRef: any;
+  questions: any[] = [];
   upvotedQuestions: any[] = [];
 
-  constructor(private route: ActivatedRoute,
+  constructor(private sessionHttpService: SessionHttpService,
+    private questionsService: QuestionWsService,
+    private route: ActivatedRoute,
     private afAuth: AngularFireAuth,
     private db: AngularFireDatabase) { }
 
@@ -27,22 +31,18 @@ export class SessionComponent implements OnInit {
 
   getSessionAndQuestions = async () => {
     this.sessionId = this.route.snapshot.params.sessionId;
+    this.sessionHttpService.getSessionMetadataById(this.sessionId).subscribe(session => {
+      this.session = session;
+    });
+    this.questionsService.getQuestions(this.sessionId).subscribe(questions => {
+      this.questions = questions;
+    });
+
     this.sessionRef = this.db
       .object(`sessions/${this.sessionId}`)
       .valueChanges();
 
-    this.questionsRef = this.db
-      .list(`sessions_questions/${this.sessionId}`)
-      .valueChanges();
-
     const user = await this.afAuth.authState.toPromise().then(currentUser => { return currentUser })
-    console.log(user);
-    this.upvotedQuestionsRef = this.db
-      .list(`users_questions/${user}`);
-
-    this.upvotedQuestions = this.upvotedQuestionsRef.valueChanges().map(changes => {
-      return changes;
-    })
   }
 
   userIsAdmin = () => {
@@ -53,8 +53,20 @@ export class SessionComponent implements OnInit {
     return null;
   }
 
-  upvoteQuestion = () => {
-    return null;
+  upvoteQuestion = (question: any) => {
+    const questionIndex = this.upvotedQuestions.indexOf(question._id);
+    if (questionIndex >= 0) {
+      question.upvotes--;
+      this.upvotedQuestions.splice(questionIndex, 1);
+    } else {
+      question.upvotes++;
+      this.upvotedQuestions.push(question._id);
+    }
+    const questionReq = {
+      sessionId: this.sessionId,
+      question
+    };
+    this.questionsService.sendQuestion(questionReq);
   }
 
   addQuestion = () => {

@@ -18,6 +18,7 @@ import { InfoComponent } from './info/info.component';
 import { SessionComponent } from './session/session.component';
 import { LoginComponent } from './login/login.component';
 import { SessionHttpService } from './services/session-http.service';
+import { QuestionWsService } from './services/question-ws.service';
 
 const appRoutes: Routes = [
   {
@@ -62,7 +63,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     HttpClient,
-    SessionHttpService
+    SessionHttpService,
+    QuestionWsService
   ],
   bootstrap: [AppComponent]
 })
