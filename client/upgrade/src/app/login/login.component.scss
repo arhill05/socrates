@@ -1,0 +1,58 @@
+@import '../../variables';
+#login {
+  button {
+    margin: 0 $single-space;
+    cursor: pointer;
+    background-color: $orange;
+    color: $white;
+    border: none;
+    padding: $single-space;
+    border-radius: 2px;
+    border-right: 3px solid darken($orange, 10%);
+    border-bottom: 3px solid darken($orange, 10%);
+    &:active {
+      background-color: darken($orange, 10%);
+    }
+    margin: $quad-space;
+  }
+}
+
+@media only screen and (max-width: 1223px) and (min-width: 320px) {
+  #login {
+    padding: $double-space;
+    label {
+      margin-bottom: -$single-space;
+      display: block;
+    }
+  }
+}
+
+@media only screen and (min-width: 1224px) {
+  #login {
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    form {
+      color: white;
+      margin: 4em auto;
+      width: 100%;
+      text-align: center;
+      .input-group {
+        margin: $quad-space;
+        label {
+          display: block;
+          margin-bottom: -$double-space;
+        }
+      }
+    }
+  }
+}
+h1 {
+  text-align: center;
+  color: $white;
+}
+
+div {
+  color: $white;
+}

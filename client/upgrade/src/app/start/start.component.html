@@ -1,6 +1,6 @@
 <div id="start">
   <div id="action-buttons" class="action-buttons">
-    <button *ngIf="!user || user.isAnonymous" (click)="onLoginClick()" class="primary-button login-button">Login</button>
+    <a routerLink="/login"><button *ngIf="!user || user.isAnonymous" (click)="onLoginClick()" class="primary-button login-button">Login</button></a>
     <button *ngIf="user && !user.isAnonymous" (click)="onAccountClick()" class="primary-button login-button">Account</button>
     <button *ngIf="user" (click)="signOut()" class="primary-button login-button">Sign Out</button>
   </div>

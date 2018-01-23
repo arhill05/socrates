@@ -1,36 +1,46 @@
 import { Component, OnInit } from '@angular/core';
-import { SessionHttpService } from '../services/session-http.service';
-import { QuestionWsService } from '../services/question-ws.service';
+import { AuthService } from '../services/auth.service';
+import { create } from 'domain';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.sass']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  questions: any[] = [];
-  session: any;
-  constructor(private sessionService: SessionHttpService,
-    private questionsService: QuestionWsService) { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
-    this.sessionService.getSessionMetadataById('999999').subscribe(session => {
-      console.log(session);
-      this.session = session;
-    });
 
-    this.questionsService.getQuestions('999999').subscribe(questions => {
-      this.questions = questions;
-    })
   }
 
-  sendQuestion = () => {
-    if(this.questions.length) {
-      const question = this.questions[0];
-      question.upvotes++;
-      const questionReq = { sessionId: '999999', question };
-      this.questionsService.sendQuestion(questionReq);
+  login = (credentials: any) => {
+    console.log(credentials);
+    this.auth.login(credentials);
+  }
+
+  createAccount = (formData: any) => {
+    console.log(formData);
+    if (this.isValid(formData)) {
+      this.auth.create(formData);
     }
   }
 
+  logout = () => {
+    this.auth.logout();
+  }
+
+  isValid = (formData: any): boolean => {
+    const password = (<HTMLFormElement>document.getElementById('password'));
+    const confirmPassword = (<HTMLFormElement>document.getElementById('confirmPassword'));
+    if (password.value !== confirmPassword.value) {
+      confirmPassword.setCustomValidity('Passwords must match!');
+      confirmPassword.reportValidity();
+      return false;
+    } else {
+      confirmPassword.setCustomValidity('');
+      confirmPassword.reportValidity();
+      return true;
+    }
+  }
 }

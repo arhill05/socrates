@@ -19,6 +19,7 @@ import { SessionComponent } from './session/session.component';
 import { LoginComponent } from './login/login.component';
 import { SessionHttpService } from './services/session-http.service';
 import { QuestionWsService } from './services/question-ws.service';
+import { AuthService } from './services/auth.service';
 
 const appRoutes: Routes = [
   {
@@ -64,7 +65,8 @@ const appRoutes: Routes = [
   providers: [
     HttpClient,
     SessionHttpService,
-    QuestionWsService
+    QuestionWsService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
