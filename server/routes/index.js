@@ -9,6 +9,7 @@ const authController = require('../controllers/authController');
 router.get('/sessions', sessionController.getSessions);
 router.get('/sessions/:id', sessionController.getSessionById);
 router.get('/sessions/:id/meta', sessionController.getSessionMetaById);
+router.get('/sessions/many/:ownerUid', sessionController.getManySessionsByOwnerUid);
 router.post('/sessions', sessionController.createSession);
 
 router.get('/questions', questionController.getQuestions);

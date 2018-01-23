@@ -26,7 +26,7 @@ export class AuthService {
   }
 
   getUser = () => {
-    return localStorage.getItem('user');
+    return JSON.parse(localStorage.getItem('user'));
   }
 
   login = (credentials: any) => {

@@ -17,7 +17,12 @@ export class SessionHttpService {
     return this.http.get<SessionMetadata>(`/api/sessions/${id}/meta`).map(res => res);
   }
 
-  createSession = (session: any) => {
-    return this.http.post('/api/sessions', session).map(res => res);
+  getManySessionsByOwnerUid = (id: string): Observable<SessionMetadata[]> => {
+    return this.http.get<SessionMetadata[]>(`/api/sessions/many/${id}`).map(res => res);
+  }
+
+  createSession = (session: SessionMetadata) => {
+    console.log('test');
+    return this.http.post<any>('/api/sessions', session).map(res => res);
   }
 }

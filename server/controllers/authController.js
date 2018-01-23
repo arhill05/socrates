@@ -5,7 +5,8 @@ const User = require('../models/User');
 exports.login = async(req, res, next) => {
     const userResponse = {
         id: req.user._id,
-        ownedSessions: req.user.ownedSessions
+        ownedSessions: req.user.ownedSessions,
+        username: req.user.username
     };
     res.json(userResponse);
 }
@@ -23,7 +24,8 @@ exports.createAccount = async(req, res, next) => {
             }
             const userResponse = {
                 id: user._id,
-                ownedSessions: user.ownedSessions
+                ownedSessions: user.ownedSessions,
+                username: user.username
             };
             return res.json(userResponse);
         });

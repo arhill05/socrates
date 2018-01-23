@@ -21,8 +21,26 @@ exports.getSessionById = async(req, res, next) => {
     }
 }
 
-exports.getManySessionsById = async(req, res, next) => {
-    res.status(200).send();
+exports.getManySessionsByOwnerUid = async(req, res, next) => {
+    try {
+        console.log(req.params.ownerUid);
+        const sessions = await Session.find({
+            'ownerUid': req.params.ownerUid
+        });
+        const response = sessions.map(session => {
+            return {
+                id: session.id,
+                description: session.description,
+                title: session.title,
+                ownerUid: session.ownerUid
+            }
+        });
+
+        console.log(response);
+        return res.json(response);
+    } catch (err) {
+        next(err);
+    }
 }
 
 exports.getSessionMetaById = async(req, res, next) => {
@@ -44,9 +62,16 @@ exports.getSessionMetaById = async(req, res, next) => {
 }
 
 exports.createSession = async(req, res, next) => {
+    console.log(req.body);
     try {
         const session = await new Session(req.body).save();
-        res.send('Successfully created session');
+        const response = {
+            id: session.id,
+            description: session.description,
+            title: session.title,
+            ownerUid: session.ownerUid
+        };
+        res.json(response);
     } catch (err) {
         next(err);
     }
