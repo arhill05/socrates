@@ -8,6 +8,6 @@ const UserSchema = new Schema({
     ownedSessions: [String]
 });
 
-UserSchema.plugin(passportLocalMongoose);
+UserSchema.plugin(passportLocalMongoose, {usernameField: 'username'});
 
 module.exports = mongoose.model('User', UserSchema);

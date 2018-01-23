@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const passport = require('passport');
 mongoose.Promise = global.Promise;
 const Session = require('../models/Session');
+const User = require('../models/User');
 const {
   Question
 } = require('../models/Question');
@@ -78,6 +80,35 @@ router.get('/questions/:id', async(req, res, next) => {
 router.post('/questions', async(req, res, next) => {
   const question = await new Question(req.body).save();
   res.send('Successfully created question');
+})
+
+router.post('/authenticate', passport.authenticate('local'), (req, res) => {
+  const userResponse = {
+    id: req.user._id,
+    ownedSessions: req.user.ownedSessions
+  };
+  res.json(userResponse);
+});
+
+router.post('/createAccount', async(req, res, next) => {
+  console.log(req.body);
+  const user = await User.register(new User({
+    username: req.body.createUsername
+  }), req.body.createPassword, (err, user, info) => {
+    if (err) {
+      return next(err);
+    }
+    req.login(user, (err) => {
+      if (err) {
+        return next(err);
+      }
+      const userResponse = {
+        id: user._id,
+        ownedSessions: user.ownedSessions
+      };
+      return res.json(userResponse);
+    });
+  });
 })
 
 module.exports = router;
