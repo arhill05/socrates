@@ -32,7 +32,7 @@ const appRoutes: Routes = [
     component: SessionComponent
   },
   {
-    path: 'login',
+    path: 'user/login',
     component: LoginComponent
   },
   {
@@ -40,7 +40,7 @@ const appRoutes: Routes = [
     component: InfoComponent
   },
   {
-    path: 'account',
+    path: 'user/account',
     component: AccountComponent
   }
 ];

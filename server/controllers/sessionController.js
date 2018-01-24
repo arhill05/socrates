@@ -23,10 +23,12 @@ exports.getSessionById = async(req, res, next) => {
 
 exports.getManySessionsByOwnerUid = async(req, res, next) => {
     try {
-        console.log(req.params.ownerUid);
         const sessions = await Session.find({
             'ownerUid': req.params.ownerUid
         });
+        if (sessions === null) {
+            return res.json(null);
+        }
         const response = sessions.map(session => {
             return {
                 id: session.id,
@@ -35,8 +37,6 @@ exports.getManySessionsByOwnerUid = async(req, res, next) => {
                 ownerUid: session.ownerUid
             }
         });
-
-        console.log(response);
         return res.json(response);
     } catch (err) {
         next(err);
@@ -48,6 +48,9 @@ exports.getSessionMetaById = async(req, res, next) => {
         const session = await Session.findOne({
             id: req.params.id
         });
+        if (session === null) {
+            return res.json(null);
+        }
         const response = {
             id: session.id,
             description: session.description,

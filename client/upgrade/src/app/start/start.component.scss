@@ -1,6 +1,13 @@
 @import "../../variables";
 
 #start {
+  display: flex;
+  color: $white;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
   @media only screen and (max-width: 1223px) and (min-width: 320px) {
     .mobile-account-button {
       border: none;

@@ -3,22 +3,25 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase';
 import { AngularFireObject } from 'angularfire2/database/interfaces';
+import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  db: any;
-  sessions: any[];
-  sessionsRef: any;
-
-  constructor(db: AngularFireDatabase) {
-    this.db = db;
+  isLoggedIn: boolean;
+  constructor(private router: Router,
+  private auth: AuthService) {
   }
   ngOnInit() {
+    this.isLoggedIn = this.auth.getUser() !== null;
+    this.auth.getAuthStatus().subscribe(isLoggedIn => {
+      this.isLoggedIn = isLoggedIn;
+    });
   }
 }
