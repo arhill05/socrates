@@ -5,7 +5,8 @@ mongoose.Promise = global.Promise;
 const questionSchema = new Schema({
     questionText: String,
     upvotes: Number,
-    createdOn: Date
+    createdOn: Date,
+    sessionId: String
 });
 
 questionSchema.pre('save', (next) => {

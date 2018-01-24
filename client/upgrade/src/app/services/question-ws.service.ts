@@ -39,6 +39,14 @@ export class QuestionWsService {
     this.socket.emit('createQuestion', questionReq);
   }
 
+  removeQuestion = (question: any): void => {
+    this.socket.emit('removeQuestion', question);
+  }
+
+  clearQuestions = (sessionId: string): void => {
+    this.socket.emit('clearQuestions', sessionId);
+  }
+
   createObservable(): Observable<string> {
     return new Observable(observer => {
       this.observer = observer;

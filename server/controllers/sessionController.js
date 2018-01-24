@@ -65,7 +65,6 @@ exports.getSessionMetaById = async(req, res, next) => {
 }
 
 exports.createSession = async(req, res, next) => {
-    console.log(req.body);
     try {
         const session = await new Session(req.body).save();
         const response = {

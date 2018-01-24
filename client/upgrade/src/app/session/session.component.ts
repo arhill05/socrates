@@ -15,6 +15,7 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./session.component.scss']
 })
 export class SessionComponent implements OnInit, AfterViewInit {
+  confirmClear: boolean = false;
   sessionId: string;
   session: SessionMetadata;
   user: any;
@@ -23,7 +24,8 @@ export class SessionComponent implements OnInit, AfterViewInit {
   upvotedQuestions: string[] = [];
   newQuestion: Question = {
     questionText: null,
-    upvotes: 0
+    upvotes: 0,
+    sessionId: this.sessionId
   };
 
   constructor(private sessionHttpService: SessionHttpService,
@@ -55,7 +57,8 @@ export class SessionComponent implements OnInit, AfterViewInit {
   }
 
   clearQuestions = () => {
-    return null;
+    this.questionsService.clearQuestions(this.sessionId);
+    this.confirmClear = false;
   }
 
   upvoteQuestion = (question: Question) => {
@@ -66,33 +69,28 @@ export class SessionComponent implements OnInit, AfterViewInit {
       question.upvotes++;
       this.upvotedQuestions.push(question._id);
     }
-    const questionReq = {
-      sessionId: this.sessionId,
-      question
-    };
-    this.questionsService.sendQuestion(questionReq);
+
+    this.questionsService.sendQuestion(question);
     localStorage.setItem('upvotedQuestions', JSON.stringify(this.upvotedQuestions));
   }
 
   addQuestion = () => {
-    const questionReq: QuestionRequest = {
-      sessionId: this.sessionId,
-      question: this.newQuestion
-    };
-    this.questionsService.createQuestion(questionReq);
+    this.newQuestion.sessionId = this.sessionId;
+    this.questionsService.createQuestion(this.newQuestion);
     this.newQuestion = {
       _id: null,
       questionText: null,
-      upvotes: 0
+      upvotes: 0,
+      sessionId: this.sessionId
     };
   }
 
-  remove = () => {
-    return null;
+  remove = (question: Question) => {
+    this.questionsService.removeQuestion(question);
   }
 
-  edit = () => {
-    return null;
+  edit = (question: Question) => {
+    this.questionsService.sendQuestion(question);
   }
 
   onHomeClick = () => {

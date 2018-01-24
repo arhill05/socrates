@@ -12,6 +12,7 @@ export interface Question {
     upvotes: number;
     _id?: string;
     questionText: string;
+    sessionId: string;
 }
 
 export interface SessionMetadata {
