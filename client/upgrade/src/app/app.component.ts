@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit, ChangeDetectorRef } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase';
@@ -12,21 +12,25 @@ import { AuthService } from './services/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterContentInit {
   title = 'app';
   isLoggedIn: boolean;
   activeSessionId: string;
   constructor(private router: Router,
-  private auth: AuthService) {
+  private auth: AuthService,
+  private cdRef: ChangeDetectorRef) {
   }
   ngOnInit() {
     this.isLoggedIn = this.auth.getUser() !== null;
     this.auth.getAuthStatus().subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;
     });
-    this.activeSessionId = this.auth.getActiveSession();
+  }
+
+  ngAfterContentInit() {
     this.auth.getActiveSessionSubscription().subscribe(sessionId => {
       this.activeSessionId = sessionId;
+      this.cdRef.detectChanges(); // get rid of ExpressionChangedAfterCheck error
     })
   }
 }

@@ -1,6 +1,6 @@
 @import '../variables';
-
-#mobile-nav {
+@media screen and (max-width: 1223px) {
+  #mobile-nav {
     position: fixed;
     background-color: $dark-blue;
     top: 0;
@@ -10,17 +10,23 @@
     text-align: center;
     border-bottom: 2px solid $light-gray;
     i {
-        margin: $single-space auto;
+      margin: $single-space auto;
+      color: $orange;
+      font-size: 200%;
+      flex-grow: 1;
+      color: lighten($orange, 40%);
+      opacity: 0.6; //color: mix($orange, #999999);
+      &.active-nav {
         color: $orange;
-        font-size: 200%;
-        flex-grow: 1;
-        color: lighten($orange, 40%);
-        opacity: 0.6;
-        //color: mix($orange, #999999);
-        &.active-nav {
-            color: $orange;
-            opacity: 1;
-            outline: none;
-        }
+        opacity: 1;
+        outline: none;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1224px) {
+    #mobile-nav {
+        display: none;
     }
 }

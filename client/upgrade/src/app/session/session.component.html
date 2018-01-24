@@ -22,9 +22,9 @@
                 <i class="fa fa-angle-double-up" aria-hidden="true"></i>
               </div>
               <div *ngIf="!question.isEditing" class="upvote-count" ng-class="{orange: userHasUpvoted(question)}">{{question.upvotes}}</div>
-              <input class="upvote-input" *ngIf="userIsAdmin() && question.isEditing" ng-model="question.upvotes" />
+              <input class="upvote-input" *ngIf="userIsAdmin && question.isEditing" ng-model="question.upvotes" />
             </div>
-            <div *ngIf="userIsAdmin() && !question.isRemoving && !question.isEditing" class="admin-actions">
+            <div *ngIf="userIsAdmin && !question.isRemoving && !question.isEditing" class="admin-actions">
               <i class="fa fa-trash" (click)="question.isRemoving = true" aria-hidden="true"></i>
               <i class="fa fa-pencil" (click)="question.isEditing = true" aria-hidden="true"></i>
             </div>
@@ -43,6 +43,7 @@
     <div id="session-info" class="session-info">
       <div class="info-content">
         <div class="session-title">{{session?.title}}</div>
+        <div *ngIf="userIsAdmin">You own this session</div>
         <div class="session-id">Session ID: {{sessionId}}</div>
         <div class="session-description">{{session?.description}}</div>
       </div>

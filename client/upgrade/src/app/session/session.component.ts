@@ -6,7 +6,7 @@ import * as firebase from 'firebase/app';
 import { SessionHttpService } from '../services/session-http.service';
 import { QuestionWsService } from '../services/question-ws.service';
 import { SessionMetadata, Question, QuestionRequest } from '../../shared/interfaces';
-import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+import { OnDestroy, AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -14,10 +14,11 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './session.component.html',
   styleUrls: ['./session.component.scss']
 })
-export class SessionComponent implements OnInit {
+export class SessionComponent implements OnInit, AfterViewInit {
   sessionId: string;
   session: SessionMetadata;
   user: any;
+  userIsAdmin: boolean;
   questions: Question[] = [];
   upvotedQuestions: string[] = [];
   newQuestion: Question = {
@@ -35,23 +36,22 @@ export class SessionComponent implements OnInit {
   ngOnInit() {
     this.getSessionAndQuestions();
   }
+
+  ngAfterViewInit() {
+    this.auth.setActiveSession(this.sessionId);
+  }
   getSessionAndQuestions = async () => {
     this.sessionId = this.route.snapshot.params.sessionId;
-    this.auth.setActiveSession(this.sessionId);
+    this.user = this.auth.getUser();
     this.sessionHttpService.getSessionMetadataById(this.sessionId).subscribe(session => {
       this.session = session;
+      this.userIsAdmin = (this.user && this.session && this.user.id === this.session.ownerUid)
     });
     this.questionsService.getQuestions(this.sessionId).subscribe(questions => {
       this.questions = questions;
     });
 
     this.upvotedQuestions = JSON.parse(localStorage.getItem('upvotedQuestions')) || [];
-
-    const user = await this.afAuth.authState.toPromise().then(currentUser => { return currentUser })
-  }
-
-  userIsAdmin = () => {
-    return false;
   }
 
   clearQuestions = () => {

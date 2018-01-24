@@ -21,18 +21,18 @@ export class ActionButtonsComponent implements OnInit {
   }
 
   onAccountClick = (): void => {
-    this.router.navigateByUrl('/account');
+    this.router.navigateByUrl('/user/account');
   }
 
   onLogoutClick = (): void => {
     this.auth.logout();
-    if(this.router.url === '/account') {
+    if(this.router.url === '/user/account') {
       this.router.navigateByUrl('/');
     }
   }
 
   onLoginClick = (): void => {
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/user/login');
   }
 
 }
