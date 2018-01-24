@@ -15,9 +15,9 @@ export class LoginComponent implements OnInit {
 
   }
 
-  login = (credentials: any) => {
+  login = async (credentials: any) => {
     console.log(credentials);
-    this.auth.login(credentials);
+    await this.auth.login(credentials);
     this.router.navigateByUrl('/account');
   }
 

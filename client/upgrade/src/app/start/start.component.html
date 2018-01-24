@@ -1,9 +1,4 @@
 <div id="start">
-  <div id="action-buttons" class="action-buttons">
-    <a routerLink="/login"><button *ngIf="!user || user.isAnonymous" (click)="onLoginClick()" class="primary-button login-button">Login</button></a>
-    <button *ngIf="user && !user.isAnonymous" (click)="onAccountClick()" class="primary-button login-button">Account</button>
-    <button *ngIf="user" (click)="signOut()" class="primary-button login-button">Sign Out</button>
-  </div>
   <h1>Socrates</h1>
   <h3>Just ask.</h3>
   <img src="../assets/socratesOrange.png" />

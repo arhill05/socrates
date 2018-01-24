@@ -1,8 +1,4 @@
 <div id="account">
-  <div id="action-buttons" class="action-buttons">
-    <button (click)="onHomeClick()">Home</button>
-    <button *ngIf="user" (click)="onLogoutClick()" class="login-button">Logout</button>
-  </div>
   <h2 *ngIf="user">Hello, {{user.username}}</h2>
   <div class="your-sessions">
     <span class="your-sessions-text">Your sessions: </span>

@@ -20,6 +20,7 @@ import { LoginComponent } from './login/login.component';
 import { SessionHttpService } from './services/session-http.service';
 import { QuestionWsService } from './services/question-ws.service';
 import { AuthService } from './services/auth.service';
+import { ActionButtonsComponent } from './action-buttons/action-buttons.component';
 
 const appRoutes: Routes = [
   {
@@ -51,7 +52,8 @@ const appRoutes: Routes = [
     AccountComponent,
     InfoComponent,
     SessionComponent,
-    LoginComponent
+    LoginComponent,
+    ActionButtonsComponent
   ],
   imports: [
     BrowserModule,

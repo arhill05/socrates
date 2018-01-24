@@ -17,7 +17,6 @@ export class AccountComponent implements OnInit {
   ngOnInit() {
     this.user = this.auth.getUser();
     if (this.user) {
-      console.log(this.user);
       this.sessionHttp.getManySessionsByOwnerUid(this.user.id)
         .subscribe((sessions) => {
           sessions.forEach(session => this.ownedSessions.push(session));

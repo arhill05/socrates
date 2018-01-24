@@ -1,0 +1,21 @@
+@import '../../variables';
+
+.action-buttons {
+    position: fixed;
+    top: $quad-space;
+    right: $quad-space;
+    button {
+        margin: 0 $single-space;
+        cursor: pointer;
+        background-color: $orange;
+        color: $white;
+        border: none;
+        padding: $single-space;
+        border-radius: 2px;
+        border-right: 3px solid darken($orange, 10%);
+        border-bottom: 3px solid darken($orange, 10%);
+        &:active {
+          background-color: darken($orange, 10%);
+        }
+    }
+  }

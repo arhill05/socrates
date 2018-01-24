@@ -69,14 +69,7 @@ body {
     }
   }
   /* common */
-  .action-buttons {
-    position: fixed;
-    top: $quad-space;
-    right: $quad-space;
-    button {
-      // .primary-button;
-    }
-  }
+
   .loader {
     position: fixed;
     top: 40%;
