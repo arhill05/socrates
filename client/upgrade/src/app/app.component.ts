@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
     this.auth.getAuthStatus().subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;
     });
+    this.activeSessionId = this.auth.getActiveSession();
     this.auth.getActiveSessionSubscription().subscribe(sessionId => {
       this.activeSessionId = sessionId;
     })
