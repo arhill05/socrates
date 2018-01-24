@@ -7,6 +7,7 @@ import { SessionHttpService } from '../services/session-http.service';
 import { QuestionWsService } from '../services/question-ws.service';
 import { SessionMetadata, Question, QuestionRequest } from '../../shared/interfaces';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-session',
@@ -28,13 +29,15 @@ export class SessionComponent implements OnInit {
     private questionsService: QuestionWsService,
     private route: ActivatedRoute,
     private afAuth: AngularFireAuth,
-    private db: AngularFireDatabase) { }
+    private db: AngularFireDatabase,
+    private auth: AuthService) { }
 
   ngOnInit() {
     this.getSessionAndQuestions();
   }
   getSessionAndQuestions = async () => {
     this.sessionId = this.route.snapshot.params.sessionId;
+    this.auth.setActiveSession(this.sessionId);
     this.sessionHttpService.getSessionMetadataById(this.sessionId).subscribe(session => {
       this.session = session;
     });

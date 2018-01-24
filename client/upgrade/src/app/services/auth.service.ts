@@ -10,9 +10,12 @@ export interface Credentials {
 
 @Injectable()
 export class AuthService {
-  observer: Observer<any>
+  authObserver: Observer<any>
+  activeSessionObserver: Observer<any>
+  activeSessionId: string;
   baseUrl: string;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   create = (createReq: any) => {
     this.http.post<any>('api/createAccount', createReq)
@@ -20,7 +23,7 @@ export class AuthService {
       .subscribe(
       data => {
         localStorage.setItem('user', JSON.stringify(data))
-        this.observer.next(true);
+        this.authObserver.next(true);
       },
       error => {
         // TODO : prettier alerts
@@ -42,7 +45,7 @@ export class AuthService {
         data => {
           localStorage.setItem('user', JSON.stringify(data))
           resolve(true);
-          this.observer.next(true);
+          this.authObserver.next(true);
         },
         error => {
           console.log(error);
@@ -57,16 +60,31 @@ export class AuthService {
 
   logout = () => {
     localStorage.removeItem('user');
-    this.observer.next(false);
+    this.authObserver.next(false);
   }
 
   getAuthStatus = () => {
-    return this.createObservable();
+    return this.createAuthObservable();
   }
 
-  createObservable(): Observable<boolean> {
+  createAuthObservable(): Observable<boolean> {
     return new Observable(observer => {
-      this.observer = observer;
+      this.authObserver = observer;
     });
+  }
+
+  getActiveSession = () => {
+    return this.activeSessionId;
+  }
+
+  getActiveSessionSubscription = (): Observable<string> => {
+    return new Observable(observer => {
+      this.activeSessionObserver = observer;
+    })
+  }
+
+  setActiveSession = (id: string) => {
+    this.activeSessionId = id;
+    this.activeSessionObserver.next(id);
   }
 }

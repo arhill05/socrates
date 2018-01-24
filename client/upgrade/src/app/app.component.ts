@@ -15,6 +15,7 @@ import { AuthService } from './services/auth.service';
 export class AppComponent implements OnInit {
   title = 'app';
   isLoggedIn: boolean;
+  activeSessionId: string;
   constructor(private router: Router,
   private auth: AuthService) {
   }
@@ -23,5 +24,8 @@ export class AppComponent implements OnInit {
     this.auth.getAuthStatus().subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;
     });
+    this.auth.getActiveSessionSubscription().subscribe(sessionId => {
+      this.activeSessionId = sessionId;
+    })
   }
 }

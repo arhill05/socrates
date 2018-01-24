@@ -1,53 +1,56 @@
 @import '../../variables';
-
 @mixin single-line-input {
-  background-color: $dark-blue;
-  color: $white;
+  background-color: $white;
   font-weight: bold;
   border: none;
   border-radius: 2px;
   border-bottom: 2px solid black;
-  margin: $double-space;
+  margin: $double-space 0;
   font-size: $double-space;
   padding: $single-space;
   text-align: center;
   transition: 0.15s all linear;
   &:focus {
     outline: none !important;
-    border-bottom: 2px solid $white;
     transition: 0.15s all linear;
   }
 }
 
 %single-line-input {
-    @include single-line-input;
+  @include single-line-input;
 }
 
 @media only screen and (max-width: 1223px) and (min-width: 320px) {
   #account {
-    .session-add-form {
-      background-color: $light-blue;
+    color: $base-text-color;
+    margin-top: $single-space * 8;
+    h2,
+    .your-sessions {
       color: $white;
+      padding: $single-space;
+    }
+    .session-add-form {
+      background-color: $white;
       padding: $double-space;
-      margin: $double-space;
-      border: 2px solid $light-gray;
+      margin: $double-space 0;
+      border-top: 2px solid $light-gray;
+      border-bottom: 2px solid $light-gray;
       input {
         @include single-line-input;
         text-align: left;
-        background-color: $light-blue;
       }
       textarea {
         @include single-line-input;
-        border: 2px solid black;
+        border-bottom: 2px solid black;
         text-align: left;
-        background-color: $light-blue;
+        background-color: $white;
         &:focus {
-          border: 2px solid $white;
           outline: none !important;
         }
       }
     }
     .sessions {
+      color: $white;
       margin-top: $quad-space;
     }
     .session {
@@ -73,68 +76,68 @@
 }
 
 @media only screen and (min-width: 1224px) {
-    #account {
-        color: white;
-        padding: $single-space * 4;
-        .your-sessions {
-            & .your-sessions-text {
-                display: block;
-                font-size: 150%;
-                font-weight: 700;
-            }
-            & .primary-button {
-                margin-top: $double-space;
-            }
-        }
-        .session-add-form {
-            background-color: $white;
-            color: $base-text-color;
-            padding: $double-space;
-            border: 2px solid $bleak-blue;
-            width: 30%;
-            margin: $single-space 0;
-        }
-        .sessions {
-            overflow-y: scroll;
-            .session {
-                color: $base-text-color;
-                background-color: $white;
-                line-height: $double-space;
-                display: inline-block;
-                width: 30%;
-                padding: $double-space;
-                margin: $double-space $double-space $double-space 0;
-                border: 1px solid $bleak-blue;
-                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
-                & .session-title {
-                    font-weight: 700;
-                    font-size: 125%;
-                }
-                .session-pin {
-                    margin-left: $triple-space;
-                    font-size: 75%;
-                    color: $darker-gray;
-                }
-                & .session-description {
-                    margin: $double-space 0;
-                    padding: $single-space 0;
-                }
-                & .session-actions {}
-                &.ng-enter {
-                    opacity: 0;
-                    transition: .25s linear;
-                }
-                &.ng-enter.ng-enter-active {
-                    opacity: 1;
-                }
-                &.ng-leave {
-                    opacity: 1;
-                    transition: .25s linear;
-                }
-                &.ng-leave.ng-leave-active {
-                    opacity: 0;
-                }
-            }
-        }
+  #account {
+    color: white;
+    padding: $single-space * 4;
+    .your-sessions {
+      & .your-sessions-text {
+        display: block;
+        font-size: 150%;
+        font-weight: 700;
+      }
+      & .primary-button {
+        margin-top: $double-space;
+      }
     }
+    .session-add-form {
+      background-color: $white;
+      color: $base-text-color;
+      padding: $double-space;
+      border: 2px solid $bleak-blue;
+      width: 30%;
+      margin: $single-space 0;
+    }
+    .sessions {
+      overflow-y: scroll;
+      .session {
+        color: $base-text-color;
+        background-color: $white;
+        line-height: $double-space;
+        display: inline-block;
+        width: 30%;
+        padding: $double-space;
+        margin: $double-space $double-space $double-space 0;
+        border: 1px solid $bleak-blue;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+        & .session-title {
+          font-weight: 700;
+          font-size: 125%;
+        }
+        .session-pin {
+          margin-left: $triple-space;
+          font-size: 75%;
+          color: $darker-gray;
+        }
+        & .session-description {
+          margin: $double-space 0;
+          padding: $single-space 0;
+        }
+        & .session-actions {}
+        &.ng-enter {
+          opacity: 0;
+          transition: .25s linear;
+        }
+        &.ng-enter.ng-enter-active {
+          opacity: 1;
+        }
+        &.ng-leave {
+          opacity: 1;
+          transition: .25s linear;
+        }
+        &.ng-leave.ng-leave-active {
+          opacity: 0;
+        }
+      }
+    }
+  }
 }

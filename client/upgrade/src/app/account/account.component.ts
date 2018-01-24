@@ -12,6 +12,7 @@ export class AccountComponent implements OnInit {
   user: any;
   ownedSessions: any[] = [];
   addingSession: boolean = false;
+  isLoading: boolean = true;
   constructor(private auth: AuthService, private sessionHttp: SessionHttpService) { }
 
   ngOnInit() {
@@ -20,7 +21,7 @@ export class AccountComponent implements OnInit {
       this.sessionHttp.getManySessionsByOwnerUid(this.user.id)
         .subscribe((sessions) => {
           sessions.forEach(session => this.ownedSessions.push(session));
-          console.log(this.ownedSessions)
+          this.isLoading = false;
         });
     }
   }

@@ -40,6 +40,10 @@ const appRoutes: Routes = [
     component: InfoComponent
   },
   {
+    path: 'info/:sessionId',
+    component: InfoComponent
+  },
+  {
     path: 'user/account',
     component: AccountComponent
   }

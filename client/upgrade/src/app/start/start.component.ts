@@ -28,6 +28,7 @@ export class StartComponent implements OnInit {
   onStartClick = async () => {
     this.sessionHttp.getSessionMetadataById(this.sessionId).toPromise().then(session => {
       if (session !== null) {
+        this.auth.setActiveSession(this.sessionId);
         this.router.navigateByUrl(`/questions/${this.sessionId}`);
       } else {
         alert('That session doesn\'t exist'); // TODO : prettier alertsl

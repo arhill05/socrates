@@ -1,7 +1,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div id="mobile-nav" *ngIf="router.url !== '/'">
     <i routerLink="/" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active-nav" class="fa fa-home" aria-hidden="true"></i>
-    <i routerLink="/questions/999999" routerLinkActive="active-nav" class="fa fa-question" aria-hidden="true"></i>
+    <i routerLink="/questions/{{activeSessionId}}" routerLinkActive="active-nav" class="fa fa-question" aria-hidden="true"></i>
     <i routerLink="info" routerLinkActive="active-nav" class="fa fa-info" aria-hidden="true"></i>
     <i routerLink="{{isLoggedIn ? '/user/account' : '/user/login'}}" routerLinkActive="active-nav" class="fa fa-user" aria-hidden="true"></i>
 </div>
