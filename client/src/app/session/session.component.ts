@@ -22,6 +22,7 @@ export class SessionComponent implements OnInit, AfterViewInit {
   userIsAdmin: boolean;
   questions: Question[] = [];
   upvotedQuestions: string[] = [];
+  showLoading: boolean;
   newQuestion: Question = {
     questionText: null,
     upvotes: 0,
@@ -31,8 +32,6 @@ export class SessionComponent implements OnInit, AfterViewInit {
   constructor(private sessionHttpService: SessionHttpService,
     private questionsService: QuestionWsService,
     private route: ActivatedRoute,
-    private afAuth: AngularFireAuth,
-    private db: AngularFireDatabase,
     private auth: AuthService) { }
 
   ngOnInit() {

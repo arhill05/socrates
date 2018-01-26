@@ -18,7 +18,7 @@ export class QuestionWsService {
 
   getQuestions(sessionId: string): Observable<any> {
     console.log(sessionId);
-    this.socket = socketIo('http://localhost:3000', { path: '/ws' });
+    this.socket = socketIo('https://socratesapp.co', { path: '/ws' });
 
 
     this.socket.on('connect', () => { this.socket.emit('join session', sessionId) })

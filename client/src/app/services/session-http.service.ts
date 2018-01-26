@@ -14,15 +14,14 @@ export class SessionHttpService {
   }
 
   getSessionMetadataById = (id: string): Observable<SessionMetadata> => {
-    return this.http.get<SessionMetadata>(`/api/sessions/${id}/meta`).map(res => res);
+    return this.http.get<SessionMetadata>(`/api/sessions/${id}/meta`);
   }
 
   getManySessionsByOwnerUid = (id: string): Observable<SessionMetadata[]> => {
-    return this.http.get<SessionMetadata[]>(`/api/sessions/many/${id}`).map(res => res);
+    return this.http.get<SessionMetadata[]>(`/api/sessions/many/${id}`);
   }
 
   createSession = (session: SessionMetadata) => {
-    console.log('test');
-    return this.http.post<any>('/api/sessions', session).map(res => res);
+    return this.http.post<any>('/api/sessions', session);
   }
 }

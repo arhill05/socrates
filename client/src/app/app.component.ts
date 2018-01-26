@@ -16,7 +16,7 @@ export class AppComponent implements OnInit, AfterContentInit {
   title = 'app';
   isLoggedIn: boolean;
   activeSessionId: string;
-  constructor(private router: Router,
+  constructor(public router: Router,
   private auth: AuthService,
   private cdRef: ChangeDetectorRef) {
   }

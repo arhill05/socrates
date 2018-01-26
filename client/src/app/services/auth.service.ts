@@ -40,7 +40,6 @@ export class AuthService {
   login = (credentials: any) => {
     return new Promise((resolve, reject) => {
       this.http.post<any>('api/login', credentials)
-        .map(res => res)
         .subscribe(
         data => {
           localStorage.setItem('user', JSON.stringify(data))

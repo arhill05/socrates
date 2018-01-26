@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ActionButtonsComponent implements OnInit {
   isLoggedIn: boolean;
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, public router: Router) { }
 
   ngOnInit() {
     this.isLoggedIn = this.auth.getUser() !== null;

@@ -19,6 +19,10 @@
 
 @media only screen and (max-width: 1223px) and (min-width: 320px) {
   #login {
+    margin-top: $single-space * 8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: $double-space;
     label {
       margin-bottom: -$single-space;

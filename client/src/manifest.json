@@ -1,0 +1,20 @@
+{
+  "short_name": "Socrates",
+  "name": "Socrates",
+  "start_url": "/",
+  "theme_color": "#0079B2",
+  "background_color": "#0079B2",
+  "display": "standalone",
+  "orientation": "portrait",
+  "icons": [{
+    "src": "/assets/socratesOrange_96.png",
+    "sizes": "96x96",
+    "type": "image/png"
+  },
+  {
+    "src": "/assets/socratesOrange_144.png",
+    "sizes": "144x144",
+    "type": "image/png"
+  }]
+
+}
