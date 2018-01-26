@@ -1,4 +1,3 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div id="mobile-nav" *ngIf="router.url !== '/'">
     <i routerLink="/" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active-nav" class="fa fa-home" aria-hidden="true"></i>
     <i *ngIf="activeSessionId" routerLink="/questions/{{activeSessionId}}" routerLinkActive="active-nav" class="fa fa-question" aria-hidden="true"></i>

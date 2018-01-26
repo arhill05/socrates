@@ -18,14 +18,14 @@ export class LoginComponent implements OnInit {
   login = async (credentials: any) => {
     console.log(credentials);
     await this.auth.login(credentials);
-    this.router.navigateByUrl('/account');
+    this.router.navigateByUrl('/user/account');
   }
 
   createAccount = (formData: any) => {
     console.log(formData);
     if (this.isValid(formData)) {
       this.auth.create(formData);
-      this.router.navigateByUrl('/account');
+      this.router.navigateByUrl('/user/account');
     }
   }
 
