@@ -46,7 +46,7 @@
         <div class="session-id" *ngIf="userIsAdmin">You own this session</div>
         <div class="session-id">Session ID: {{sessionId}}</div>
         <div class="session-description">{{session?.description}}</div>
-        <button *ngIf="!confirmClear" (click)="confirmClear = true"class="primary-button">Clear Questions</button>
+        <button *ngIf="!confirmClear && userIsAdmin" (click)="confirmClear = true"class="primary-button">Clear Questions</button>
         <button *ngIf="confirmClear" (click)="clearQuestions()" class="primary-button">Confirm clear</button>
         <button *ngIf="confirmClear" (click)="confirmClear = false" class="secondary-button">Cancel</button>
       </div>
