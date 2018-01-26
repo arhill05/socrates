@@ -76,4 +76,8 @@ const appRoutes: Routes = [
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    document.querySelector('#loader').remove();
+  }
+}
