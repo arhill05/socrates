@@ -12,4 +12,4 @@ Socrates could be used as a Q&A app at big conferences as well. If you've ever b
 
 ##
 
-Technical stuff: Using Angular 1.x with Firebase using the AngularFire library. The development build of this is available at http://dev.andrewhill.io/socrates
+This project uses Angular v5, SocketIO for WebSockets, ExpressJS, NodeJS, and MongoDB.
