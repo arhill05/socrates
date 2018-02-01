@@ -1,0 +1,250 @@
+@import '../../variables';
+@media only screen and (max-width: 1223px) and (min-width: 320px) {
+  #questions {
+    .admin-actions {
+      display: none;
+    }
+    #session-info {
+      display: none;
+    }
+    hr {
+      display: none;
+    }
+    .question-input-group {
+      position: fixed;
+      bottom: 0;
+      display: flex;
+      width: 100%;
+      height: 8vh;
+      input {
+        border: none;
+        flex: 1 75%;
+        border-top: 2px solid $light-gray;
+        font-size: $triple-space;
+        padding: $single-space;
+      }
+      button {
+        border: none;
+        background-color: $orange;
+        color: $white;
+        font-weight: bold;
+        border-top: 2px solid darken($orange, 10%);
+        flex: 1 25%;
+      }
+    }
+    .questions {
+      position: fixed;
+      top: $single-space * 6 + 2;
+      bottom: 8vh;
+      right: 0;
+      left: 0;
+      overflow-y: scroll;
+    }
+    .question {
+      display: flex;
+      flex-wrap: wrap;
+      background-color: white;
+      border-top: 1px solid black;
+      color: black;
+      padding: $single-space $single-space / 2;
+      vertical-align: middle;
+      .question-content {
+        padding: $single-space / 2;
+        flex-wrap: wrap;
+        text-align: left;
+        flex: 3 70%;
+        height: fit-content;
+        min-height: 6vh;
+        font-size: $double-space;
+      }
+      .upvotes {
+        text-align: right;
+        flex: 1 10%;
+        .upvote-button {
+          color: $orange;
+          font-size: $triple-space;
+        }
+      }
+      .upvote-button-container {
+        text-align: center;
+      }
+      .orange {
+        color: orange;
+        font-weight: bold;
+      }
+      &:first-child {
+        border-top: none;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1224px) {
+  #questions {
+    width: 100%;
+    .input-container {
+      display: flex;
+      margin: $single-space;
+      width: 100%;
+      .action-buttons {
+        flex: 1 25%;
+      }
+    }
+    .no-questions {
+      width: 100%;
+      margin: 16px;
+      color: $white;
+      text-align: center;
+    }
+    .questions-content {
+      display: flex;
+      position: fixed;
+      top: $double-space;
+      bottom: $double-space;
+      min-width: 90%;
+      hr {
+        width: 75%;
+        border-color: black;
+      }
+      .question-input-group {
+        display: flex;
+        flex: 1 25%;
+        box-shadow: $float-box-shadow;
+        height: $single-space * 6;
+        margin: $double-space $single-space $single-space * 4 $single-space;
+        & input {
+          flex: 3 75%;
+          line-height: $single-space * 5;
+          font-size: $double-space;
+          padding-left: $single-space;
+          border: none;
+          border-right: 1px solid darken($orange, 10%);
+          border-bottom: 3px solid $light-gray;
+        }
+        & button {
+          border-left: 10px solid darken($orange, 90%);
+          flex: 1 20%;
+          height: 100%;
+          display: inline-block;
+          border: none;
+          background-color: $orange;
+          color: white;
+          cursor: pointer;
+          font-weight: bold;
+          border-radius: 2px;
+          border-right: 3px solid darken($orange, 10%);
+          border-bottom: 3px solid darken($orange, 10%);
+          &:active {
+            background-color: darken($orange, 10%);
+          }
+        }
+      }
+      .questions-container {
+        display: inline-block;
+        flex: 3 75%;
+        margin: $single-space;
+      }
+      .questions {
+        overflow-y: scroll;
+        height: 90%;
+      }
+      .question {
+        background-color: $white;
+        border: 1px solid $darker-gray;
+        box-shadow: $float-box-shadow;
+        padding: $triple-space;
+        margin: $single-space;
+        display: flex;
+        .question-content {
+          display: inline-block;
+          text-align: left;
+          flex: 1 80%;
+        }
+        .upvotes {
+          text-align: right;
+          flex: 1 20%;
+          input {
+            width: $single-space * 5;
+            text-align: center;
+          }
+          & .upvote-button {
+            font-size: $quad-space;
+            color: $orange;
+            margin: -$triple-space $single-space 0 $single-space;
+            cursor: pointer;
+          }
+          & .upvote-count {
+            &.orange {
+              color: orange;
+              font-weight: bold;
+            }
+          }
+          & .remove-button {
+            cursor: pointer;
+            font-weight: 700;
+            color: red;
+          }
+        }
+        &.ng-move {
+          transition: all 0.5s linear;
+          animation: shake 0.38s cubic-bezier(.36, .07, .19, .97) both;
+          transform: translate3d(0, 0, 0);
+          backface-visibility: hidden;
+          perspective: 1000px;
+        }
+        &.ng-move.ng-move-active {}
+      }
+      .upvote-button-container {
+        display: inline-block;
+        text-align: center;
+      }
+      .admin-actions {
+        display: inline-block;
+        color: $orange;
+        font-size: $triple-space;
+        i {
+          margin: 0 $single-space / 2;
+          cursor: pointer;
+        }
+        &.remove {
+          font-size: 1em;
+          color: $darker-gray;
+          i {
+            color: $orange;
+            margin: 0 $single-space;
+            font-size: $triple-space;
+          }
+        }
+        &.edit {}
+      }
+      .session-info {
+        height: fit-content;
+        flex: 1 25%;
+        display: inline-block;
+        position: relative;
+        top: $single-space * 12;
+        background-color: $white;
+        box-shadow: $float-box-shadow;
+        padding: $double-space;
+        margin: $single-space;
+        .clear-questions-button {
+          float: right;
+        }
+        .session-title {
+          font-size: 240%;
+          font-weight: 700;
+          margin: 0;
+        }
+        .session-id {
+          margin: $single-space $single-space $double-space $single-space / 2;
+          color: $light-gray;
+          font-weight: 700;
+        }
+        .session-description {
+          margin-left: $single-space / 2;
+          margin-bottom: $double-space;
+        }
+      }
+    }
+  }
+}

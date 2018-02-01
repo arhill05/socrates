@@ -1,0 +1,6 @@
+<div id="action-buttons" class="action-buttons">
+  <button *ngIf="!(router.url == '/')" (click)="onHomeClick()">Home</button>
+  <button *ngIf="isLoggedIn" (click)="onAccountClick()">Account</button>
+  <button *ngIf="isLoggedIn" (click)="onLogoutClick()" class="login-button">Logout</button>
+  <button *ngIf="!isLoggedIn" (click)="onLoginClick()" class="login-button">Login</button>
+</div>

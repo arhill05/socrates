@@ -1,0 +1,11 @@
+<div id="mobile-nav" *ngIf="router.url !== '/'">
+    <i routerLink="/" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active-nav" class="fa fa-home" aria-hidden="true"></i>
+    <i *ngIf="activeSessionId" routerLink="/questions/{{activeSessionId}}" routerLinkActive="active-nav" class="fa fa-question" aria-hidden="true"></i>
+    <i *ngIf="activeSessionId" routerLink="info" routerLinkActive="active-nav" class="fa fa-info" aria-hidden="true"></i>
+    <i routerLink="{{isLoggedIn ? '/user/account' : '/user/login'}}" routerLinkActive="active-nav" class="fa fa-user" aria-hidden="true"></i>
+</div>
+<section class="content">
+  <app-action-buttons></app-action-buttons>
+  <router-outlet></router-outlet>
+</section>
+

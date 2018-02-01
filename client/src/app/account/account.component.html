@@ -1,0 +1,41 @@
+<div id="account">
+  <h2 *ngIf="user">Hello, {{user.username}}</h2>
+  <div class="your-sessions">
+    <span class="your-sessions-text">Your sessions: </span>
+    <button (click)="addingSession = true" class="primary-button">Add a session</button>
+  </div>
+  <form ngNativeValidate #f="ngForm" (ngSubmit)="createSession(f.value)" *ngIf="addingSession" class="session-add-form">
+    <div class="form-group">
+      <label class="control-label">Session Title: </label>
+      <input name="title" [(ngModel)]="title" required />
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Session Description: </label>
+      <textarea name="description" [(ngModel)]="description" cols="20" rows="3"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Session Pin: </label>
+      <input name="id" [(ngModel)]="id" maxlength="6" required />
+    </div>
+    <div class="form-actions">
+      <button type="submit" class="primary-button">Add Session</button>
+      <button (click)="addingSession = false" class="secondary-button">Cancel</button>
+    </div>
+  </form>
+  <div class="sessions">
+    <div *ngIf="!ownedSessions.length">Loading...</div>
+    <div class="session" *ngFor="let ownedSession of ownedSessions">
+      <span class="session-title">{{ownedSession?.title}}</span>
+      <span class="session-pin">ID: {{ownedSession?.id}}</span>
+      <div class="session-description">
+        {{ownedSession?.description}}
+      </div>
+      <div class="session-actions">
+        <button class="primary-button" routerLink="/questions/{{ownedSession.id}}">Go to session</button>
+        <button class="secondary-button" (click)="removeSession(session)">Remove session</button>
+      </div>
+    </div>
+  </div>
+</div>

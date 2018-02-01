@@ -1,6 +1,6 @@
-node_modules/
-bower_components/
-.DS_Store
-.vscode/
-dist/
-ftpconfig.json
+**/node_modules/
+**/bower_components/
+**/.DS_Store
+**/.vscode/
+**/dist/
+**/ftpconfig.json

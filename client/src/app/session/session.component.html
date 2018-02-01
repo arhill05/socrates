@@ -1,0 +1,55 @@
+<div id="questions">
+  <div class="loading" *ngIf="showLoading">LOADING . . . </div>
+  <div class="questions-content">
+    <div class="questions-container" *ngIf="!showLoading">
+      <div class="question-input-group">
+        <input class="question-text-input" [(ngModel)]="newQuestion.questionText" />
+        <button class="question-text-button" (click)="addQuestion()">ASK</button>
+      </div>
+      <hr />
+      <div class="questions">
+        <div class="no-questions" *ngIf="(!questions)">No questions have been added yet. Ask one!</div>
+        <div class="question" *ngFor="let question of questions">
+          <div class="question-content">
+            <span>{{question.questionText}}</span>
+          </div>
+          <div class="upvotes">
+            <div class="upvote-button-container" *ngIf="!question.isRemoving">
+              <div *ngIf="!userHasUpvoted(question)" class="upvote-button" (click)="upvoteQuestion(question)">
+                <i class="fa fa-angle-up" aria-hidden="true"></i>
+              </div>
+              <div *ngIf="userHasUpvoted(question)" class="upvote-button" (click)="upvoteQuestion(question)">
+                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+              </div>
+              <div *ngIf="!question.isEditing" class="upvote-count" [ngClass]="{orange: userHasUpvoted(question)}">{{question.upvotes}}</div>
+              <input class="upvote-input" *ngIf="userIsAdmin && question.isEditing" [(ngModel)]="question.upvotes" />
+            </div>
+            <div *ngIf="userIsAdmin && !question.isRemoving && !question.isEditing" class="admin-actions">
+              <i class="fa fa-trash" (click)="question.isRemoving = true" aria-hidden="true"></i>
+              <i class="fa fa-pencil" (click)="question.isEditing = true" aria-hidden="true"></i>
+            </div>
+            <div *ngIf="question.isRemoving" class="admin-actions remove">
+              Confirm remove?
+              <i class="fa fa-check" (click)="remove(question)" aria-hidden="true"></i>
+              <i class="fa fa-times" (click)="question.isRemoving = false" aria-hidden="true"></i>
+            </div>
+            <div *ngIf="question.isEditing" class="admin-actions edit">
+              <i class="fa fa-check" (click)="edit(question)" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="session-info" class="session-info">
+      <div class="info-content">
+        <div class="session-title">{{session?.title}}</div>
+        <div class="session-id" *ngIf="userIsAdmin">You own this session</div>
+        <div class="session-id">Session ID: {{sessionId}}</div>
+        <div class="session-description">{{session?.description}}</div>
+        <button *ngIf="!confirmClear && userIsAdmin" (click)="confirmClear = true"class="primary-button">Clear Questions</button>
+        <button *ngIf="confirmClear" (click)="clearQuestions()" class="primary-button">Confirm clear</button>
+        <button *ngIf="confirmClear" (click)="confirmClear = false" class="secondary-button">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

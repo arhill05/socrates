@@ -1,0 +1,13 @@
+<div id="start">
+  <h1>Socrates</h1>
+  <h3>Just ask.</h3>
+  <img src="../assets/socratesOrange.png" />
+  <div class="id-input">
+    <div class="id-input-text">Enter your session's ID</div>
+    <input autofocus type="text" id="id-input" class="id-input" maxlength="6" [(ngModel)]="sessionId" />
+  </div>
+  <button (click)="onStartClick()" class="start-button">START</button>
+  <button id="mobile-account-button" class="mobile-account-button" (click)="onMobileAccountClick()">
+    <i class="fa fa-user" aria-hidden="true"></i>
+  </button>
+</div>

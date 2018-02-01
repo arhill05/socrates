@@ -1,0 +1,16 @@
+@import '../../variables';
+
+#info {
+    margin-top: $single-space * 6;
+    background-color: $white;
+    color: $base-text-color;
+    padding: $double-space;
+    text-align: left;
+    h1 {
+        margin: 0;
+    }
+    h3 {
+        color: $light-gray;
+        margin: $single-space 0;
+    }
+}
