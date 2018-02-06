@@ -18,18 +18,22 @@ export class AuthService {
   }
 
   create = (createReq: any) => {
-    this.http.post<any>('api/createAccount', createReq)
-      .subscribe(
-      data => {
-        localStorage.setItem('user', JSON.stringify(data))
-        this.authObserver.next(true);
-      },
-      error => {
-        // TODO : prettier alerts
-        console.log(error);
-        alert(error.error.message)
-      }
-      );
+    return new Promise((resolve, reject) => {
+      this.http.post<any>('api/createAccount', createReq)
+        .subscribe(
+        data => {
+          localStorage.setItem('user', JSON.stringify(data))
+          resolve(true);
+          this.authObserver.next(true);
+        },
+        error => {
+          // TODO : prettier alerts
+          console.log(error);
+          alert(error.error.message)
+          reject(false);
+        }
+        );
+    })
   }
 
   getUser = () => {

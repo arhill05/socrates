@@ -26,10 +26,10 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl('/user/account');
   }
 
-  createAccount = (formData: any) => {
+  createAccount = async (formData: any) => {
     console.log(formData);
     if (this.isValid(formData)) {
-      this.auth.create(formData);
+      await this.auth.create(formData);
       this.router.navigateByUrl('/user/account');
     }
   }
