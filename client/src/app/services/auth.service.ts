@@ -19,7 +19,6 @@ export class AuthService {
 
   create = (createReq: any) => {
     this.http.post<any>('api/createAccount', createReq)
-      .map(res => res)
       .subscribe(
       data => {
         localStorage.setItem('user', JSON.stringify(data))
