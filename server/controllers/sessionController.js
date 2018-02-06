@@ -78,3 +78,13 @@ exports.createSession = async(req, res, next) => {
         next(err);
     }
 }
+
+exports.deleteSession = async(req, res, next) => {
+    try {
+        const id = req.params.id;
+        await Session.remove({id});
+        res.json(true);
+    } catch (err) {
+        next(err);
+    }
+}

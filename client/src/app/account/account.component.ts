@@ -36,6 +36,14 @@ export class AccountComponent implements OnInit {
     this.addingSession = false;
   }
 
+  removeSession = (id: string) => {
+    this.sessionHttp.removeSession(id)
+      .subscribe(
+      res => this.ownedSessions = this.ownedSessions.filter(x => x.id != id),
+      err => alert(err.error.message)
+      );
+  }
+
   goToSession = (id: string) => {
     console.log(id);
   }

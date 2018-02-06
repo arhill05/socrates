@@ -11,6 +11,7 @@ router.get('/sessions/:id', sessionController.getSessionById);
 router.get('/sessions/:id/meta', sessionController.getSessionMetaById);
 router.get('/sessions/many/:ownerUid', sessionController.getManySessionsByOwnerUid);
 router.post('/sessions', sessionController.createSession);
+router.delete('/sessions/:id', sessionController.deleteSession);
 
 router.get('/questions', questionController.getQuestions);
 router.get('/questions/:id', questionController.getQuestionById);

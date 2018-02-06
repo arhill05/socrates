@@ -24,4 +24,8 @@ export class SessionHttpService {
   createSession = (session: SessionMetadata) => {
     return this.http.post<any>('/api/sessions', session);
   }
+
+  removeSession = (id: string) => {
+    return this.http.delete<any>(`/api/sessions/${id}`)
+  }
 }

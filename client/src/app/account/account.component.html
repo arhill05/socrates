@@ -33,7 +33,7 @@
       </div>
       <div class="session-actions">
         <button class="primary-button" routerLink="/questions/{{ownedSession.id}}">Go to session</button>
-        <button class="secondary-button" (click)="removeSession(session)">Remove session</button>
+        <button class="secondary-button" (click)="removeSession(ownedSession.id)">Remove session</button>
       </div>
     </div>
   </div>
